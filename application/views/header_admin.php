@@ -34,7 +34,7 @@
                                 <li><a href="<?php echo site_url('admin/news'); ?>">News</a></li>
                                 <li><a href="<?php echo site_url('admin/branches'); ?>">Branch Offices</a></li>
                                 <li><a href="<?php echo site_url('admin/suggestions'); ?>">Suggestions</a></li>
-                                <li><a href="<?php echo site_url('admin/promos'); ?>">Promo</a></li>
+                                <li><a href="<?php echo site_url('admin/banners'); ?>">Banners</a></li>
                             </ul>
                             <p class="navbar-text pull-right">
                                 <a href="<?php echo site_url('admin/users/sign_out'); ?>">Logout</a>

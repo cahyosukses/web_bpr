@@ -1,11 +1,11 @@
 <?php
 
-class Branch extends DataMapper {
+class Banner extends DataMapper {
 
-    public $table = "branches";
+    public $table = "banners";
     public $validation = array(
-        'name' => array(
-            'label' => 'Name of Branch',
+        'title' => array(
+            'label' => 'Title',
             'rules' => array('required'))
     );
 

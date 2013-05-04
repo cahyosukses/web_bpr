@@ -32,7 +32,7 @@
     <section class="post">
         <div>
             <h1 style="color: #00620C; margin-bottom: 10px;"><?php echo $title_news; ?></h1>
-            <?php echo get_image_public($image_news, 100, 100); ?>
+            <?php echo get_image_public($image_news, "news", 100, 100); ?>
             <?php echo $content_news; ?>
         </div>
         <div style="margin-bottom: 10px;">

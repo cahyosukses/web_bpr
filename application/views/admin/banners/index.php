@@ -2,7 +2,7 @@
 <?php
 
 function HeaderLink($value, $key, $col, $dir) {
-    $out = "<a href=\"" . site_url('admin/news') . "?c=";
+    $out = "<a href=\"" . site_url('admin/banners') . "?c=";
     //set column query string value
     switch ($key) {
         case "title":
@@ -50,8 +50,8 @@ function HeaderLink($value, $key, $col, $dir) {
 <?php echo $this->session->flashdata('message'); ?>
 <div class="widget stacked">
     <div class="widget-header">
-        <h3>News</h3>
-        <a href="<?php echo site_url('admin/news/add'); ?>" class="btn btn-primary pull-right" style="margin: 5px;">Add News</a>
+        <h3>Banners</h3>
+        <a href="<?php echo site_url('admin/banners/add'); ?>" class="btn btn-primary pull-right" style="margin: 5px;">Add banners</a>
     </div>
     <div class="widget-content">
         <table class="table table-hover">
@@ -65,11 +65,11 @@ function HeaderLink($value, $key, $col, $dir) {
             </thead>
             <tbody>
                 <?php
-                foreach ($news as $row) {
+                foreach ($banners as $row) {
                 ?>
                     <tr>
                         <td><?php echo $row->title; ?></td>
-                        <td><?php echo get_image($row->images, "news", 100, 100); ?></td>
+                        <td><?php echo get_image($row->images, "banners", 100, 100); ?></td>
                         <td><?php echo $row->content; ?></td>
                         <td>
                             <div class="btn-group">
@@ -78,8 +78,8 @@ function HeaderLink($value, $key, $col, $dir) {
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu pull-right">
-                                    <li><a href="<?php echo site_url('admin/news/edit/' . $row->id); ?>"><i class="icon-ok"></i> Edit</a></li>
-                                    <li><a href="<?php echo site_url('admin/news/delete/' . $row->id); ?>"><i class="icon-trash"></i> Destroy</a></li>
+                                    <li><a href="<?php echo site_url('admin/banners/edit/' . $row->id); ?>"><i class="icon-ok"></i> Edit</a></li>
+                                    <li><a href="<?php echo site_url('admin/banners/delete/' . $row->id); ?>"><i class="icon-trash"></i> Destroy</a></li>
                                 </ul>
                             </div>
 

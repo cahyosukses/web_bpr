@@ -78,7 +78,7 @@ class Settings extends CI_Controller {
         $data['form_action'] = site_url('admin/settings/update');
         $data['id'] = $id;
         $data['name'] = array('name' => 'name', 'placeholder' => 'Name for Key', 'class' => 'span4', 'value' => $rs->name);
-        $data['content'] = array('name' => 'content', 'value' => $rs->value, 'class' => 'ckeditor');
+        $data['content'] = array('name' => 'content', 'value' => $rs->value, 'class' => 'ckeditor', 'id' => 'content_text');
         $this->load->view('admin/setting/frm_setting', $data);
     }
 

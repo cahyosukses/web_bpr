@@ -8,7 +8,9 @@ class Welcome extends CI_Controller {
     public function index() {
         $setting = new Setting();
         $post = new Post();
+        $banners = new Banner();
         $data['news'] = $post->get();
+        $data['banners'] = $banners->get('3')->all;
 
         $data["class"] = "Home";
         $data['moto'] = $setting->get_val("MOTO");
@@ -26,9 +28,9 @@ class Welcome extends CI_Controller {
         $this->load->view('detail_public', $data);
     }
 
-    public function ads($slug) {
-        $posts = new Post();
-        $rs = $posts->where('slug', $slug)->get();
+    public function promos($slug) {
+        $banners = new Banner();
+        $rs = $banners->where('slug', $slug)->get();
         $data['class'] = "Home";
         $data['title_news'] = $rs->title;
         $data['image_news'] = $rs->images;

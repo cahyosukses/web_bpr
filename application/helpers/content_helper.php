@@ -23,19 +23,19 @@ function rupiah($var = '') {
     return $x;
 }
 
-function get_image_public($m, $w, $h) {
+function get_image_public($m, $dir, $w, $h) {
     $img = '';
     if ($m != '') {
-        $img = '<div style="float: left; padding-right: 6px; "><img src="' . base_url() . 'assets/upload/' . $m . '" width="' . $w . '" height="' . $h . '"></div>';
+        $img = '<div style="float: left; padding-right: 6px; "><img src="' . base_url() . 'assets/upload/' . $dir . "/" . $m . '" width="' . $w . '" height="' . $h . '"></div>';
     }
     return $img;
 }
 
-function get_image($m, $w, $h) {
+function get_image($m, $dir, $w, $h) {
     if ($m == '') {
         $img = '<img src="' . base_url() . 'assets/images/no_photo.jpg" width="' . $w . '" height="' . $h . '" class="thumbnail" id="preview">';
     } else {
-        $img = '<img src="' . base_url() . 'assets/upload/' . $m . '" width="' . $w . '" height="' . $h . '" class="thumbnail" id="preview">';
+        $img = '<img src="' . base_url() . 'assets/upload/' . $dir . "/" . $m . '" width="' . $w . '" height="' . $h . '" class="thumbnail" id="preview">';
     }
     return $img;
 }
