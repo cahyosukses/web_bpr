@@ -34,6 +34,19 @@
             <h2><?php echo get_title('TITLE_SIMULASI_KREDIT'); ?></h2>
 
             <a href="<?php echo site_url('simulator'); ?>">Hitung Ulang</a>
+
+
+            <?php
+            switch($jenis_bunga){
+                case 'flat':
+                    break;
+                case 'efektif':
+                    break;
+                case 'anuitas':
+                    break;
+            }
+            ?>
+
             <table border="1" width="100%" style="color: black; font-size: 13px;" cellpadding="0" cellspacing="0">
                 <tr style="font-weight: bold; background: #ccc; text-align: center;">
                     <td width="50">Bulan</td>
@@ -49,7 +62,7 @@
                 $total_pokok = 0;
                 $total_angsuran = 0;
                 $sisa_saldo = $pinjaman;
-                $bunga_flat = hitung_bunga('flat', $pinjaman, $suku_bunga);
+                $bunga_flat = hitung_jasa('flat', $pinjaman, $suku_bunga);
                 $pokok = ($pinjaman / $jangka_waktu);
                 $angsuran = ($pokok + $bunga_flat);
 

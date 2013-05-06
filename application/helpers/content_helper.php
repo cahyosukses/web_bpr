@@ -1,21 +1,112 @@
 <?php
 
-function hitung_bunga($bunga, $pinjaman, $suku_bunga) {
-    switch ($bunga) {
-        case "flat":
-            $result = $pinjaman * $suku_bunga / 100 * 30 / 360;
+function pecahan($value = '') {
+    $length = strlen($value);
+    switch ($length) {
+        case '6':
+            $current = 0;
+            $value2 = str_replace('.', '', $value);
+            $var = substr($value2, -3, 3);
+
+            if ($var != "000") {
+                if ($var >= 100 && $var < 200) {
+                    $v = str_split($value2, 3);
+                    if ($var == 100) {
+                        $current = $v[0] . $var;
+                    } elseif ($var == 200) {
+                        $current = $v[0] . $var;
+                    } else {
+                        $current = $v[0] . "200";
+                    }
+                } elseif ($var >= 200 && $var < 300) {
+                    $v = str_split($value2, 3);
+                    if ($var == 200) {
+                        $current = $v[0] . $var;
+                    } elseif ($var == 300) {
+                        $current = $v[0] . $var;
+                    } else {
+                        $current = $v[0] . "300";
+                    }
+                } elseif ($var >= 300 && $var < 400) {
+                    $v = str_split($value2, 3);
+                    if ($var == 300) {
+                        $current = $v[0] . $var;
+                    } elseif ($var == 400) {
+                        $current = $v[0] . $var;
+                    } else {
+                        $current = $v[0] . "400";
+                    }
+                } elseif ($var >= 400 && $var < 500) {
+                    $v = str_split($value2, 3);
+                    if ($var == 400) {
+                        $current = $v[0] . $var;
+                    } elseif ($var == 500) {
+                        $current = $v[0] . $var;
+                    } else {
+                        $current = $v[0] . "500";
+                    }
+                } elseif ($var >= 500 && $var < 600) {
+                    $v = str_split($value2, 3);
+                    if ($var == 500) {
+                        $current = $v[0] . $var;
+                    } elseif ($var == 600) {
+                        $current = $v[0] . $var;
+                    } else {
+                        $current = $v[0] . "600";
+                    }
+                } elseif ($var >= 600 && $var < 700) {
+                    $v = str_split($value2, 3);
+                    if ($var == 600) {
+                        $current = $v[0] . $var;
+                    } elseif ($var == 700) {
+                        $current = $v[0] . $var;
+                    } else {
+                        $current = $v[0] . "700";
+                    }
+                } elseif ($var >= 700 && $var < 800) {
+                    $v = str_split($value2, 3);
+                    if ($var == 700) {
+                        $current = $v[0] . $var;
+                    } elseif ($var == 800) {
+                        $current = $v[0] . $var;
+                    } else {
+                        $current = $v[0] . "800";
+                    }
+                } elseif ($var >= 800 && $var < 900) {
+                    $v = str_split($value2, 3);
+                    if ($var == 800) {
+                        $current = $v[0] . $var;
+                    } elseif ($var == 900) {
+                        $current = $v[0] . $var;
+                    } else {
+                        $current = $v[0] . "900";
+                    }
+                }
+                return $current == 0 ? $value2 : $current;
+            } else {
+                return $value2;
+            }
+
             break;
-        case "efektif":
-            $result = $pinjaman * $suku_bunga / 100 * 30 / 360;
+        case '7':
             break;
-        case "anuitas":
-//            $result = $pinjaman * $suku_bunga / 100/ 360  * 1 / 1-(1 / (1 + $suku_bunga / 100/ 360 )360);
+    }
+}
+
+function hitung_jasa($jenis, $pinjaman, $jasa) {
+    $jasa_angsuran = 0;
+    switch ($jenis) {
+        case 'flat':
+            $jasa_angsuran = $pinjaman * $jasa / 100 / 12;
             break;
-        default:
-            $result = "0";
+        case 'efektif':
+            $jasa_angsuran = $pinjaman * $jasa / 100 / 12 * 1 / 1 - (1 / (1 + $jasa / 100 / 12) ^ 12);
+            break;
+        case 'menurun' :
+            $jasa_angsuran = $pinjaman * $jasa / 100 / 12;
     }
 
-    return $result;
+    return $jasa_angsuran;
 }
 
 function rupiah($var = '') {

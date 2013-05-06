@@ -66,6 +66,7 @@ class Settings extends CI_Controller {
         $data['title'] = $setting->get_val('TITLE');
         $data['form_action'] = site_url('admin/settings/save');
         $data['id'] = '';
+        $data['status'] = '';
         $data['name'] = array('name' => 'name', 'placeholder' => 'Name for Key', 'class' => 'span4');
         $data['content'] = array('name' => 'content', 'class' => 'ckeditor');
         $this->load->view('admin/setting/frm_setting', $data);
@@ -76,7 +77,9 @@ class Settings extends CI_Controller {
         $rs = $setting->where('id', $id)->get();
         $data['title'] = $setting->get_val('TITLE');
         $data['form_action'] = site_url('admin/settings/update');
+
         $data['id'] = $id;
+        $data['status'] = $rs->type;
         $data['name'] = array('name' => 'name', 'placeholder' => 'Name for Key', 'class' => 'span4', 'value' => $rs->name);
         $data['content'] = array('name' => 'content', 'value' => $rs->value, 'class' => 'ckeditor', 'id' => 'content_text');
         $this->load->view('admin/setting/frm_setting', $data);
@@ -85,7 +88,24 @@ class Settings extends CI_Controller {
     function save() {
         $setting = new Setting();
         $setting->name = $this->input->post('name');
-        $setting->value = $this->input->post('content');
+
+        if ($this->input->post('status') == 'images') {
+            // upload photo
+            $config['upload_path'] = 'assets/upload/settings';
+            $config['allowed_types'] = 'gif|jpg|png|bmp';
+            $this->load->library("upload", $config);
+            if ($this->upload->do_upload("content")) {
+                $data = $this->upload->data();
+                $setting->value = $data["file_name"];
+            } else {
+                print_r($this->upload->display_errors());
+            }
+            $setting->type = "images";
+        } else {
+            $setting->type = "text";
+            $setting->value = $this->input->post('content');
+        }
+
         if ($setting->save()) {
             redirect('admin/settings/');
         }
@@ -93,6 +113,16 @@ class Settings extends CI_Controller {
 
     function update() {
         $setting = new Setting();
+        // upload photo
+        $config['upload_path'] = 'assets/upload/settings';
+        $config['allowed_types'] = 'gif|jpg|png|bmp';
+        $this->load->library("upload", $config);
+        if ($this->upload->do_upload("image")) {
+            $data = $this->upload->data();
+        } else {
+            //print_r($this->upload->display_errors());
+        }
+
         $setting->where('id', $this->input->post('id'))
                 ->update(array(
                     'name' => $this->input->post('name'),

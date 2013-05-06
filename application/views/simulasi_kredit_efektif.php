@@ -52,7 +52,7 @@
                 $pokok = $pinjaman / $jangka_waktu;
                 for ($x = 1; $x <= $jangka_waktu; $x++) {
                     $sisa_saldo = ($pinjaman - $pokok);
-                    $bunga_efektif = hitung_bunga('efektif', $pinjaman, $suku_bunga);
+                    $bunga_efektif = hitung_jasa('efektif', $pinjaman, $suku_bunga);
                     $pinjaman -= $pokok;
                     $angsuran = $pokok + $bunga_efektif;
                     $total_bunga += $bunga_efektif;

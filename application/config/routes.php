@@ -43,6 +43,8 @@ $route['default_controller'] = "welcome";
 //get link detail content
 $route['news/(:any)'] = "welcome/news/$1";
 $route['products/(:any)'] = "products/get_detail/$1";
+$route['products/detail/(:any)'] = "products/detail/$1";
+
 $route['promos/(:any)'] = "welcome/promos/$1";
 
 $route['simulator'] = "products/simulasi_kredit";
