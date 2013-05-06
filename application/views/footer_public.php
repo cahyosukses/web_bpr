@@ -41,6 +41,7 @@
                         <li class="<?php echo $class == "Products" ? "active" : "" ?>"><a href="<?php echo site_url('products'); ?>">Products</a></li>
                         <li class="<?php echo $class == "Abouts" ? "active" : "" ?>"><a href="<?php echo site_url('abouts'); ?>">About</a></li>
                         <li class="<?php echo $class == "Contacts" ? "active" : "" ?>"><a href="<?php echo site_url('contacts'); ?>">Contact</a></li>
+                        <li class="<?php echo $class == "Simulator" ? "active" : "" ?>"><a href="<?php echo site_url('simulator'); ?>">Simulator</a></li>
             </ul>
         </nav>
         <p class="copy">&copy; Copyright 2013 PD BPR KAB BANDUNG <span>|</span> <strong>Design by <a href="#" target="_blank">Wiwin Offset</a></strong></p>
