@@ -37,7 +37,7 @@
 <?php echo get_footer('admin'); ?>
                 <script>
                     $(function() {
-<?php
+            <?php
                 if ($status == 'text') {
                     $f = '$("#content_text").show(); $("#content_image").hide();';
                 } else if ($status == 'images') {
@@ -47,7 +47,7 @@
                 }
 
                 echo $f;
-?>
+            ?>
 
                
         

@@ -33,6 +33,7 @@
             <section class="post">
                 <div class="video-holder">
                     <!--iframe width="435" height="250" src="http://www.youtube.com/embed/rZ6rbbCOgNQ" frameborder="0" allowfullscreen></iframe-->
+                    <?php echo get_title('CONTENT_SUKU_BUNGA'); ?>
                 </div>
 
                 <div class="post-cnt">

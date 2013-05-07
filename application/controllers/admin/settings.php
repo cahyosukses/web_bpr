@@ -68,7 +68,7 @@ class Settings extends CI_Controller {
         $data['id'] = '';
         $data['status'] = '';
         $data['name'] = array('name' => 'name', 'placeholder' => 'Name for Key', 'class' => 'span4');
-        $data['content'] = array('name' => 'content', 'class' => 'ckeditor');
+        $data['content'] = array('name' => 'content');
         $this->load->view('admin/setting/frm_setting', $data);
     }
 
@@ -81,7 +81,7 @@ class Settings extends CI_Controller {
         $data['id'] = $id;
         $data['status'] = $rs->type;
         $data['name'] = array('name' => 'name', 'placeholder' => 'Name for Key', 'class' => 'span4', 'value' => $rs->name);
-        $data['content'] = array('name' => 'content', 'value' => $rs->value, 'class' => 'ckeditor', 'id' => 'content_text');
+        $data['content'] = array('name' => 'content', 'value' => $rs->value);
         $this->load->view('admin/setting/frm_setting', $data);
     }
 

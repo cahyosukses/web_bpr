@@ -37,11 +37,12 @@
             <div class="footer-bottom">
                 <nav class="footer-nav">
                     <ul>
-                        <li class="<?php echo $class == "Home" ? "active" : "" ?>"><a href="<?php echo site_url(); ?>">Home</a></li>
-                        <li class="<?php echo $class == "Products" ? "active" : "" ?>"><a href="<?php echo site_url('products'); ?>">Products</a></li>
-                        <li class="<?php echo $class == "Abouts" ? "active" : "" ?>"><a href="<?php echo site_url('abouts'); ?>">About</a></li>
-                        <li class="<?php echo $class == "Contacts" ? "active" : "" ?>"><a href="<?php echo site_url('contacts'); ?>">Contact</a></li>
-                        <li class="<?php echo $class == "Simulator" ? "active" : "" ?>"><a href="<?php echo site_url('simulator'); ?>">Simulator</a></li>
+                        <li class="<?php echo $class == "Home" ? "active" : "" ?>"><a href="<?php echo site_url(); ?>">Beranda</a></li>
+                        <li class="<?php echo $class == "Products" ? "active" : "" ?>"><a href="<?php echo site_url('products'); ?>">Produk</a></li>
+                        <li class="<?php echo $class == "Abouts" ? "active" : "" ?>"><a href="<?php echo site_url('abouts'); ?>">Tentang Kami</a></li>
+                        <li class="<?php echo $class == "Contacts" ? "active" : "" ?>"><a href="<?php echo site_url('contacts'); ?>">Hubungi BPR</a></li>
+                        <li class="<?php echo $class == "Simulator" ? "active" : "" ?>"><a href="<?php echo site_url('simulator'); ?>">Simulasi Kredit</a></li>
+                        <li class="<?php echo $class == "Pinca" ? "active" : "" ?>"><a href="<?php echo site_url('pinca_of_the_month'); ?>">Pinca of the month</a></li>
             </ul>
         </nav>
         <p class="copy">&copy; Copyright 2013 PD BPR KAB BANDUNG <span>|</span> <strong>Design by <a href="#" target="_blank">Wiwin Offset</a></strong></p>
