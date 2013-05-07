@@ -10,7 +10,7 @@ class Welcome extends CI_Controller {
         $post = new Post();
         $banners = new Banner();
         $data['news'] = $post->get();
-        $data['banners'] = $banners->get('3')->all;
+        $data['banners'] = $banners->get('5')->all;
 
         $data["class"] = "Home";
         $data['moto'] = $setting->get_val("MOTO");

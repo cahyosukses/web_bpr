@@ -65,6 +65,7 @@ class News extends CI_Controller {
 
         $data['form_action'] = site_url('admin/news/save');
         $data['id'] = '';
+        $data['image_edit'] = '';
         $data['title_news'] = array('name' => 'title_news', 'class' => 'span7');
         $data['image'] = '';
         $data['content'] = array('name' => 'content', 'class' => 'ckeditor');
@@ -77,9 +78,11 @@ class News extends CI_Controller {
         $news->title = $this->input->post('title_news');
         $news->slug = slug($this->input->post('title_news'));
         $news->content = $this->input->post('content');
+        $news->created_at = date('c');
+        $news->update_at = date('c');
         // upload photo
         $config['upload_path'] = 'assets/upload/news';
-        $config['allowed_types'] = 'gif|jpg|png|bmp';
+        $config['allowed_types'] = 'gif|jpg|png|bmp|jpeg';
         $this->load->library("upload", $config);
         if ($this->upload->do_upload("image")) {
             $data = $this->upload->data();
@@ -106,6 +109,7 @@ class News extends CI_Controller {
 
         $rs = $news->where('id', $id)->get();
         $data['id'] = $rs->id;
+        $data['image_edit'] = $rs->images;
         $data['title_news'] = array('name' => 'title_news', 'value' => $rs->title, 'class' => 'span7');
         $data['image'] = $rs->images;
         $data['content'] = array('name' => 'content', 'value' => $rs->content, 'class' => 'ckeditor');
@@ -117,7 +121,7 @@ class News extends CI_Controller {
         $news = new Post();
         // upload photo
         $config['upload_path'] = 'assets/upload/news';
-        $config['allowed_types'] = 'gif|jpg|png|bmp';
+        $config['allowed_types'] = 'gif|jpg|png|bmp|jpeg';
         $this->load->library("upload", $config);
         if ($this->upload->do_upload("image")) {
             $data = $this->upload->data();
@@ -131,7 +135,8 @@ class News extends CI_Controller {
                             'title' => $this->input->post('title_news'),
                             'slug' => slug($this->input->post('title_news')),
                             'content' => $this->input->post('content'),
-                            'images' => $data["file_name"],
+                            'images' => $data["file_name"] == '' ? $this->input->post('image_edit') : $data["file_name"],
+                            'updated_at' => date('c')
                         )
         );
         $msg = notice('Update successfuly.', 'success');

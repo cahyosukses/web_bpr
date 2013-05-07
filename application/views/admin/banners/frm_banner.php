@@ -23,7 +23,7 @@
             <div class="control-group">
                 <label class="control-label">Title</label>
                 <div class="controls">
-                    <?php echo form_input($title_banners) . form_hidden('id', $id); ?>
+                    <?php echo form_input($title_banners) . form_hidden('id', $id) . form_hidden('image_edit', $image_edit); ?>
                 </div>
             </div>
             <div class="control-group">

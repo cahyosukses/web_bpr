@@ -67,6 +67,7 @@ class Banners extends CI_Controller {
         $data['id'] = '';
         $data['title_banners'] = array('name' => 'title_banners', 'class' => 'span7');
         $data['image'] = '';
+        $data['image_edit'] = '';
         $data['content'] = array('name' => 'content', 'class' => 'ckeditor');
 
         $this->load->view('admin/banners/frm_banner', $data);
@@ -79,7 +80,7 @@ class Banners extends CI_Controller {
         $banners->content = $this->input->post('content');
         // upload photo
         $config['upload_path'] = 'assets/upload/banners';
-        $config['allowed_types'] = 'gif|jpg|png|bmp';
+        $config['allowed_types'] = 'gif|jpg|png|bmp|jpeg';
         $this->load->library("upload", $config);
         if ($this->upload->do_upload("image")) {
             $data = $this->upload->data();
@@ -108,16 +109,17 @@ class Banners extends CI_Controller {
         $data['id'] = $rs->id;
         $data['title_banners'] = array('name' => 'title_banners', 'value' => $rs->title, 'class' => 'span7');
         $data['image'] = $rs->images;
+        $data['image_edit'] = $rs->images;
         $data['content'] = array('name' => 'content', 'value' => $rs->content, 'class' => 'ckeditor');
 
-        $this->load->view('admin/banners/frm_banners', $data);
+        $this->load->view('admin/banners/frm_banner', $data);
     }
 
     function update() {
         $banners = new Banner();
         // upload photo
         $config['upload_path'] = 'assets/upload/banners';
-        $config['allowed_types'] = 'gif|jpg|png|bmp';
+        $config['allowed_types'] = 'gif|jpg|png|bmp|jpeg';
         $this->load->library("upload", $config);
         if ($this->upload->do_upload("image")) {
             $data = $this->upload->data();
@@ -131,7 +133,7 @@ class Banners extends CI_Controller {
                             'title' => $this->input->post('title_banners'),
                             'slug' => slug($this->input->post('title_banners')),
                             'content' => $this->input->post('content'),
-                            'images' => $data["file_name"],
+                            'images' => $data["file_name"] == '' ? $this->input->post('image_edit') : $data["file_name"],
                         )
         );
         $msg = notice('Update successfuly.', 'success');

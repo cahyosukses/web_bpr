@@ -16,7 +16,7 @@
                     <div class="slide-cnt">
                         <h2><?php echo $rows->title; ?></h2>
                         <div class="box-cnt">
-                            <?php echo word_limiter($rows->content, 10); ?>
+                            <?php echo word_limiter($rows->content, 5); ?>
                         </div>
                         <a href="<?php echo site_url('promos/' . $rows->slug); ?>" class="grey-btn">More...</a>
                     </div>

@@ -70,7 +70,7 @@ function HeaderLink($value, $key, $col, $dir) {
                     <tr>
                         <td><?php echo $row->title; ?></td>
                         <td><?php echo get_image($row->images, "news", 100, 100); ?></td>
-                        <td><?php echo $row->content; ?></td>
+                        <td><?php echo word_limiter($row->content, 20); ?></td>
                         <td>
                             <div class="btn-group">
                                 <a href="#" data-toggle="dropdown" class="btn btn-mini dropdown-toggle">
