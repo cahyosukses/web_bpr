@@ -76,7 +76,8 @@ class News extends CI_Controller {
     function save() {
         $news = new Post();
         $news->title = $this->input->post('title_news');
-        $news->slug = slug($this->input->post('title_news'));
+//        $news->slug = slug($this->input->post('title_news'));
+        $news->slug = preg_replace("![^a-z0-9]+!i", "-", $this->input->post('title_news'));
         $news->content = $this->input->post('content');
         $news->created_at = date('c');
         $news->update_at = date('c');
@@ -133,7 +134,7 @@ class News extends CI_Controller {
                 ->update(
                         array(
                             'title' => $this->input->post('title_news'),
-                            'slug' => slug($this->input->post('title_news')),
+                            'slug' => preg_replace("![^a-z0-9]+!i", "-", $this->input->post('title_news')),
                             'content' => $this->input->post('content'),
                             'images' => $data["file_name"] == '' ? $this->input->post('image_edit') : $data["file_name"],
                             'updated_at' => date('c')

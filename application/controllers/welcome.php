@@ -5,11 +5,11 @@ if (!defined('BASEPATH'))
 
 class Welcome extends CI_Controller {
 
-    public function index() {
+    public function index() {        
         $setting = new Setting();
         $post = new Post();
         $banners = new Banner();
-        $data['news'] = $post->get();
+        $data['news'] = $post->get('5')->all;
         $data['banners'] = $banners->get('5')->all;
 
         $data["class"] = "Home";

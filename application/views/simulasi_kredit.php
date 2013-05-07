@@ -36,23 +36,23 @@
                 <table>
                     <tr>
                         <td>Jumlah Pinjaman</td>
-                        <td><input type="text" name="pinjaman"></td>
+                        <td><input type="text" name="pinjaman" value="<?php echo $this->input->post('pinjaman'); ?>"></td>
                     </tr>
                     <tr>
                         <td>Bungan Pertahun</td>
-                        <td><input type="text" name="suku_bunga"> %</td>
+                        <td><input type="text" name="suku_bunga" value="<?php echo $this->input->post('suku_bunga'); ?>"> %</td>
                     </tr>
                     <tr>
                         <td>Jangka Waktu</td>
-                        <td><input type="text" name="jangka_waktu"> Bulan</td>
+                        <td><input type="text" name="jangka_waktu" value="<?php echo $this->input->post('jangka_waktu'); ?>"> Bulan</td>
                     </tr>
                     <tr>
                         <td>Perhitungan Bunga</td>
                         <td>
                             <select name="jenis_bunga">
-                                <option value="flat">Flat</option>
-                                <option value="efektif">Efektif</option>
-                                <option value="anuitas">Anuitas</option>
+                                <option value="flat" <?php echo $jenis_bunga == 'flat' ? 'selected' : '' ?> >Flat</option>
+                                <option value="efektif" <?php echo $jenis_bunga == 'efektif' ? 'selected' : '' ?>>Efektif</option>
+                                <option value="anuitas" <?php echo $jenis_bunga == 'anuitas' ? 'selected' : '' ?>>Anuitas</option>
                             </select>
                         </td>
                     </tr>
@@ -62,6 +62,19 @@
                     </tr>
                 </table>
             </form>
+            <?php
+            switch ($jenis_bunga) {
+                case 'flat':
+                    $this->load->view('simulasi_kredit_flat');
+                    break;
+                case 'efektif':
+                    $this->load->view('simulasi_kredit_efektif');
+                    break;
+                case 'anuitas':
+                    $this->load->view('simulasi_kredit_anuitas');
+                    break;
+            }
+            ?>
         </div>
         <div class="cl">&nbsp;</div>
     </section>

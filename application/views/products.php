@@ -54,11 +54,11 @@ function buat_menu($parent=0) {
         <div class="cl">&nbsp;</div>
     </section>
     <section class="post">
-        <div class="video-holder">
+        <div class="video-holder" style="width: 300px;">
             <h2>Our Products</h2>
             <?php echo buat_menu(); ?>
         </div>
-        <div class="post-cnt">
+        <div class="post-cnt" style="width: 600px;">
             <h2>Detail Loan Products</h2>
             <?php if ($content_product) { ?>
             <?php echo $content_product; ?>
