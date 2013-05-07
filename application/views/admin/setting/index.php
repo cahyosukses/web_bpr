@@ -50,7 +50,7 @@ function HeaderLink($value, $key, $col, $dir) {
 <div class="widget stacked">
     <div class="widget-header">
         <h3>Settings</h3>
-        <a href="<?php echo site_url('admin/settings/add'); ?>" class="btn btn-primary">Add</a>
+        <a href="<?php echo site_url('admin/settings/add'); ?>" class="btn btn-primary pull-right" style="margin: 5px;">Add</a>
     </div>
     <div class="widget-content">
         <table class="table table-hover">

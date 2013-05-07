@@ -1,4 +1,15 @@
 <?php get_header('admin'); ?>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+    tinymce.init({
+        selector: "textarea",
+        plugins: [
+            "code table"
+        ],
+        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+    });
+</script>
+
 <div class="widget stacked">
     <div class="widget-header">
         <h3>Navigation Tree Products</h3>

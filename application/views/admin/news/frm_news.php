@@ -1,5 +1,14 @@
 <?php get_header('admin'); ?>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/tinymce/tinymce.min.js"></script>
 <script type="text/javascript">
+    tinymce.init({
+        selector: "textarea",
+        plugins: [
+            "table"
+        ],
+        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+    });
+
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();

@@ -29,7 +29,8 @@ function buat_menu($parent=0) {
 <div class="widget stacked">          
     <div class="widget-header">
         <h3>Navigation Tree Products</h3>
-        <a href="#myModal" role="button" class="btn" data-toggle="modal">Create Root Product</a>
+<!--        <a href="#myModal" role="button" class="btn btn-primary pull-right" style="margin: 5px;" data-toggle="modal">Create Root Product</a>-->
+        <a href="<?php echo site_url('admin/products/add');?>" role="button" class="btn btn-primary pull-right" style="margin: 5px;" data-toggle="modal">Create Root Product</a>
     </div> <!-- /widget-header -->
     <div class="widget-content">
         <?php echo buat_menu(); ?>

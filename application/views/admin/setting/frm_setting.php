@@ -1,5 +1,14 @@
 <?php echo get_header('admin'); ?>
-
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+    tinymce.init({
+        selector: "textarea",
+        plugins: [
+            "code table"
+        ],
+        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+    });
+</script>
 <div class="widget stacked">
     <div class="widget-header">
         <h3>Form Settings</h3>
@@ -42,24 +51,24 @@
 
                
         
-        $("#status_setting").change(function () {
-            var str = "";
-            $("select option:selected").each(function () {
-                str += $(this).text() + " ";
-                var x = str.indexOf("Text");
-                var val = $(this).val();
-                //                if(x > -1) {                
-                if(val == 'text') {
-                    $("#content_image").hide();
-                    $("#content_text").show();
-                }else if(val == 'images'){
-                    $("#content_text").hide();
-                    $("#content_image").show();
-                }else if(val == 'empty'){
-                    $("#content_text").hide();
-                    $("#content_image").hide();
-                }
-            });
-        });
-    });
+$("#status_setting").change(function () {
+var str = "";
+$("select option:selected").each(function () {
+str += $(this).text() + " ";
+var x = str.indexOf("Text");
+var val = $(this).val();
+//                if(x > -1) {                
+if(val == 'text') {
+    $("#content_image").hide();
+    $("#content_text").show();
+}else if(val == 'images'){
+    $("#content_text").hide();
+    $("#content_image").show();
+}else if(val == 'empty'){
+    $("#content_text").hide();
+    $("#content_image").hide();
+}
+});
+});
+});
 </script>
