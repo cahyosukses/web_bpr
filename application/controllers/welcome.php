@@ -9,7 +9,7 @@ class Welcome extends CI_Controller {
         $setting = new Setting();
         $post = new Post();
         $banners = new Banner();
-        $data['news'] = $post->get('5')->all;
+        $data['news'] = $post->get('3')->all;
         $data['banners'] = $banners->get('5')->all;
 
         $data["class"] = "Home";

@@ -43,9 +43,10 @@
                         <li class="<?php echo $class == "Contacts" ? "active" : "" ?>"><a href="<?php echo site_url('contacts'); ?>">Hubungi BPR</a></li>
                         <li class="<?php echo $class == "Simulator" ? "active" : "" ?>"><a href="<?php echo site_url('simulator'); ?>">Simulasi Kredit</a></li>
                         <li class="<?php echo $class == "Pinca" ? "active" : "" ?>"><a href="<?php echo site_url('pinca_of_the_month'); ?>">Pinca of the month</a></li>
+                        <li class="<?php echo $class == "Support" ? "active" : "" ?>"><a href="<?php echo site_url('technical_support'); ?>">Technical Support</a></li>
             </ul>
         </nav>
-        <p class="copy">&copy; Copyright 2013 PD BPR KAB BANDUNG <span>|</span> <strong>Design by <a href="#" target="_blank">Wiwin Offset</a></strong></p>
+        <p class="copy">&copy;2013 <?php echo get_title('TITLE'); ?></p>
         <div class="cl">&nbsp;</div>
     </div>
 </div>

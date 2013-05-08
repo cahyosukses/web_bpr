@@ -40,7 +40,7 @@
                     <nav id="navigation">
                         <ul>
                             <li class="<?php echo $class == "Home" ? "active" : "" ?>"><a href="<?php echo site_url(); ?>">Beranda</a></li>
-                            <li class="<?php echo $class == "Products" ? "active" : "" ?>"><a href="<?php echo site_url('products'); ?>">Produk</a></li>
+                            <li class="<?php echo $class == "Products" ? "active" : "" ?>"><a href="<?php echo site_url('products/kredit'); ?>">Produk</a></li>
                             <li class="<?php echo $class == "Abouts" ? "active" : "" ?>"><a href="<?php echo site_url('abouts'); ?>">Tentang Kami</a></li>
                             <li class="<?php echo $class == "Contacts" ? "active" : "" ?>"><a href="<?php echo site_url('contacts'); ?>">Hubungi BPR</a></li>
                             <li class="<?php echo $class == "Simulator" ? "active" : "" ?>"><a href="<?php echo site_url('simulator'); ?>">Simulasi Kredit</a></li>

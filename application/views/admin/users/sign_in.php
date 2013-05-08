@@ -9,7 +9,7 @@
             <div class="login-fields">
                 <div class="field">
                     <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" placeholder="Username" class="login username-field" />
+                    <input type="text" id="username" name="username" placeholder="Username" class="login username-field" autofocus />
                 </div> <!-- /field -->
                 <div class="field">
                     <label for="password">Password:</label>
@@ -35,7 +35,7 @@
                 </div>
             </div-->
         </form>
-        <a href="<?php echo site_url('admin/users/sign_up/'); ?>">Sign up</a>
+        <!--a href="<?php //echo site_url('admin/users/sign_up/'); ?>">Sign up</a-->
     </div> <!-- /content -->
 </div> <!-- /account-container -->
 

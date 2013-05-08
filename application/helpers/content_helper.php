@@ -122,6 +122,14 @@ function get_image_public($m, $dir, $w, $h) {
     return $img;
 }
 
+function get_image_tagline($m, $dir, $w, $h) {
+    $img = '';
+    if ($m != '') {
+        $img = '<img src="' . base_url() . 'assets/upload/' . $dir . "/" . $m . '" width="' . $w . '" height="' . $h . '">';
+    }
+    return $img;
+}
+
 function get_image($m, $dir, $w, $h) {
     if ($m == '') {
         $img = '<img src="' . base_url() . 'assets/images/no_photo.jpg" width="' . $w . '" height="' . $h . '" class="thumbnail" id="preview">';
