@@ -24,7 +24,7 @@
             <div class="navbar navbar-inverse navbar-fixed-top">
                 <div class="navbar-inner">
                     <div class="container">
-                        <a class="brand" href="#">EDP apps <sup>1.0</sup></a>
+                        <a class="brand" href="#">EDP apps <sup>1.0.0</sup></a>
                         <div class="nav-collapse collapse">
                             <ul class="nav">
                                 <!--li  class="active"-->
