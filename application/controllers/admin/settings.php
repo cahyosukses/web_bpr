@@ -40,10 +40,10 @@ class Settings extends CI_Controller {
 
         $uri_segment = 4;
         $offset = $this->uri->segment($uri_segment);
-
-        if ($this->input->get('search_by')) {
-            $total_rows = $setting->like($_GET['search_by'], $_GET['q'])->count();
-            $setting->like($_GET['search_by'], $_GET['q'])->order_by($data['col'], $data['dir']);
+        $data['q'] = $this->input->get('q');
+        if ($data['q']) {
+            $total_rows = $setting->like('name', $data['q'])->count();
+            $setting->like('name', $data['q'])->order_by($data['col'], $data['dir']);
         } else {
             $total_rows = $setting->count();
             $setting->order_by($data['col'], $data['dir']);

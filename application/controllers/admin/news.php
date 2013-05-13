@@ -38,10 +38,10 @@ class News extends CI_Controller {
 
         $uri_segment = 3;
         $offset = $this->uri->segment($uri_segment);
-
-        if ($this->input->get('search_by')) {
-            $total_rows = $news->like($_GET['search_by'], $_GET['q'])->count();
-            $news->like($_GET['search_by'], $_GET['q'])->order_by($data['col'], $data['dir']);
+        $data['q'] = $this->input->get('q');
+        if ($data['q']) {
+            $total_rows = $news->like('title', $data['q'])->count();
+            $news->like('title', $data['q'])->order_by($data['col'], $data['dir']);
         } else {
             $total_rows = $news->count();
             $news->order_by($data['col'], $data['dir']);

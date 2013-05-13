@@ -53,6 +53,12 @@ function HeaderLink($value, $key, $col, $dir) {
         <a href="<?php echo site_url('admin/settings/add'); ?>" class="btn btn-primary pull-right" style="margin: 5px;">Add</a>
     </div>
     <div class="widget-content">
+        <div class="input-append pull-right">
+            <form action="" method="get">
+                <input class="span2" type="text" name="q" placeholder="Search..." value="<?php echo $q;?>">
+                <button class="btn" type="submit" name="search">Search</button>
+            </form>
+        </div>
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -67,30 +73,34 @@ function HeaderLink($value, $key, $col, $dir) {
                 ?>
                     <tr>
                         <td><?php echo $row->name; ?></td>
-                        <td><?php echo word_limiter($row->value, 20); ?></td>
                         <td>
-                            <div class="btn-group">
-                                <a href="#" data-toggle="dropdown" class="btn btn-mini dropdown-toggle">
-                                    Action
-                                    <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu pull-right">
-                                    <li><a href="<?php echo site_url('admin/settings/edit/' . $row->id); ?>"><i class="icon-ok"></i> Edit</a></li>
-                                    <li><a href="<?php echo site_url('admin/settings/delete/' . $row->id); ?>"><i class="icon-trash"></i> Destroy</a></li>
-                                </ul>
-                            </div>
+                            <div style="clear: both;">
+                            <?php echo word_limiter($row->value, 20); ?>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <a href="#" data-toggle="dropdown" class="btn btn-mini dropdown-toggle">
+                                Action
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu pull-right">
+                                <li><a href="<?php echo site_url('admin/settings/edit/' . $row->id); ?>"><i class="icon-ok"></i> Edit</a></li>
+                                <li><a href="<?php echo site_url('admin/settings/delete/' . $row->id); ?>"><i class="icon-trash"></i> Destroy</a></li>
+                            </ul>
+                        </div>
 
-                        </td>
-                    </tr>
+                    </td>
+                </tr>
                 <?php } ?>
-            </tbody>
-        </table>
-        <div class="pagination pagination-right">
-            <ul>
+                    </tbody>
+                </table>
+                <div class="pagination pagination-right">
+                    <ul>
                 <?php echo $pagination; ?>
-            </ul>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
 <?php get_footer('admin') ?>

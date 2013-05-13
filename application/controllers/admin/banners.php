@@ -76,7 +76,7 @@ class Banners extends CI_Controller {
     function save() {
         $banners = new Banner();
         $banners->title = $this->input->post('title_banners');
-        $banners->slug = slug($this->input->post('title_banners'));
+        $banners->slug = preg_replace("![^a-z0-9]+!i", "-", $this->input->post('title_banners'));
         $banners->content = $this->input->post('content');
         // upload photo
         $config['upload_path'] = 'assets/upload/banners';
@@ -131,7 +131,7 @@ class Banners extends CI_Controller {
                 ->update(
                         array(
                             'title' => $this->input->post('title_banners'),
-                            'slug' => slug($this->input->post('title_banners')),
+                            'slug' => preg_replace("![^a-z0-9]+!i", "-", $this->input->post('title_banners')),
                             'content' => $this->input->post('content'),
                             'images' => $data["file_name"] == '' ? $this->input->post('image_edit') : $data["file_name"],
                         )

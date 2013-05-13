@@ -15,7 +15,7 @@ class Branches extends CI_Controller {
     public function index() {
         $setting = new Setting();
         $data['title'] = $setting->get_val('TITLE');
-        
+
         $branchs = new Branch();
         switch ($this->input->get('c')) {
             case "1":
@@ -39,10 +39,10 @@ class Branches extends CI_Controller {
 
         $uri_segment = 3;
         $offset = $this->uri->segment($uri_segment);
-
-        if ($this->input->get('search_by')) {
-            $total_rows = $branchs->like($_GET['search_by'], $_GET['q'])->count();
-            $branchs->like($_GET['search_by'], $_GET['q'])->order_by($data['col'], $data['dir']);
+        $data['q'] = $this->input->get('q');
+        if ($data['q']) {
+            $total_rows = $branchs->like('name', $data['q'])->count();
+            $branchs->like('name', $data['q'])->order_by($data['col'], $data['dir']);
         } else {
             $total_rows = $branchs->count();
             $branchs->order_by($data['col'], $data['dir']);

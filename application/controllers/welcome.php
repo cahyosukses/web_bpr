@@ -5,7 +5,7 @@ if (!defined('BASEPATH'))
 
 class Welcome extends CI_Controller {
 
-    public function index() {        
+    public function index() {
         $setting = new Setting();
         $post = new Post();
         $banners = new Banner();
@@ -25,6 +25,10 @@ class Welcome extends CI_Controller {
         $data['title_news'] = $rs->title;
         $data['image_news'] = $rs->images;
         $data['content_news'] = $rs->content;
+        $data['dir'] = 'news';
+        $data['width'] = '300';
+        $data['height'] = '400';
+
         $this->load->view('detail_public', $data);
     }
 
@@ -35,6 +39,9 @@ class Welcome extends CI_Controller {
         $data['title_news'] = $rs->title;
         $data['image_news'] = $rs->images;
         $data['content_news'] = $rs->content;
+        $data['dir'] = 'banners';
+        $data['width'] = '350';
+        $data['height'] = '250';
         $this->load->view('detail_public', $data);
     }
 

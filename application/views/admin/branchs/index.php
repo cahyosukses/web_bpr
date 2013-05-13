@@ -54,6 +54,13 @@ function HeaderLink($value, $key, $col, $dir) {
         <a href="<?php echo site_url('admin/branches/add'); ?>" class="btn btn-primary pull-right" style="margin: 5px;">Add Branchs</a>
     </div>
     <div class="widget-content">
+        <div class="input-append pull-right">
+            <form action="" method="get">
+                <input class="span2" type="text" name="q" placeholder="Search..." value="<?php echo $q; ?>">
+                <button class="btn" type="submit" name="search">Search</button>
+            </form>
+        </div>
+
         <table class="table table-hover">
             <thead>
                 <tr>
