@@ -88,6 +88,7 @@ class Settings extends CI_Controller {
     function save() {
         $setting = new Setting();
         $setting->name = $this->input->post('name');
+        $setting->created_at = date('c');
 
         if ($this->input->post('status') == 'images') {
             // upload photo
@@ -117,8 +118,8 @@ class Settings extends CI_Controller {
         $config['upload_path'] = 'assets/upload/settings';
         $config['allowed_types'] = 'gif|jpg|png|bmp';
         $this->load->library("upload", $config);
-        if ($this->upload->do_upload("image")) {
-            $data = $this->upload->data();
+        if ($this->upload->do_upload("content")) {
+            $data = $this->upload->data();            
         } else {
             //print_r($this->upload->display_errors());
         }
@@ -126,7 +127,8 @@ class Settings extends CI_Controller {
         $setting->where('id', $this->input->post('id'))
                 ->update(array(
                     'name' => $this->input->post('name'),
-                    'value' => $this->input->post('content')
+                    'value' => $data["file_name"] == '' ? $this->input->post('content') : $data["file_name"],
+                    'updated_at' => date('c')
                         )
         );
 
