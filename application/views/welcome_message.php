@@ -76,76 +76,76 @@
         background: none repeat scroll 0 0 transparent;
     }
 
-div#sukubunga {
-    width: 100%;
-}
-div.periode {
-    display: block;
-    font-family: Verdana,Geneva,sans-serif;
-    font-size: 11px;
-    font-weight: bold;
-    padding: 0 5px 5px;
-    text-align: center;
-    text-transform: capitalize;
-}
-div.title-suku-bunga {
-    display: block;
-    font-family: Verdana,Geneva,sans-serif;
-    font-size: 12px;
-    font-weight: bold;
-    text-align: center;
-    text-transform: capitalize;
-}
-div.nilai-suku-bunga {
-    display: block;
-    font-family: Verdana,Geneva,sans-serif;
-    font-size: 12px;
-    text-align: center;
-    text-transform: capitalize;
-}
-div.suku-bunga {
-    background-color: #FFFFFF;
-    border-radius: 5px 5px 5px 5px;
-    box-shadow: 0 0 3px #000000;
-    margin: 5px;
-    text-align: center;
-}
-div.suku-bunga-tab {
-    border-bottom: 2px solid #CC9900;
-    font-family: Verdana,Geneva,sans-serif;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 10px;
-}
-div.suku-bunga-persen span {
-    display: block;
-    padding: 3px;
-}
-div.suku-bunga-persen {
-    font-family: Verdana,Geneva,sans-serif;
-    font-size: 12px;
-    font-weight: bold;
-    height: 45px;
-    padding: 10px;
-}
-a.clean-link {
-    color: #000000;
-    text-decoration: none;
-}
-a#clean-link-white {
-    color: #FFFFFF;
-    text-decoration: none;
-}
-div.titlebar {    
-    background-repeat: repeat-x;
-    color: #FFFFFF;
-    font-family: Arial,Helvetica,sans-serif;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 5px 5px 5px 7px;
-    text-align: center;
-    text-transform: uppercase;
-}
+    div#sukubunga {
+        width: 100%;
+    }
+    div.periode {
+        display: block;
+        font-family: Verdana,Geneva,sans-serif;
+        font-size: 11px;
+        font-weight: bold;
+        padding: 0 5px 5px;
+        text-align: center;
+        text-transform: capitalize;
+    }
+    div.title-suku-bunga {
+        display: block;
+        font-family: Verdana,Geneva,sans-serif;
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+        text-transform: capitalize;
+    }
+    div.nilai-suku-bunga {
+        display: block;
+        font-family: Verdana,Geneva,sans-serif;
+        font-size: 12px;
+        text-align: center;
+        text-transform: capitalize;
+    }
+    div.suku-bunga {
+        background-color: #FFFFFF;
+        border-radius: 5px 5px 5px 5px;
+        box-shadow: 0 0 3px #000000;
+        margin: 5px;
+        text-align: center;
+    }
+    div.suku-bunga-tab {
+        border-bottom: 2px solid #CC9900;
+        font-family: Verdana,Geneva,sans-serif;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 10px;
+    }
+    div.suku-bunga-persen span {
+        display: block;
+        padding: 3px;
+    }
+    div.suku-bunga-persen {
+        font-family: Verdana,Geneva,sans-serif;
+        font-size: 12px;
+        font-weight: bold;
+        height: 45px;
+        padding: 10px;
+    }
+    a.clean-link {
+        color: #000000;
+        text-decoration: none;
+    }
+    a#clean-link-white {
+        color: #FFFFFF;
+        text-decoration: none;
+    }
+    div.titlebar {
+        background-repeat: repeat-x;
+        color: #FFFFFF;
+        font-family: Arial,Helvetica,sans-serif;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 5px 5px 5px 7px;
+        text-align: center;
+        text-transform: uppercase;
+    }
 
 </style>
 
@@ -183,7 +183,7 @@ div.titlebar {
             <section class="cols">
                 <section class="testimonial">
             <?php echo get_title('MOTO'); ?>
-                </section>           
+                    </section>
                 </section>
                 <section class="post">
                     <div class="video-holder">
@@ -204,20 +204,33 @@ div.titlebar {
                 <?php } ?>
                     </ul>
                 </div>
-                <section class="testimonial">                    
+                <section class="testimonial">
                     <h2 style="background: #DDAD05; padding: 5px;">LPS DEPOSIT INSURANCE RATE</h2>
-                    <?php
-                        $kodeHTML =  curl_lps('http://www1.lps.go.id');
+            <?php
+
+                        function curl_lps($url) {
+                            // inisialisasi CURL
+                            $data = curl_init();
+                            // setting CURL
+                            curl_setopt($data, CURLOPT_RETURNTRANSFER, 1);
+                            curl_setopt($data, CURLOPT_URL, $url);
+                            // menjalankan CURL untuk membaca isi file
+                            $hasil = curl_exec($data);
+                            curl_close($data);
+                            return $hasil;
+                        }
+
+                        $kodeHTML = curl_lps('http://www1.lps.go.id');
                         $pecah = explode('<div id="sukubunga">', $kodeHTML);
                         $pecahLagi = explode('</div>', $pecah[1]);
-                        echo $pecahLagi[0].$pecahLagi[1].$pecahLagi[2].$pecahLagi[4].$pecahLagi[5].'</table>';
-                    ?>
-                    <div class="cl">&nbsp;</div>
-                </section>           
+                        echo $pecahLagi[0] . $pecahLagi[1] . $pecahLagi[2] . $pecahLagi[4] . $pecahLagi[5] . '</table>';
+            ?>
+                        <div class="cl">&nbsp;</div>
+                    </section>
 
-                <div class="cl">&nbsp;</div>
-            </section>
-        </div>
-        <!-- end of main -->
+                    <div class="cl">&nbsp;</div>
+                </section>
+            </div>
+            <!-- end of main -->
 
 <?php echo get_footer("public"); ?>

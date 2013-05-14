@@ -46,10 +46,14 @@ $route['products/(:any)'] = "products/get_detail/$1";
 $route['products/detail/(:any)'] = "products/detail/$1";
 
 $route['promos/(:any)'] = "welcome/promos/$1";
-
 $route['simulator'] = "products/simulasi_kredit";
-
 $route['ads/(:any)'] = "welcome/ads/$1";
+
+//ADMIN PAGE
+$route['admin/galleries/albums/add'] = "admin/galleries/add_album";
+$route['admin/galleries/albums/edit/(:num)'] = "admin/galleries/edit_album/$1";
+$route['admin/galleries/albums/save'] = "admin/galleries/save_albums/";
+$route['admin/galleries/albums/update'] = "admin/galleries/update_albums/";
 
 $route['404_override'] = '';
 

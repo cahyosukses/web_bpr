@@ -29,19 +29,62 @@
                             <ul class="nav">
                                 <!--li  class="active"-->
                                 <li><a href="<?php echo site_url('admin/welcome'); ?>">Home</a></li>
-                                <li><a href="<?php echo site_url('admin/products'); ?>">Products</a></li>
-                                <li><a href="<?php echo site_url('admin/settings'); ?>">Settings</a></li>
-                                <li><a href="<?php echo site_url('admin/news'); ?>">News</a></li>
-                                <li><a href="<?php echo site_url('admin/branches'); ?>">Branch Offices</a></li>
-                                <li><a href="<?php echo site_url('admin/suggestions'); ?>">Suggestions</a></li>
-                                <li><a href="<?php echo site_url('admin/banners'); ?>">Banners</a></li>
+                                <li class="dropdown">
+                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                        Settings
+                                        <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="<?php echo site_url('admin/settings'); ?>">Parameters</a></li>
+                                        <li><a href="<?php echo site_url('admin/branches'); ?>">Branch Offices</a></li>
+                                        <li><a href="<?php echo site_url('admin/banners'); ?>">Banners</a></li>
+                                    </ul>
+                                </li>    
+                                <li class="dropdown">
+                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                        Contents
+                                        <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="<?php echo site_url('admin/products'); ?>">Products</a></li>
+                                        <li><a href="<?php echo site_url('admin/news'); ?>">News</a></li>
+                                        <li><a href="<?php echo site_url('admin/suggestions'); ?>">Suggestions</a></li>
+                                        <li class="dropdown-submenu">
+                                            <a href="#" tabindex="-1">Galleries</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="<?php echo site_url('admin/galleries/albums/'); ?>" tabindex="-1">Create Album</a></li>
+                                                <li><a href="<?php echo site_url('admin/galleries'); ?>" tabindex="-1">Add Photos</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+
                             </ul>
-                            <p class="navbar-text pull-right">
-                                <a href="<?php echo site_url('admin/users/sign_out'); ?>">Logout</a>
-                            </p>    
-                        </div><!--/.nav-collapse -->
-                    </div>
+                            <ul class="nav pull-right">
+                                <li class="dropdown">
+                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                    <?php echo $this->session->userdata('username'); ?>
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="javascript:;">My Profile</a></li>
+                                    <li><a href="javascript:;">My Groups</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="<?php echo site_url('admin/users/sign_out'); ?>">Logout</a></li>
+                                    <li class="dropdown-submenu">
+                                        <a href="#" tabindex="-1">Dropdown menu</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#" tabindex="-1">Second level link</a></li>
+                                            <li><a href="#" tabindex="-1">Second level link</a></li>
+                                            <li><a href="#" tabindex="-1">Second level link</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
                 </div>
             </div>
+        </div>
         <?php } ?>
         <div class="container" style="margin-top: 40px;">
