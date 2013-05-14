@@ -4,6 +4,7 @@
     <div class="row">
         <div class="span6">
             <div class="widget-header">
+                <i class="icon-list-alt"></i>
                 <h3>Recent News</h3>
             </div> <!-- /widget-header -->
 
