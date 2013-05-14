@@ -11,6 +11,8 @@
         <link href="<?php echo base_url(); ?>assets/bootstrap/css/bootstrap.css" rel="stylesheet">
         <link href="<?php echo base_url(); ?>assets/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
         <link href="<?php echo base_url(); ?>assets/css/base-admin-2.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>assets/css/font-awesome.min.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>assets/css/dashboard.css" rel="stylesheet" type="text/css">
         <link href="<?php echo base_url(); ?>assets/css/signin.css" rel="stylesheet" type="text/css">
 
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -71,14 +73,6 @@
                                     <li><a href="javascript:;">My Groups</a></li>
                                     <li class="divider"></li>
                                     <li><a href="<?php echo site_url('admin/users/sign_out'); ?>">Logout</a></li>
-                                    <li class="dropdown-submenu">
-                                        <a href="#" tabindex="-1">Dropdown menu</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#" tabindex="-1">Second level link</a></li>
-                                            <li><a href="#" tabindex="-1">Second level link</a></li>
-                                            <li><a href="#" tabindex="-1">Second level link</a></li>
-                                        </ul>
-                                    </li>
                                 </ul>
                             </li>
                         </ul>
