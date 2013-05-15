@@ -63,6 +63,7 @@ class Branches extends CI_Controller {
         $data['name'] = array('name' => 'name', 'class' => 'span5');
         $data['phone'] = array('name' => 'phone', 'class' => 'span5');
         $data['address'] = array('name' => 'address', 'rows' => 5, 'class' => 'span5');
+        $data['crew'] = array('name' => 'crew', 'rows' => 5, 'class' => 'span5');
         $data['btn_back'] = site_url('admin/branches/');
         $this->load->view('admin/branchs/frm_branchs', $data);
     }
@@ -84,6 +85,7 @@ class Branches extends CI_Controller {
                 $branchs->name = $this->input->post('name');
                 $branchs->phone = slug($this->input->post('phone'));
                 $branchs->address = $this->input->post('address');
+                $branchs->crew = $this->input->post('crew');
                 if ($branchs->save()) {
                     $msg = notice('Create successfuly.', 'success');
                     $this->session->set_flashdata('message', $msg);
@@ -102,6 +104,7 @@ class Branches extends CI_Controller {
         $data['name'] = array('name' => 'name', 'value' => $rs->name, 'class' => 'span5');
         $data['phone'] = array('name' => 'phone', 'value' => $rs->phone, 'class' => 'span5');
         $data['address'] = array('name' => 'address', 'value' => $rs->address, 'rows' => 5, 'class' => 'span5');
+        $data['crew'] = array('name' => 'crew', 'value' => $rs->crew, 'rows' => 5, 'class' => 'span5');
         $data['btn_back'] = site_url('admin/branches/');
         $this->load->view('admin/branchs/frm_branchs', $data);
     }
@@ -114,7 +117,8 @@ class Branches extends CI_Controller {
                         array(
                             'name' => $this->input->post('name'),
                             'phone' => slug($this->input->post('phone')),
-                            'address' => $this->input->post('address')
+                            'address' => $this->input->post('address'),
+                            'crew' => $this->input->post('crew')
                         )
         );
         $msg = '<div class="alert alert-success">Update successfuly.</div>';

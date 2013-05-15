@@ -48,6 +48,10 @@ class Welcome extends CI_Controller {
     public function get_time_server(){
         echo date('H:i:s');
     }
-    
+
+    public function leader_of_the_month(){
+        $data['class'] = "Pinca";
+        $this->load->view('leader_of_the_month', $data);
+    }
 
 }

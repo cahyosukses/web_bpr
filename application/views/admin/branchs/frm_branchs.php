@@ -1,4 +1,27 @@
 <?php get_header('admin'); ?>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+    tinymce.init({
+        selector: "textarea",
+        plugins: [
+            "code table"
+        ],
+        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+    });
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#preview').attr('src', e.target.result);
+                $('#preview').attr('width', '150');
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
 <?php echo $this->session->flashdata('message'); ?>
 <div class="widget stacked">
     <div class="widget-header">
@@ -23,6 +46,12 @@
                 <label class="control-label">Address *</label>
                 <div class="controls">
                     <?php echo form_textarea($address); ?>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Crew *</label>
+                <div class="controls">
+                    <?php echo form_textarea($crew); ?>
                 </div>
             </div>
             <div class="control-group">

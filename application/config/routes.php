@@ -56,6 +56,9 @@ $route['admin/galleries/albums/edit/(:num)'] = "admin/galleries/edit_album/$1";
 $route['admin/galleries/albums/save'] = "admin/galleries/save_albums/";
 $route['admin/galleries/albums/update'] = "admin/galleries/update_albums/";
 
+
+$route['leader-of-the-month'] = "welcome/leader_of_the_month";
+
 $route['404_override'] = '';
 
 

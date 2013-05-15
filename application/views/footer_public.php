@@ -42,7 +42,7 @@
                         <li class="<?php echo $class == "Abouts" ? "active" : "" ?>"><a href="<?php echo site_url('abouts'); ?>">Tentang Kami</a></li>
                         <li class="<?php echo $class == "Contacts" ? "active" : "" ?>"><a href="<?php echo site_url('contacts'); ?>">Hubungi BPR</a></li>
                         <li class="<?php echo $class == "Simulator" ? "active" : "" ?>"><a href="<?php echo site_url('simulator'); ?>">Simulasi Kredit</a></li>
-                        <li class="<?php echo $class == "Pinca" ? "active" : "" ?>"><a href="<?php echo site_url('pinca_of_the_month'); ?>">Pinca of the month</a></li>
+                        <li class="<?php echo $class == "Pinca" ? "active" : "" ?>"><a href="<?php echo site_url('leader-of-the-month'); ?>">Leader of the month</a></li>
                         <li class="<?php echo $class == "Support" ? "active" : "" ?>"><a href="<?php echo site_url('technical_support'); ?>">Technical Support</a></li>
             </ul>
         </nav>
