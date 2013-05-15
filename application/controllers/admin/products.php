@@ -11,88 +11,106 @@ class Products extends CI_Controller {
     }
 
     public function index() {
-        $data['title'] = "PD BPR KAB BANDUNG";
-        $this->load->view('admin/tree_products/index', $data);
+        $this->load->view('admin/tree_products/index');
     }
 
     public function add() {
-        $data['title'] = "PD BPR KAB BANDUNG";
         $data['form_action'] = site_url('admin/products/save/');
-
         $data['id'] = "";
-        $data['nama'] = array('name' => 'nama', 'class' => 'span6');
+        $data['name'] = array('name' => 'name', 'class' => 'span6');
         $data['content'] = array('name' => 'content', 'class' => 'ckeditor');
+        $data['btn_back'] = site_url('admin/products/');
         $this->load->view('admin/tree_products/products', $data);
     }
 
     function save() {
         $category = new Category();
+        $this->form_validation->set_rules('name', 'Name', 'required');
+        $this->form_validation->set_rules('content', 'Content', 'required');
 
-        // upload photo
-        $config['upload_path'] = 'assets/upload/products';
-        $config['allowed_types'] = 'gif|jpg|png|bmp';
-        $this->load->library("upload", $config);
-        if ($this->upload->do_upload("image")) {
-            $data = $this->upload->data();
-            $category->images = $data["file_name"];
+        if ($this->form_validation->run() == FALSE) {
+            $this->session->set_flashdata('message', '<div class="alert alert-error"><a data-dismiss = "alert" class = "close">&times;</a>' . validation_errors() . '</div>');
+            redirect('admin/products/add');
         } else {
-            print_r($this->upload->display_errors());
-        }
 
-        $category->parent = $this->input->post('id');
-        $category->nama = $this->input->post('nama');
-        $category->slug = slug($this->input->post('nama'));
-        $category->content = $this->input->post('content');
+            if ($category->exists_record('name', $this->input->post('name')) == TRUE) {
+                $this->session->set_flashdata('message', '<div class="alert alert-error">Record Exists, please change another name.</div>');
+                redirect('admin/products/add');
+            } else {
+                $config['upload_path'] = 'assets/upload/products';
+                $config['allowed_types'] = 'gif|jpg|png|bmp';
+                $this->load->library("upload", $config);
+                if ($this->upload->do_upload("image")) {
+                    $data = $this->upload->data();
+                    $category->images = $data["file_name"];
+                } else {
+                    print_r($this->upload->display_errors());
+                }
 
-        if ($category->save()) {
-            redirect('admin/products/');
+                $category->parent = $this->input->post('id');
+                $category->name = $this->input->post('name');
+                $category->slug = slug($this->input->post('name'));
+                $category->content = $this->input->post('content');
+
+                if ($category->save()) {
+                    $msg = '<div class="alert alert-success">Created successfuly.</div>';
+                    $this->session->set_flashdata('message', $msg);
+
+                    redirect('admin/products/');
+                }
+            }
         }
     }
 
     function edit($id) {
-        $data['title'] = "PD BPR KAB BANDUNG";
         $category = new Category();
         $data['form_action'] = site_url("admin/products/update");
 
         $rs = $category->where('id', $id)->get();
         $data['id'] = $rs->id;
-        $data['nama'] = array('name' => 'nama', 'value' => $rs->nama);
+        $data['name'] = array('name' => 'name', 'value' => $rs->name);
         $data['content'] = array('name' => 'content', 'class' => 'ckeditor', 'value' => $rs->content);
-
+        $data['btn_back'] = site_url('admin/products/');
         $this->load->view('admin/tree_products/products', $data);
     }
 
     function update() {
         $category = new Category();
-        // upload photo
-        $config['upload_path'] = 'assets/upload/products';
-        $config['allowed_types'] = 'gif|jpg|png|bmp';
-        $this->load->library("upload", $config);
-        if ($this->upload->do_upload("image")) {
-            $data = $this->upload->data();
+        $this->form_validation->set_rules('id', 'ID Record', 'required');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->session->set_flashdata('message', '<div class="error">' . validation_errors() . '</div>');
+            redirect('admin/products/');
         } else {
-            //print_r($this->upload->display_errors());
+            // upload photo
+            $config['upload_path'] = 'assets/upload/products';
+            $config['allowed_types'] = 'gif|jpg|png|bmp';
+            $this->load->library("upload", $config);
+            if ($this->upload->do_upload("image")) {
+                $data = $this->upload->data();
+            } else {
+                //print_r($this->upload->display_errors());
+            }
+
+            $category->where('id', $this->input->post('id'))
+                    ->update(
+                            array(
+                                'name' => $this->input->post('name'),
+                                'content' => $this->input->post('content'),
+                                'images' => $data["file_name"],
+                                'slug' => strtolower(str_replace(' ', '-', $this->input->post('name')))
+                            )
+            );
+            $msg = '<div class="alert alert-success">Update successfuly.</div>';
+            $this->session->set_flashdata('message', $msg);
+            redirect('admin/products/');
         }
-
-        $category->where('id', $this->input->post('id'))
-                ->update(
-                        array(
-                            'nama' => $this->input->post('nama'),
-                            'content' => $this->input->post('content'),
-                            'images' => $data["file_name"],
-                            'slug' => strtolower(str_replace(' ', '-', $this->input->post('nama')))
-                        )
-        );
-
-        $this->session->set_flashdata('message', 'Nav Update successfuly.');
-        redirect('admin/products/');
     }
 
     public function sub($id='') {
-        $data['title'] = "";
         $data['form_action'] = site_url("admin/products/save");
         $data['id'] = $id;
-        $data['nama'] = array('name' => 'nama');
+        $data['name'] = array('name' => 'name');
         $data['content'] = array('name' => 'content', 'rows' => '6', 'id' => 'content', 'class' => 'ckeditor');
         $this->load->view('admin/tree_products/products', $data);
     }

@@ -14,7 +14,7 @@ function buat_menu($parent=0) {
     $hasil = mysql_query($sql);
     while ($row = mysql_fetch_assoc($hasil)) {
         if ($row['parent'] == $parent) {
-            $menu.= "<li>" . anchor('admin/products/sub/' . $row['id'], $row['nama']) . " - [ " . anchor('admin/products/delete/' . $row['id'], "delete") . " | " . anchor('admin/products/edit/' . $row['id'], "edit") . " ]";
+            $menu.= "<li>" . anchor('admin/products/sub/' . $row['id'], $row['name']) . " - [ " . anchor('admin/products/delete/' . $row['id'], "delete") . " | " . anchor('admin/products/edit/' . $row['id'], "edit") . " ]";
             if (get_sub_menu($row['id']) > 0) // Cek, sub menu
                 $menu.= buat_menu($row['id']);
             $menu.= "</li>";
@@ -25,7 +25,7 @@ function buat_menu($parent=0) {
 }
 ?>
 
-
+<?php echo $this->session->flashdata('message'); ?>
 <div class="widget stacked">          
     <div class="widget-header">
         <h3>Navigation Tree Products</h3>
@@ -49,7 +49,7 @@ function buat_menu($parent=0) {
 
         <form action="<?php echo site_url(); ?>/admin/products/save" method="post">
             <label>Name Root Product</label>
-            <input type="text" name="nama">
+            <input type="text" name="name">
         </form>
 
     </div>

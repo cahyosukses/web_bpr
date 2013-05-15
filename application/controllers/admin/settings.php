@@ -35,7 +35,6 @@ class Settings extends CI_Controller {
             $data['dir'] = "ASC";
         }
 
-        $data['title'] = $setting->get_val('TITLE');
         $data['btn_home'] = anchor(base_url(), 'Home', "class='btn btn-home'");
 
         $uri_segment = 4;
@@ -62,53 +61,69 @@ class Settings extends CI_Controller {
     }
 
     function add() {
-        $setting = new Setting();
-        $data['title'] = $setting->get_val('TITLE');
         $data['form_action'] = site_url('admin/settings/save');
         $data['id'] = '';
         $data['status'] = '';
         $data['name'] = array('name' => 'name', 'placeholder' => 'Name for Key', 'class' => 'span4');
         $data['content'] = array('name' => 'content');
+        $data['btn_back'] = site_url('admin/settings/');
         $this->load->view('admin/setting/frm_setting', $data);
     }
 
     function edit($id) {
         $setting = new Setting();
         $rs = $setting->where('id', $id)->get();
-        $data['title'] = $setting->get_val('TITLE');
         $data['form_action'] = site_url('admin/settings/update');
 
         $data['id'] = $id;
         $data['status'] = $rs->type;
         $data['name'] = array('name' => 'name', 'placeholder' => 'Name for Key', 'class' => 'span4', 'value' => $rs->name);
         $data['content'] = array('name' => 'content', 'value' => $rs->value);
+        $data['btn_back'] = site_url('admin/settings/');
         $this->load->view('admin/setting/frm_setting', $data);
     }
 
     function save() {
         $setting = new Setting();
-        $setting->name = $this->input->post('name');
-        $setting->created_at = date('c');
 
-        if ($this->input->post('status') == 'images') {
-            // upload photo
-            $config['upload_path'] = 'assets/upload/settings';
-            $config['allowed_types'] = 'gif|jpg|png|bmp';
-            $this->load->library("upload", $config);
-            if ($this->upload->do_upload("content")) {
-                $data = $this->upload->data();
-                $setting->value = $data["file_name"];
-            } else {
-                print_r($this->upload->display_errors());
-            }
-            $setting->type = "images";
+        $this->form_validation->set_rules('name', 'Name', 'required');
+        $this->form_validation->set_rules('status', 'Type for content', 'required');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->session->set_flashdata('message', '<div class="alert alert-error"><a data-dismiss = "alert" class = "close">&times;</a>' . validation_errors() . '</div>');
+            redirect('admin/settings/add');
         } else {
-            $setting->type = "text";
-            $setting->value = $this->input->post('content');
-        }
+            if ($setting->exists_record('name', $this->input->post('name')) == TRUE) {
+                $this->session->set_flashdata('message', '<div class="alert alert-error">Record Exists, please change another name.</div>');
+                redirect('admin/settings/add');
+            } else {
+                $setting->name = $this->input->post('name');
+                $setting->created_at = date('c');
 
-        if ($setting->save()) {
-            redirect('admin/settings/');
+                if ($this->input->post('status') == 'images') {
+                    // upload photo
+                    $config['upload_path'] = 'assets/upload/settings';
+                    $config['allowed_types'] = 'gif|jpg|png|bmp';
+                    $this->load->library("upload", $config);
+                    if ($this->upload->do_upload("content")) {
+                        $data = $this->upload->data();
+                        $setting->value = $data["file_name"];
+                    } else {
+                        print_r($this->upload->display_errors());
+                    }
+                    $setting->type = "images";
+                } else {
+                    $setting->type = "text";
+                    $setting->value = $this->input->post('content');
+                }
+
+                if ($setting->save()) {
+                    $msg = '<div class="alert alert-success">Created successfuly.</div>';
+                    $this->session->set_flashdata('message', $msg);
+
+                    redirect('admin/settings/');
+                }
+            }
         }
     }
 
@@ -119,7 +134,7 @@ class Settings extends CI_Controller {
         $config['allowed_types'] = 'gif|jpg|png|bmp';
         $this->load->library("upload", $config);
         if ($this->upload->do_upload("content")) {
-            $data = $this->upload->data();            
+            $data = $this->upload->data();
         } else {
             //print_r($this->upload->display_errors());
         }
@@ -132,7 +147,8 @@ class Settings extends CI_Controller {
                         )
         );
 
-        $this->session->set_flashdata('message', 'Update successfuly.');
+        $msg = '<div class="alert alert-success">Update successfuly.</div>';
+        $this->session->set_flashdata('message', $msg);
         redirect('admin/settings/');
     }
 

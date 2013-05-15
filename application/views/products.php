@@ -14,7 +14,7 @@ function buat_menu($parent=0) {
     $hasil = mysql_query($sql);
     while ($row = mysql_fetch_assoc($hasil)) {
         if ($row['parent'] == $parent) {
-            $menu.= "<li>" . anchor('products/' . $row['slug'], $row['nama']) . "";
+            $menu.= "<li>" . anchor('products/' . $row['slug'], $row['name']) . "";
             if (get_sub_menu($row['id']) > 0) // Cek, sub menu
                 $menu.= buat_menu($row['id']);
             $menu.= "</li>";
@@ -29,16 +29,15 @@ function buat_menu($parent=0) {
     <?php $this->load->view('tagline_product'); ?>
     <section class="post">
         <div class="video-holder" style="width: 300px;">
-            <h2>Our Products</h2>
+            <h2>Produk Kami</h2>
             <?php echo buat_menu(); ?>
         </div>
-        <div class="post-cnt" style="width: 600px;">
-            <h2>Detail Loan Products</h2>
-            <?php if ($content_product) { ?>
-            <?php echo $content_product; ?>
-            <?php } else { ?>
-                Product Product
-            <?php } ?>
+        <div class="post-cnt" style="width: 600px;">            
+            <?php
+            if ($content_product) {
+                echo $content_product;
+            }
+            ?>
         </div>
         <div class="cl">&nbsp;</div>
     </section>

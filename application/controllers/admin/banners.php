@@ -13,8 +13,6 @@ class Banners extends CI_Controller {
     }
 
     public function index() {
-        $setting = new Setting();
-        $data['title'] = $setting->get_val('TITLE');
         $banners = new Banner();
         switch ($this->input->get('c')) {
             case "1":
@@ -60,9 +58,6 @@ class Banners extends CI_Controller {
     }
 
     function add() {
-        $setting = new Setting();
-        $data['title'] = $setting->get_val('TITLE');
-
         $data['form_action'] = site_url('admin/banners/save');
         $data['id'] = '';
         $data['title_banners'] = array('name' => 'title_banners', 'class' => 'span7');
@@ -75,36 +70,45 @@ class Banners extends CI_Controller {
 
     function save() {
         $banners = new Banner();
-        $banners->title = $this->input->post('title_banners');
-        $banners->slug = preg_replace("![^a-z0-9]+!i", "-", $this->input->post('title_banners'));
-        $banners->content = $this->input->post('content');
-        // upload photo
-        $config['upload_path'] = 'assets/upload/banners';
-        $config['allowed_types'] = 'gif|jpg|png|bmp|jpeg';
-        $this->load->library("upload", $config);
-        if ($this->upload->do_upload("image")) {
-            $data = $this->upload->data();
-            print_r($data);
-            $banners->images = $data["file_name"];
-        } else {
-            //$this->staff_photo = "";
-            print_r($this->upload->display_errors());
-        }
+        $this->form_validation->set_rules('title_banners', 'Title', 'required');
+        $this->form_validation->set_rules('content', 'Content', 'required');        
 
-        if ($banners->save()) {
-            $msg = notice('Create successfuly.', 'success');
-            $this->session->set_flashdata('message', $msg);
-            redirect('admin/banners/');
+        if ($this->form_validation->run() == FALSE) {
+            $this->session->set_flashdata('message', '<div class="alert alert-error"><a data-dismiss = "alert" class = "close">&times;</a>' . validation_errors() . '</div>');
+            redirect('admin/banners/add');
+        } else {
+            if ($banners->exists_record('title', $this->input->post('title_banners')) == TRUE) {
+                $this->session->set_flashdata('message', '<div class="alert alert-error">Record Exists, please change another name.</div>');
+                redirect('admin/banners/add');
+            } else {
+                $banners->title = $this->input->post('title_banners');
+                $banners->slug = preg_replace("![^a-z0-9]+!i", "-", $this->input->post('title_banners'));
+                $banners->content = $this->input->post('content');
+                // upload photo
+                $config['upload_path'] = 'assets/upload/banners';
+                $config['allowed_types'] = 'gif|jpg|png|bmp|jpeg';
+                $this->load->library("upload", $config);
+                if ($this->upload->do_upload("image")) {
+                    $data = $this->upload->data();
+                    print_r($data);
+                    $banners->images = $data["file_name"];
+                } else {
+                    //$this->staff_photo = "";
+                    print_r($this->upload->display_errors());
+                }
+
+                if ($banners->save()) {
+                    $msg = '<div class="alert alert-success">Create successfuly.</div>';
+                    $this->session->set_flashdata('message', $msg);
+                    redirect('admin/banners/');
+                }
+            }
         }
     }
 
     function edit($id) {
-        $setting = new Setting();
-        $data['title'] = $setting->get_val('TITLE');
         $banners = new Banner();
-
         $data['form_action'] = site_url("admin/banners/update");
-
         $rs = $banners->where('id', $id)->get();
         $data['id'] = $rs->id;
         $data['title_banners'] = array('name' => 'title_banners', 'value' => $rs->title, 'class' => 'span7');
@@ -136,7 +140,7 @@ class Banners extends CI_Controller {
                             'images' => $data["file_name"] == '' ? $this->input->post('image_edit') : $data["file_name"],
                         )
         );
-        $msg = notice('Update successfuly.', 'success');
+        $msg = '<div class="alert alert-success">Update successfuly.</div>';
         $this->session->set_flashdata('message', $msg);
         redirect('admin/banners/');
     }

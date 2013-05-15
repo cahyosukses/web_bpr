@@ -13,9 +13,6 @@ class Suggestions extends CI_Controller {
     }
 
     public function index() {
-        $setting = new Setting();
-        $data['title'] = $setting->get_val('TITLE');
-
         $contact = new Contact();
         switch ($this->input->get('c')) {
             case "1":
@@ -61,9 +58,6 @@ class Suggestions extends CI_Controller {
     }
 
     function add() {
-        $setting = new Setting();
-        $data['title'] = $setting->get_val('TITLE');
-
         $data['form_action'] = site_url('admin/suggestions/save');
         $data['id'] = '';
         $data['name'] = array('name' => 'name', 'class' => 'span5');
@@ -95,9 +89,6 @@ class Suggestions extends CI_Controller {
     }
 
     function edit($id) {
-        $setting = new Setting();
-        $data['title'] = $setting->get_val('TITLE');
-
         $contact = new Contact();
 
         $data['form_action'] = site_url("admin/suggestions/update");

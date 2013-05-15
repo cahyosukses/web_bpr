@@ -1,5 +1,5 @@
 <?php get_header('admin'); ?>
-
+<?php echo $this->session->flashdata('message'); ?>
 <div class="widget stacked">
     <div class="widget-header">
         <h3>Form Branchs Offices</h3>
@@ -8,19 +8,19 @@
     <div class="widget-content">
         <form action="<?php echo $form_action; ?>" method="post" class="form-horizontal" enctype="multipart/form-data" >
             <div class="control-group">
-                <label class="control-label">Name</label>
+                <label class="control-label">Name *</label>
                 <div class="controls">
                     <?php echo form_input($name) . form_hidden('id', $id); ?>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label">Phone</label>
+                <label class="control-label">Phone *</label>
                 <div class="controls">
                     <?php echo form_input($phone); ?>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label">Address</label>
+                <label class="control-label">Address *</label>
                 <div class="controls">
                     <?php echo form_textarea($address); ?>
                 </div>
@@ -28,6 +28,7 @@
             <div class="control-group">
                 <div class="controls">
                     <input type="submit" value="Save" name="submit" class="btn btn-primary">
+                    <a href="<?php echo $btn_back; ?>" class="btn">Back</a>
                 </div>
             </div>
         </form>

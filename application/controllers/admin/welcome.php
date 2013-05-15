@@ -10,7 +10,6 @@ class Welcome extends CI_Controller {
 	}
 
     public function index() {
-        $data['title'] = "PD BPR KAB BANDUNG";
         $news = new Post();
         $data['news'] = $news->get('3')->all;
         $this->load->view('admin/welcome', $data);

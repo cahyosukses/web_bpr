@@ -47,6 +47,7 @@ function HeaderLink($value, $key, $col, $dir) {
     return $out;
 }
 ?>
+<?php echo $this->session->flashdata('message'); ?>
 <div class="widget stacked">
     <div class="widget-header">
         <h3>Settings</h3>

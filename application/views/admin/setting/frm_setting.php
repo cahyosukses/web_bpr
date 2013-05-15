@@ -9,6 +9,7 @@
         toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
     });
 </script>
+<?php echo $this->session->flashdata('message'); ?>
 <div class="widget stacked">
     <div class="widget-header">
         <h3>Form Settings</h3>
@@ -29,6 +30,7 @@
             </div>
             <div class="form-actions">
                 <input type="submit" name="submit" value="Simpan" class="btn btn-primary">
+                <a href="<?php echo $btn_back;?>" class="btn">Back</a>
             </div>
         </form>
     </div> <!-- /widget-content -->

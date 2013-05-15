@@ -4,7 +4,7 @@ class Category extends DataMapper {
 
     public $table = "categories";
     public $validation = array(
-        'nama' => array(
+        'name' => array(
             'label' => 'Root Name',
             'rules' => array('required')
         )
@@ -17,6 +17,15 @@ class Category extends DataMapper {
     function _delete($id) {
         $this->db->where('id', $id);
         $this->db->delete($this->table);
+    }
+
+    function exists_record($field, $nilai) {
+        $query = $this->db->get_where($this->table, array($field => $nilai))->row();
+
+        if ($query)
+            return $query;
+        else
+            return false;
     }
 
 }

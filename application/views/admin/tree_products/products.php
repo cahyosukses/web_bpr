@@ -9,18 +9,17 @@
         toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
     });
 </script>
-
+<?php echo $this->session->flashdata('message'); ?>
 <div class="widget stacked">
     <div class="widget-header">
         <h3>Navigation Tree Products</h3>
-
     </div> <!-- /widget-header -->
     <div class="widget-content">
         <form class="form-horizontal" action="<?php echo $form_action; ?>" method="post" enctype="multipart/form-data">
             <div class="control-group">
-                <label class="control-label" for="inputEmail">Name</label>
+                <label class="control-label" for="inputEmail">Name *</label>
                 <div class="controls">
-                    <?php echo form_input($nama) . form_hidden('id', $id); ?>
+                    <?php echo form_input($name) . form_hidden('id', $id); ?>
                 </div>
             </div>
             <div class="control-group">
@@ -31,7 +30,7 @@
             </div>
 
             <div class="control-group">
-                <label class="control-label">Content</label>
+                <label class="control-label">Content *</label>
                 <div class="controls">
                     <?php echo form_textarea($content); ?>
                 </div>
@@ -39,6 +38,7 @@
             <div class="control-group">
                 <div class="controls">
                     <button type="submit" class="btn">Save</button>
+                    <a href="<?php echo $btn_back;?>" class="btn">Back</a>
                 </div>
             </div>
         </form>

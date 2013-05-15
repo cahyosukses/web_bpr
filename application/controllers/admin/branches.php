@@ -13,9 +13,6 @@ class Branches extends CI_Controller {
     }
 
     public function index() {
-        $setting = new Setting();
-        $data['title'] = $setting->get_val('TITLE');
-
         $branchs = new Branch();
         switch ($this->input->get('c')) {
             case "1":
@@ -61,35 +58,43 @@ class Branches extends CI_Controller {
     }
 
     function add() {
-        $setting = new Setting();
-        $data['title'] = $setting->get_val('TITLE');
-
         $data['form_action'] = site_url('admin/branches/save');
         $data['id'] = '';
         $data['name'] = array('name' => 'name', 'class' => 'span5');
         $data['phone'] = array('name' => 'phone', 'class' => 'span5');
         $data['address'] = array('name' => 'address', 'rows' => 5, 'class' => 'span5');
-
+        $data['btn_back'] = site_url('admin/branches/');
         $this->load->view('admin/branchs/frm_branchs', $data);
     }
 
     function save() {
         $branchs = new Branch();
-        $branchs->name = $this->input->post('name');
-        $branchs->phone = slug($this->input->post('phone'));
-        $branchs->address = $this->input->post('address');
-        if ($branchs->save()) {
-            $msg = notice('Create successfuly.', 'success');
-            $this->session->set_flashdata('message', $msg);
-            redirect('admin/branches/');
+        $this->form_validation->set_rules('name', 'Name', 'required');
+        $this->form_validation->set_rules('phone', 'Phone', 'required');
+        $this->form_validation->set_rules('address', 'Address', 'required');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->session->set_flashdata('message', '<div class="alert alert-error"><a data-dismiss = "alert" class = "close">&times;</a>' . validation_errors() . '</div>');
+            redirect('admin/branches/add');
+        } else {
+            if ($branchs->exists_record('name', $this->input->post('name')) == TRUE) {
+                $this->session->set_flashdata('message', '<div class="alert alert-error">Record Exists, please change another name.</div>');
+                redirect('admin/branches/add');
+            } else {
+                $branchs->name = $this->input->post('name');
+                $branchs->phone = slug($this->input->post('phone'));
+                $branchs->address = $this->input->post('address');
+                if ($branchs->save()) {
+                    $msg = notice('Create successfuly.', 'success');
+                    $this->session->set_flashdata('message', $msg);
+                    redirect('admin/branches/');
+                }
+            }
         }
     }
 
     function edit($id) {
-        $setting = new Setting();
-        $data['title'] = $setting->get_val('TITLE');
         $branchs = new Branch();
-
         $data['form_action'] = site_url("admin/branches/update");
 
         $rs = $branchs->where('id', $id)->get();
@@ -97,7 +102,7 @@ class Branches extends CI_Controller {
         $data['name'] = array('name' => 'name', 'value' => $rs->name, 'class' => 'span5');
         $data['phone'] = array('name' => 'phone', 'value' => $rs->phone, 'class' => 'span5');
         $data['address'] = array('name' => 'address', 'value' => $rs->address, 'rows' => 5, 'class' => 'span5');
-
+        $data['btn_back'] = site_url('admin/branches/');
         $this->load->view('admin/branchs/frm_branchs', $data);
     }
 
@@ -112,7 +117,7 @@ class Branches extends CI_Controller {
                             'address' => $this->input->post('address')
                         )
         );
-        $msg = notice('Update successfuly.', 'success');
+        $msg = '<div class="alert alert-success">Update successfuly.</div>';
         $this->session->set_flashdata('message', $msg);
         redirect('admin/branches/');
     }

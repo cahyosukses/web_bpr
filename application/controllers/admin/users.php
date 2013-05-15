@@ -10,7 +10,6 @@ class Users extends CI_Controller {
     }
 
     public function index() {
-        $data['title'] = "PD BPR KAB BANDUNG";
         $this->load->view('admin/users', $data);
     }
 

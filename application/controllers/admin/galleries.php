@@ -13,8 +13,6 @@ class Galleries extends CI_Controller {
     }
 
     public function index() {
-        $setting = new Setting();
-        $data['title'] = $setting->get_val('TITLE');
         $gallery = new Gallery();
         switch ($this->input->get('c')) {
             case "1":
@@ -60,9 +58,6 @@ class Galleries extends CI_Controller {
     }
 
     function add() {
-        $setting = new Setting();
-        $data['title'] = $setting->get_val('TITLE');
-
         $data['form_action'] = site_url('admin/galleries/save');
         $data['id'] = '';
         $data['image_edit'] = '';
@@ -101,12 +96,8 @@ class Galleries extends CI_Controller {
     }
 
     function edit($id) {
-        $setting = new Setting();
-        $data['title'] = $setting->get_val('TITLE');
         $gallery = new Gallery();
-
         $data['form_action'] = site_url("admin/galleries/update");
-
         $rs = $gallery->where('id', $id)->get();
         $data['id'] = $rs->id;
         $data['image_edit'] = $rs->images;
@@ -152,8 +143,6 @@ class Galleries extends CI_Controller {
     }
 
     function albums() {
-        $setting = new Setting();
-        $data['title'] = $setting->get_val('TITLE');
         $gallery = new Gallery();
         switch ($this->input->get('c')) {
             case "1":
@@ -199,9 +188,6 @@ class Galleries extends CI_Controller {
     }
 
     function add_album() {
-        $setting = new Setting();
-        $data['title'] = $setting->get_val('TITLE');
-
         $data['form_action'] = site_url('admin/galleries/albums/save');
         $data['id'] = '';
         $data['title_gallery'] = array('name' => 'title_gallery', 'class' => 'span7');
@@ -211,10 +197,7 @@ class Galleries extends CI_Controller {
     }
 
     function edit_album($id) {
-        $setting = new Setting();
-        $data['title'] = $setting->get_val('TITLE');
         $gallery = new Gallery();
-
         $data['form_action'] = site_url("admin/galleries/albums/update");
 
         $rs = $gallery->where('id', $id)->get();
