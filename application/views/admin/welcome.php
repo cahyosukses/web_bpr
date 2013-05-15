@@ -101,4 +101,15 @@
 </div>
 <?php get_footer('admin'); ?>
 
-
+<script>
+setInterval(
+   function(){
+   $.get("http://webbpr.me/get_time_server/", function(Jam){//alert(bmsJsonComment);
+//            alert(Jam);
+            var xJam = Jam;
+            
+            var x = document.getElementById('stat-value');
+                  x.innerHTML = xJam;
+      });
+   },1000);
+</script>
