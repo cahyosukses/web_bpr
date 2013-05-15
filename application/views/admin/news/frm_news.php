@@ -21,16 +21,15 @@
         }
     }
 </script>
-
+<?php echo $this->session->flashdata('message'); ?>
 <div class="widget stacked">
     <div class="widget-header">
-        <h3>Form News</h3>
-        <a href="<?php echo site_url('admin/news/'); ?>" class="btn btn-primary pull-right" style="margin: 5px;">Back</a>
+        <h3>Form News</h3>        
     </div>
     <div class="widget-content">
         <form action="<?php echo $form_action; ?>" method="post" class="form-horizontal" enctype="multipart/form-data" >
             <div class="control-group">
-                <label class="control-label">Title</label>
+                <label class="control-label">Title *</label>
                 <div class="controls">
                     <?php echo form_input($title_news) . form_hidden('id', $id) . form_hidden('image_edit', $image_edit); ?>
                 </div>
@@ -44,7 +43,7 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label">Content</label>
+                <label class="control-label">Content *</label>
                 <div class="controls">
                     <?php echo form_textarea($content); ?>
                 </div>
@@ -52,6 +51,7 @@
             <div class="control-group">                
                 <div class="controls">
                     <input type="submit" value="Save" name="submit" class="btn btn-primary">
+                    <a href="<?php echo site_url('admin/news/'); ?>" class="btn">Back</a>
                 </div>
             </div>
         </form>

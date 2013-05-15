@@ -39,7 +39,7 @@
                     </tr>
                     <tr>
                         <td valign="top">Alamat</td>
-                        <td><textarea name="address" rows="5" cols="50"></textarea> </td>
+                        <td><textarea name="address" rows="5" cols="40"></textarea> </td>
                     </tr>
                     <tr>
                         <td>Kategori Subyek</td>
@@ -53,7 +53,7 @@
                     </tr>
                     <tr>
                         <td valign="top">Komentar</td>
-                        <td><textarea name="comment" rows="5" cols="50"></textarea> </td>
+                        <td><textarea name="comment" rows="5" cols="40"></textarea> </td>
                     </tr>
                     <tr>
                         <td valign="top">Validation</td>

@@ -17,6 +17,7 @@ class Products extends CI_Controller {
     public function add() {
         $data['form_action'] = site_url('admin/products/save/');
         $data['id'] = "";
+        $data['image_edit'] = '';
         $data['name'] = array('name' => 'name', 'class' => 'span6');
         $data['content'] = array('name' => 'content', 'class' => 'ckeditor');
         $data['btn_back'] = site_url('admin/products/');
@@ -68,6 +69,7 @@ class Products extends CI_Controller {
 
         $rs = $category->where('id', $id)->get();
         $data['id'] = $rs->id;
+        $data['image_edit'] = $rs->images;
         $data['name'] = array('name' => 'name', 'value' => $rs->name);
         $data['content'] = array('name' => 'content', 'class' => 'ckeditor', 'value' => $rs->content);
         $data['btn_back'] = site_url('admin/products/');
@@ -96,8 +98,8 @@ class Products extends CI_Controller {
                     ->update(
                             array(
                                 'name' => $this->input->post('name'),
-                                'content' => $this->input->post('content'),
-                                'images' => $data["file_name"],
+                                'content' => $this->input->post('content'),                                
+                                'images' => $data["file_name"] == '' ? $this->input->post('image_edit') : $data["file_name"],
                                 'slug' => strtolower(str_replace(' ', '-', $this->input->post('name')))
                             )
             );
@@ -112,6 +114,7 @@ class Products extends CI_Controller {
         $data['id'] = $id;
         $data['name'] = array('name' => 'name');
         $data['content'] = array('name' => 'content', 'rows' => '6', 'id' => 'content', 'class' => 'ckeditor');
+        $data['btn_back'] = site_url('admin/products/');
         $this->load->view('admin/tree_products/products', $data);
     }
 

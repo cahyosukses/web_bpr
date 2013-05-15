@@ -19,7 +19,7 @@
             <div class="control-group">
                 <label class="control-label" for="inputEmail">Name *</label>
                 <div class="controls">
-                    <?php echo form_input($name) . form_hidden('id', $id); ?>
+                    <?php echo form_input($name) . form_hidden('id', $id) . form_hidden('image_edit', $image_edit); ?>
                 </div>
             </div>
             <div class="control-group">
@@ -38,7 +38,7 @@
             <div class="control-group">
                 <div class="controls">
                     <button type="submit" class="btn">Save</button>
-                    <a href="<?php echo $btn_back;?>" class="btn">Back</a>
+                    <a href="<?php echo $btn_back; ?>" class="btn">Back</a>
                 </div>
             </div>
         </form>

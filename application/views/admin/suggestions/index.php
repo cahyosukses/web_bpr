@@ -57,12 +57,13 @@ function HeaderLink($value, $key, $col, $dir) {
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th><?php echo HeaderLink("Name", "name", $col, $dir); ?></th>
+                    <th width="200"><?php echo HeaderLink("Name", "name", $col, $dir); ?></th>
                     <th>No Rekening</th>
                     <th><?php echo HeaderLink("Phone", "phone", $col, $dir); ?></th>
                     <th><?php echo HeaderLink("Email", "email", $col, $dir); ?></th>
-                    <th><?php echo HeaderLink("Address", "address", $col, $dir); ?></th>
-                    <th width="10"></th>
+                    
+                    <th><?php echo HeaderLink("Subject", "subject", $col, $dir); ?></th>
+                    <th>Comment</th>
                 </tr>
             </thead>
             <tbody>
@@ -74,7 +75,7 @@ function HeaderLink($value, $key, $col, $dir) {
                         <td><?php echo $row->no_rek; ?></td>
                         <td><?php echo $row->phone; ?></td>
                         <td><?php echo $row->email; ?></td>
-                        <td><?php echo $row->address; ?></td>
+                        
                         <td><?php echo $row->subject; ?></td>
                         <td><?php echo $row->comment; ?></td>
                         <td>

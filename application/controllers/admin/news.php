@@ -70,29 +70,41 @@ class News extends CI_Controller {
 
     function save() {
         $news = new Post();
-        $news->title = $this->input->post('title_news');
-//        $news->slug = slug($this->input->post('title_news'));
-        $news->slug = preg_replace("![^a-z0-9]+!i", "-", $this->input->post('title_news'));
-        $news->content = $this->input->post('content');
-        $news->created_at = date('c');
-        $news->update_at = date('c');
-        // upload photo
-        $config['upload_path'] = 'assets/upload/news';
-        $config['allowed_types'] = 'gif|jpg|png|bmp|jpeg';
-        $this->load->library("upload", $config);
-        if ($this->upload->do_upload("image")) {
-            $data = $this->upload->data();
-            print_r($data);
-            $news->images = $data["file_name"];
-        } else {
-            //$this->staff_photo = "";
-            print_r($this->upload->display_errors());
-        }
+        $this->form_validation->set_rules('title_news', 'Name', 'required');
+        $this->form_validation->set_rules('content', 'Content', 'required');
 
-        if ($news->save()) {
-            $msg = notice('Create successfuly.', 'success');
-            $this->session->set_flashdata('message', $msg);
-            redirect('admin/news/');
+        if ($this->form_validation->run() == FALSE) {
+            $this->session->set_flashdata('message', '<div class="alert alert-error"><a data-dismiss = "alert" class = "close">&times;</a>' . validation_errors() . '</div>');
+            redirect('admin/news/add');
+        } else {
+            if ($news->exists_record('title', $this->input->post('title_news')) == TRUE) {
+                $this->session->set_flashdata('message', '<div class="alert alert-error">Record Exists, please change another name.</div>');
+                redirect('admin/products/add');
+            } else {
+                $news->title = $this->input->post('title_news');
+                $news->slug = preg_replace("![^a-z0-9]+!i", "-", $this->input->post('title_news'));
+                $news->content = $this->input->post('content');
+                $news->created_at = date('c');
+                $news->update_at = date('c');
+                // upload photo
+                $config['upload_path'] = 'assets/upload/news';
+                $config['allowed_types'] = 'gif|jpg|png|bmp|jpeg';
+                $this->load->library("upload", $config);
+                if ($this->upload->do_upload("image")) {
+                    $data = $this->upload->data();
+                    print_r($data);
+                    $news->images = $data["file_name"];
+                } else {
+                    //$this->staff_photo = "";
+                    print_r($this->upload->display_errors());
+                }
+
+                if ($news->save()) {
+                    $msg = '<div class="alert alert-success">Created successfuly.</div>';
+                    $this->session->set_flashdata('message', $msg);
+                    redirect('admin/news/');
+                }
+            }
         }
     }
 
@@ -131,7 +143,7 @@ class News extends CI_Controller {
                             'updated_at' => date('c')
                         )
         );
-        $msg = notice('Update successfuly.', 'success');
+        $msg = '<div class="alert alert-success">Update successfuly.</div>';
         $this->session->set_flashdata('message', $msg);
         redirect('admin/news/');
     }
