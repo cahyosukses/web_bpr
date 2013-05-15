@@ -35,7 +35,7 @@
                     </div> <!-- /substat -->
 
                     <div class="stat stat-time">
-                        <span class="stat-value">00:00:00</span>
+                        <span class="stat-value" id="stat-value"></span>
 							Average Time on Site
                     </div> <!-- /substat -->
 
