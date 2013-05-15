@@ -44,5 +44,10 @@ class Welcome extends CI_Controller {
         $data['height'] = '250';
         $this->load->view('detail_public', $data);
     }
+    
+    public function get_time_server(){
+        echo date('H:i:s');
+    }
+    
 
 }
