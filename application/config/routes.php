@@ -48,6 +48,7 @@ $route['products/detail/(:any)'] = "products/detail/$1";
 $route['promos/(:any)'] = "welcome/promos/$1";
 $route['simulator'] = "products/simulasi_kredit";
 $route['ads/(:any)'] = "welcome/ads/$1";
+$route['get_time_server'] = "welcome/get_time_server/";
 
 //ADMIN PAGE
 $route['admin/galleries/albums/add'] = "admin/galleries/add_album";
