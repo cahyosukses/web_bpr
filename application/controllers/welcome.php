@@ -44,14 +44,19 @@ class Welcome extends CI_Controller {
         $data['height'] = '250';
         $this->load->view('detail_public', $data);
     }
-    
-    public function get_time_server(){
+
+    public function get_time_server() {
         echo date('H:i:s');
     }
 
-    public function leader_of_the_month(){
+    public function leader_of_the_month() {
         $data['class'] = "Pinca";
         $this->load->view('leader_of_the_month', $data);
+    }
+
+    public function technical_support() {
+        $data['class'] = "Support";
+        $this->load->view('technical_support', $data);
     }
 
 }

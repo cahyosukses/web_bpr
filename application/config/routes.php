@@ -58,6 +58,7 @@ $route['admin/galleries/albums/update'] = "admin/galleries/update_albums/";
 
 
 $route['leader-of-the-month'] = "welcome/leader_of_the_month";
+$route['technical-support'] = "welcome/technical_support";
 
 $route['404_override'] = '';
 

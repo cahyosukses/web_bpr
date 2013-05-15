@@ -26,7 +26,7 @@
                             <select name="jenis_bunga">
                                 <option value="flat" <?php echo $jenis_bunga == 'flat' ? 'selected' : '' ?> >Flat</option>
                                 <option value="efektif" <?php echo $jenis_bunga == 'efektif' ? 'selected' : '' ?>>Efektif</option>
-                                <option value="anuitas" <?php echo $jenis_bunga == 'anuitas' ? 'selected' : '' ?>>Anuitas</option>
+                                <!--option value="anuitas" <?php //echo $jenis_bunga == 'anuitas' ? 'selected' : '' ?>>Anuitas</option-->
                             </select>
                         </td>
                     </tr>

@@ -14,7 +14,7 @@
     ?>
         <div class="footer-cols">
             <div class="col">
-                <h2>Branch Office</h2>
+                <h2>Kantor Cabang</h2>
                 <table style="width: 940px; font-weight:bold; color: #ccc;">
                 <?php
                 $x = 0;
@@ -43,7 +43,7 @@
                         <li class="<?php echo $class == "Contacts" ? "active" : "" ?>"><a href="<?php echo site_url('contacts'); ?>">Hubungi BPR</a></li>
                         <li class="<?php echo $class == "Simulator" ? "active" : "" ?>"><a href="<?php echo site_url('simulator'); ?>">Simulasi Kredit</a></li>
                         <li class="<?php echo $class == "Pinca" ? "active" : "" ?>"><a href="<?php echo site_url('leader-of-the-month'); ?>">Leader of the month</a></li>
-                        <li class="<?php echo $class == "Support" ? "active" : "" ?>"><a href="<?php echo site_url('technical_support'); ?>">Technical Support</a></li>
+                        <li class="<?php echo $class == "Support" ? "active" : "" ?>"><a href="<?php echo site_url('technical-support'); ?>">Technical Support</a></li>
             </ul>
         </nav>
         <p class="copy">&copy;2013 <?php echo get_title('TITLE'); ?></p>
