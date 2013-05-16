@@ -52,7 +52,7 @@
                             <li class="<?php echo $class == "Abouts" ? "active" : "" ?>"><a href="<?php echo site_url('abouts'); ?>">Tentang Kami</a></li>
                             <li class="<?php echo $class == "Contacts" ? "active" : "" ?>"><a href="<?php echo site_url('contacts'); ?>">Hubungi BPR</a></li>
                             <li class="<?php echo $class == "Simulator" ? "active" : "" ?>"><a href="<?php echo site_url('simulator'); ?>">Simulasi Kredit</a></li>
-                            <li class="<?php echo $class == "Simulator" ? "active" : "" ?>"><a href="<?php echo site_url('activities'); ?>">Albums Kegiatan</a></li>
+                            <li class="<?php echo $class == "Activities" ? "active" : "" ?>"><a href="<?php echo site_url('activities'); ?>">Albums Kegiatan</a></li>
                         </ul>
                     </nav>
                     <!-- end of navigation -->
