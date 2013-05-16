@@ -7,6 +7,8 @@
         <!--link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" /-->
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css" type="text/css" media="all" />
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/flexslider.css" type="text/css" media="all" />
+
+
         <!--link href='http://fonts.googleapis.com/css?family=Ubuntu:400,500,700' rel='stylesheet' type='text/css' /-->
 
         <script src="<?php echo base_url(); ?>assets/js/jquery-1.8.0.min.js" type="text/javascript"></script>
@@ -15,6 +17,12 @@
 	<![endif]-->
         <script src="<?php echo base_url(); ?>assets/js/jquery.flexslider-min.js" type="text/javascript"></script>
         <script src="<?php echo base_url(); ?>assets/js/functions.js" type="text/javascript"></script>
+
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/fancybox/jquery.fancybox-1.3.4.css" media="screen" />
+
+
     </head>
     <body>
         <!-- wraper -->

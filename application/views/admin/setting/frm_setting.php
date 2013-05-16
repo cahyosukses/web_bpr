@@ -30,7 +30,7 @@
             </div>
             <div class="form-actions">
                 <input type="submit" name="submit" value="Simpan" class="btn btn-primary">
-                <a href="<?php echo $btn_back;?>" class="btn">Back</a>
+                <a href="<?php echo $btn_back; ?>" class="btn">Back</a>
             </div>
         </form>
     </div> <!-- /widget-content -->
@@ -39,7 +39,7 @@
 <?php echo get_footer('admin'); ?>
                 <script>
                     $(function() {
-            <?php
+<?php
                 if ($status == 'text') {
                     $f = '$("#content_text").show(); $("#content_image").hide();';
                 } else if ($status == 'images') {
@@ -49,28 +49,28 @@
                 }
 
                 echo $f;
-            ?>
+?>
 
                
         
-$("#status_setting").change(function () {
-var str = "";
-$("select option:selected").each(function () {
-str += $(this).text() + " ";
-var x = str.indexOf("Text");
-var val = $(this).val();
-//                if(x > -1) {                
-if(val == 'text') {
-    $("#content_image").hide();
-    $("#content_text").show();
-}else if(val == 'images'){
-    $("#content_text").hide();
-    $("#content_image").show();
-}else if(val == 'empty'){
-    $("#content_text").hide();
-    $("#content_image").hide();
-}
-});
-});
+    $("#status_setting").change(function () {
+        var str = "";
+        $("select option:selected").each(function () {
+            str += $(this).text() + " ";
+            var x = str.indexOf("Text");
+            var val = $(this).val();
+            //                if(x > -1) {                
+            if(val == 'text') {
+                $("#content_image").hide();
+                $("#content_text").show();
+            }else if(val == 'images'){
+                $("#content_text").hide();
+                $("#content_image").show();
+            }else if(val == 'empty'){
+                $("#content_text").hide();
+                $("#content_image").hide();
+            }
+        });
+    });
 });
 </script>

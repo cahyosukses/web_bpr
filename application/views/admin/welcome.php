@@ -71,7 +71,7 @@
                     ?>
                         <li>
                             <div class="news-item-detail">
-                                <a class="news-item-title" href="<?php echo site_url('admin/news/edit/' . $row->id); ?>"><?php echo $row->title; ?></a>
+                                <a class="news-item-title" href="<?php echo site_url('admin/news/view/' . $row->id); ?>"><?php echo $row->title; ?></a>
                                 <p class="news-item-preview"><?php echo word_limiter($row->content, 15); ?></p>
                             </div>
                             <div class="news-item-date">

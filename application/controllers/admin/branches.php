@@ -83,7 +83,7 @@ class Branches extends CI_Controller {
                 redirect('admin/branches/add');
             } else {
                 $branchs->name = $this->input->post('name');
-                $branchs->phone = slug($this->input->post('phone'));
+                $branchs->phone = $this->input->post('phone');
                 $branchs->address = $this->input->post('address');
                 $branchs->crew = $this->input->post('crew');
                 if ($branchs->save()) {
@@ -116,7 +116,7 @@ class Branches extends CI_Controller {
                 ->update(
                         array(
                             'name' => $this->input->post('name'),
-                            'phone' => slug($this->input->post('phone')),
+                            'phone' => $this->input->post('phone'),
                             'address' => $this->input->post('address'),
                             'crew' => $this->input->post('crew')
                         )

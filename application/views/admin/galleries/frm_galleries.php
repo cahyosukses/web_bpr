@@ -1,13 +1,13 @@
 <?php get_header('admin'); ?>
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/tinymce/tinymce.min.js"></script>
+<!--script type="text/javascript" src="<?php //echo base_url(); ?>assets/tinymce/tinymce.min.js"></script-->
 <script type="text/javascript">
-    tinymce.init({
-        selector: "textarea",
-        plugins: [
-            "table"
-        ],
-        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
-    });
+//    tinymce.init({
+//        selector: "textarea",
+//        plugins: [
+//            "table"
+//        ],
+//        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+//    });
 
     function readURL(input) {
         if (input.files && input.files[0]) {
@@ -32,19 +32,19 @@
             <div class="control-group">
                 <label class="control-label">Title</label>
                 <div class="controls">
-                    <?php echo form_input($title_gallery) . form_hidden('id', $id) . form_hidden('image_edit', $image_edit); ?>
+                    <?php echo form_input($title_gallery) . form_hidden('id', $id) . form_hidden('image_edit', $image_edit).form_hidden('parent', $parent); ?>
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label">Image</label>
                 <div class="controls">
-                    <?php echo get_image($image, 'galleries', 50, 50); ?>
+                    <?php echo get_image($image, 'galleries', 100, 100); ?>
                     <br/>
                     <input type="file" name="image" onchange="readURL(this)"/>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label">Content</label>
+                <label class="control-label">Descriptions</label>
                 <div class="controls">
                     <?php echo form_textarea($content); ?>
                 </div>

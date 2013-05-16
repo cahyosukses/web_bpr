@@ -148,6 +148,15 @@ class News extends CI_Controller {
         redirect('admin/news/');
     }
 
+    public function view($id){
+        $news = new Post();
+        $rs = $news->where('id', $id)->get();
+        $data['title_news'] = $rs->title;
+        $data['images_news'] = $rs->images;
+        $data['content_news'] = $rs->content;
+        $this->load->view('admin/news/views', $data);
+    }
+
     public function delete($id) {
         $news = new Post();
         $news->_delete($id);

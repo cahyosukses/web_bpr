@@ -57,13 +57,14 @@ class Galleries extends CI_Controller {
         $this->load->view('admin/galleries/index', $data);
     }
 
-    function add() {
+    function add($parent) {
         $data['form_action'] = site_url('admin/galleries/save');
         $data['id'] = '';
         $data['image_edit'] = '';
+        $data['parent'] = $parent;
         $data['title_gallery'] = array('name' => 'title_gallery', 'class' => 'span7');
         $data['image'] = '';
-        $data['content'] = array('name' => 'content', 'class' => 'ckeditor');
+        $data['content'] = array('name' => 'content', 'class' => 'span7', 'rows'=>11);
 
         $this->load->view('admin/galleries/frm_galleries', $data);
     }
@@ -73,6 +74,7 @@ class Galleries extends CI_Controller {
         $gallery->title = $this->input->post('title_gallery');
         $gallery->slug = preg_replace("![^a-z0-9]+!i", "-", slug($this->input->post('title_gallery')));
         $gallery->content = $this->input->post('content');
+        $gallery->parent = $this->input->post('parent');
         $gallery->created_at = date('c');
         $gallery->update_at = date('c');
         // upload photo
@@ -100,10 +102,11 @@ class Galleries extends CI_Controller {
         $data['form_action'] = site_url("admin/galleries/update");
         $rs = $gallery->where('id', $id)->get();
         $data['id'] = $rs->id;
+        $data['parent'] = $rs->parent;
         $data['image_edit'] = $rs->images;
         $data['title_gallery'] = array('name' => 'title_gallery', 'value' => $rs->title, 'class' => 'span7');
         $data['image'] = $rs->images;
-        $data['content'] = array('name' => 'content', 'value' => $rs->content, 'class' => 'ckeditor');
+        $data['content'] = array('name' => 'content', 'value' => $rs->content, 'class' => 'span6');
 
         $this->load->view('admin/galleries/frm_galleries', $data);
     }

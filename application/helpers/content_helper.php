@@ -132,9 +132,9 @@ function get_image_tagline($m, $dir, $w, $h) {
 
 function get_image($m, $dir, $w, $h) {
     if ($m == '') {
-        $img = '<img src="' . base_url() . 'assets/images/no_photo.jpg" width="' . $w . '" height="' . $h . '" class="thumbnail" id="preview">';
+        $img = '<img src="' . base_url() . 'assets/images/no_photo.jpg" width="' . $w . '" height="' . $h . '" id="preview">';
     } else {
-        $img = '<img src="' . base_url() . 'assets/upload/' . $dir . "/" . $m . '" width="' . $w . '" height="' . $h . '" class="thumbnail" id="preview">';
+        $img = '<img src="' . base_url() . 'assets/upload/' . $dir . "/" . $m . '" width="' . $w . '" height="' . $h . '" id="preview">';
     }
     return $img;
 }
