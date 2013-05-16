@@ -5,7 +5,8 @@ if (!defined('BASEPATH'))
 
 class Activities extends CI_Controller {
 
-    public function index() {        
+    public function index() {
+        $gallery = new Gallery();        
         $data['class'] = 'Abouts';
         $this->load->view('activities', $data);
     }

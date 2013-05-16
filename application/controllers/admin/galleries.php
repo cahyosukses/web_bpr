@@ -64,7 +64,7 @@ class Galleries extends CI_Controller {
         $data['parent'] = $parent;
         $data['title_gallery'] = array('name' => 'title_gallery', 'class' => 'span7');
         $data['image'] = '';
-        $data['content'] = array('name' => 'content', 'class' => 'span7', 'rows'=>11);
+        $data['content'] = array('name' => 'content', 'class' => 'span7', 'rows' => 11);
 
         $this->load->view('admin/galleries/frm_galleries', $data);
     }
@@ -93,7 +93,15 @@ class Galleries extends CI_Controller {
         if ($gallery->save()) {
             $msg = notice('Create successfuly.', 'success');
             $this->session->set_flashdata('message', $msg);
-            redirect('admin/galleries/');
+            if ($this->input->post('parent') == '') {
+                $msg = '<div class="alert alert-success">Create successfuly.</div>';
+                $this->session->set_flashdata('message', $msg);
+                redirect('admin/galleries/albums');
+            } else {
+                $msg = '<div class="alert alert-success">Create successfuly.</div>';
+                $this->session->set_flashdata('message', $msg);
+                redirect('admin/galleries/add/' . $this->input->post('parent'));
+            }
         }
     }
 
@@ -204,8 +212,8 @@ class Galleries extends CI_Controller {
         $data['form_action'] = site_url("admin/galleries/albums/update");
 
         $rs = $gallery->where('id', $id)->get();
-        $data['id'] = $rs->id;        
-        $data['title_gallery'] = array('name' => 'title_gallery', 'value' => $rs->title, 'class' => 'span7');        
+        $data['id'] = $rs->id;
+        $data['title_gallery'] = array('name' => 'title_gallery', 'value' => $rs->title, 'class' => 'span7');
         $data['content'] = array('name' => 'content', 'value' => $rs->content, 'class' => 'ckeditor');
 
         $this->load->view('admin/albums/frm_albums', $data);

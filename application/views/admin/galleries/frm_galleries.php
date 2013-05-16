@@ -21,7 +21,7 @@
         }
     }
 </script>
-
+<?php echo $this->session->flashdata('message'); ?>
 <div class="widget stacked">
     <div class="widget-header">
         <h3>Form Galleries</h3>
