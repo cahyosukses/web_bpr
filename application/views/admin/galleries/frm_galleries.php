@@ -24,8 +24,7 @@
 <?php echo $this->session->flashdata('message'); ?>
 <div class="widget stacked">
     <div class="widget-header">
-        <h3>Form Galleries</h3>
-        <a href="<?php echo site_url('admin/galleries/'); ?>" class="btn btn-primary pull-right" style="margin: 5px;">Back</a>
+        <h3>Form Galleries</h3>        
     </div>
     <div class="widget-content">
         <form action="<?php echo $form_action; ?>" method="post" class="form-horizontal" enctype="multipart/form-data" >
@@ -52,6 +51,7 @@
             <div class="control-group">                
                 <div class="controls">
                     <input type="submit" value="Save" name="submit" class="btn btn-primary">
+                    <a href="<?php echo $btn_back; ?>" class="btn btn-primary">Back to albums</a>
                 </div>
             </div>
         </form>

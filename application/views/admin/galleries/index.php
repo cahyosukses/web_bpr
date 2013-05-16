@@ -51,22 +51,22 @@ function HeaderLink($value, $key, $col, $dir) {
 <div class="widget stacked">
     <div class="widget-header">
         <h3>Galleries</h3>
-        <a href="<?php echo site_url('admin/galleries/add'); ?>" class="btn btn-primary pull-right" style="margin: 5px;">Add</a>
+        <a href="<?php echo $btn_add; ?>" class="btn btn-primary pull-right" style="margin: 5px;">Add</a>
     </div>
     <div class="widget-content">
-        <div class="input-append pull-right">
+        <!--div class="input-append pull-right">
             <form action="" method="get">
-                <input class="span2" type="text" name="q" placeholder="Search..." value="<?php echo $q; ?>">
+                <input class="span2" type="text" name="q" placeholder="Search..." value="<?php //echo $q; ?>">
                 <button class="btn" type="submit" name="search">Search</button>
             </form>
-        </div>
+        </div-->
 
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th><?php echo HeaderLink("Title", "title", $col, $dir); ?></th>
+                    <th>Title</th>
                     <th>Images</th>
-                    <th><?php echo HeaderLink("Content", "content", $col, $dir); ?></th>
+                    <th>Description</th>
                     <th width="10"></th>
                 </tr>
             </thead>
@@ -97,7 +97,7 @@ function HeaderLink($value, $key, $col, $dir) {
         </table>
         <div class="pagination pagination-right">
             <ul>
-                <?php echo $pagination; ?>
+                <?php //echo $pagination; ?>
             </ul>
         </div>
     </div>

@@ -21,7 +21,7 @@
         }
     }
 </script>
-
+<?php echo $this->session->flashdata('message'); ?>
 <div class="widget stacked">
     <div class="widget-header">
         <h3>Form Albums</h3>
@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label">Content</label>
+                <label class="control-label">Description</label>
                 <div class="controls">
                     <?php echo form_textarea($content); ?>
                 </div>

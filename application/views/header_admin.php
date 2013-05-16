@@ -51,13 +51,7 @@
                                         <li><a href="<?php echo site_url('admin/products'); ?>">Products</a></li>
                                         <li><a href="<?php echo site_url('admin/news'); ?>">News</a></li>
                                         <li><a href="<?php echo site_url('admin/suggestions'); ?>">Suggestions</a></li>
-                                        <li class="dropdown-submenu">
-                                            <a href="#" tabindex="-1">Galleries</a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="<?php echo site_url('admin/galleries/albums/');    ?>" tabindex="-1">Create Album</a></li>
-                                                <li><a href="<?php echo site_url('admin/galleries');    ?>" tabindex="-1">Add Photos</a></li>
-                                            </ul>
-                                        </li>
+                                        <li><a href="<?php echo site_url('admin/galleries/albums/');    ?>" tabindex="-1">Create Album</a></li>
                                     </ul>
                                 </li>
 
