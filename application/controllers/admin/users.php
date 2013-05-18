@@ -69,7 +69,7 @@ class Users extends CI_Controller {
         $this->load->view('admin/users/sign_in', $data);
     }
 
-    function sign_up() {
+    function sign_upxx() {
         $data['title'] = "Users Sign Up";
         $data['form_action'] = site_url('admin/users/save');
         $this->load->view('admin/users/sign_up', $data);
@@ -111,7 +111,10 @@ class Users extends CI_Controller {
         } else {
             # Periksa Login Untuk Administrator #
             if ($user->check_user($username, $password) == TRUE) {
+                $rs = $user->where('username', $username)->get();
                 $userdata = array(
+                    'full_name' => $rs->full_name,
+                    'email' => $rs->email,
                     'username' => $username,
                     'logged_in' => TRUE
                 );

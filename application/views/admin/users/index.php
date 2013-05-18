@@ -94,11 +94,10 @@ function HeaderLink($value, $key, $col, $dir) {
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu pull-right">
-                                    <li><a href="<?php echo site_url('admin/galleries/add/' . $row->id); ?>">Add Photos</a></li>
-                                    <li><a href="<?php echo site_url('admin/galleries/photos/' . $row->id); ?>">Photos</a></li>
+                                    <li><a href="<?php echo site_url('admin/users/add_role/' . $row->id); ?>">Add Role</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="<?php echo site_url('admin/galleries/albums/edit/' . $row->id); ?>"><i class="icon-ok"></i> Edit</a></li>
-                                    <li><a href="<?php echo site_url('admin/galleries/albums/delete/' . $row->id); ?>"><i class="icon-trash"></i> Destroy</a></li>
+                                    <li><a href="<?php echo site_url('admin/users/edit/' . $row->id); ?>">Edit</a></li>
+                                    <li><a href="<?php echo site_url('admin/users/delete/' . $row->id); ?>">Destroy</a></li>
                                 </ul>
                             </div>
 

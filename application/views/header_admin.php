@@ -59,12 +59,13 @@
                             <ul class="nav pull-right">
                                 <li class="dropdown">
                                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                    <?php echo $this->session->userdata('username'); ?>
+                                    <?php echo $this->session->userdata('full_name'); ?>
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a href="javascript:;">Profile</a></li>
-                                    <li><a href="javascript:;">Users</a></li>
+                                    <li><a href="javascript:;">Message <span class="badge badge-warning">0</span></a></li>
+                                    <li><a href="<?php echo site_url('admin/users');?>">Users</a></li>
                                     <li class="divider"></li>
                                     <li><a href="<?php echo site_url('admin/users/sign_out'); ?>">Logout</a></li>
                                 </ul>

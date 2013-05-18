@@ -5673,7 +5673,7 @@ a.badge:focus {
 
 .label-warning,
 .badge-warning {
-  background-color: #f89406;
+    background-color: #e71414;
 }
 
 .label-warning[href],
