@@ -5,12 +5,61 @@ if (!defined('BASEPATH'))
 
 class Users extends CI_Controller {
 
+    private $limit = 10;
+
     function __construct() {
         parent::__construct();
     }
 
     public function index() {
-        $this->load->view('admin/users', $data);
+        $user = new User();
+        switch ($this->input->get('c')) {
+            case "1":
+                $data['col'] = "full_name";
+                break;
+            case "2":
+                $data['col'] = "username";
+                break;
+            case "3":
+                $data['col'] = "email";
+                break;
+            case "4":
+                $data['col'] = "created_at";
+                break;
+            case "5":
+                $data['col'] = "id";
+                break;
+            default:
+                $data['col'] = "id";
+        }
+
+        if ($this->input->get('d') == "1") {
+            $data['dir'] = "DESC";
+        } else {
+            $data['dir'] = "ASC";
+        }
+
+        $uri_segment = 3;
+        $offset = $this->uri->segment($uri_segment);
+        $data['q'] = $this->input->get('q');
+        if ($data['q']) {
+            $total_rows = $user->like('username', $data['q'])->count();
+            $user->like('username', $data['q'])->order_by($data['col'], $data['dir']);
+        } else {
+            $total_rows = $user->count();
+            $user->order_by($data['col'], $data['dir']);
+        }
+
+        $data['users'] = $user->get($this->limit, $offset)->all;
+
+        $config['base_url'] = site_url("admin/users/index/");
+        $config['total_rows'] = $total_rows;
+        $config['per_page'] = $this->limit;
+        $config['uri_segment'] = $uri_segment;
+        $this->pagination->initialize($config);
+        $data['pagination'] = $this->pagination->create_links();
+
+        $this->load->view('admin/users/index', $data);
     }
 
     function sign_in() {

@@ -5,7 +5,7 @@ if (!defined('BASEPATH'))
 
 class Abouts extends CI_Controller {
 
-    public function index() {        
+    public function index() {
         $data['class'] = 'Abouts';
         $this->load->view('abouts', $data);
     }
