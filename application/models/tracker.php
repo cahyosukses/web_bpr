@@ -4,7 +4,7 @@ class Tracker extends DataMapper {
 
     public $table = "trackers";
 
-    function get_user_tracks() {
+    function get_user_tracks($username) {
         //define our "maximum idle period" to be 30 minutes
         $mins = 30;
         //set the time limit before a session expires
@@ -23,8 +23,8 @@ class Tracker extends DataMapper {
             if ($_SESSION["current_page"] != $current_page) {
 
                 $sql = "INSERT INTO trackers
-                        (ip_address, page_name, query_string, visitor_id)
-                        VALUES ('$ip_address', '$page_name', '$query_string', '$visitor_id')";
+                        (ip_address, page_name, query_string, visitor_id,username)
+                        VALUES ('$ip_address', '$page_name', '$query_string', '$visitor_id','$username')";
                 if (!mysql_query($sql)) {
                     echo "Failed to update visitor log";
                 }
@@ -34,8 +34,8 @@ class Tracker extends DataMapper {
             //set a session variable so we know that this visitor is being tracked
             //insert a new row into the database for this person
             $sql = "INSERT INTO trackers
-                    (ip_address, page_name, query_string)
-                    VALUES ('$ip_address', '$page_name', '$query_string')";
+                    (ip_address, page_name, query_string, username)
+                    VALUES ('$ip_address', '$page_name', '$query_string','$username')";
             if (!mysql_query($sql)) {
                 echo "Failed to add new visitor into tracking log";
                 $_SESSION["tracking"] = false;

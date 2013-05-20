@@ -6,10 +6,12 @@ if (!defined('BASEPATH'))
 class Banners extends CI_Controller {
 
     private $limit = 10;
+//    private $trackers = null;
 
     function __construct() {
-        parent::__construct();
+        parent::__construct();        
         $this->session->userdata('logged_in') == true ? '' : redirect('admin/users/sign_in');
+        $this->tracking->get_tracker_user($this->session->userdata('username'));
     }
 
     public function index() {
@@ -71,7 +73,7 @@ class Banners extends CI_Controller {
     function save() {
         $banners = new Banner();
         $this->form_validation->set_rules('title_banners', 'Title', 'required');
-        $this->form_validation->set_rules('content', 'Content', 'required');        
+        $this->form_validation->set_rules('content', 'Content', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata('message', '<div class="alert alert-error"><a data-dismiss = "alert" class = "close">&times;</a>' . validation_errors() . '</div>');

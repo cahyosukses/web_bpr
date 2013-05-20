@@ -9,6 +9,7 @@ class Users extends CI_Controller {
 
     function __construct() {
         parent::__construct();
+        //$this->session->userdata('logged_in') == false ? '' : redirect('admin/welcome');
     }
 
     public function index() {
