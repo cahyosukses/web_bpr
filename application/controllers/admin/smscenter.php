@@ -20,6 +20,10 @@ class Smscenter extends CI_Controller {
         $this->load->view('admin/smscenter/outbox');
     }
     
+    function auto_replay(){
+        
+    }
+    
 
 }
 
