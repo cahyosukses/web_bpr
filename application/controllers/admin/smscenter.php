@@ -13,11 +13,11 @@ class Smscenter extends CI_Controller {
     }
     
     function inbox(){
-        $this->load->view('admin/sms-center/inbox');
+        $this->load->view('admin/smscenter/inbox');
     }
     
     function outbox(){
-        $this->load->view('admin/sms-center/outbox');
+        $this->load->view('admin/smscenter/outbox');
     }
     
 

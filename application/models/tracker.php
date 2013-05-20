@@ -64,7 +64,4 @@ class Tracker extends DataMapper {
     }
 
 }
-
-//$tracker = new Tracker();
-//$tracker->get_user_tracks();
 ?>
