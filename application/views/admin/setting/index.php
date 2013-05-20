@@ -63,8 +63,7 @@ function HeaderLink($value, $key, $col, $dir) {
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th width="150"><?php echo HeaderLink("Name", "name", $col, $dir); ?></th>
-                    <th><?php echo HeaderLink("Value", "value", $col, $dir); ?></th>
+                    <th><?php echo HeaderLink("Name", "name", $col, $dir); ?></th>
                     <th width="10"></th>
                 </tr>
             </thead>
@@ -73,12 +72,7 @@ function HeaderLink($value, $key, $col, $dir) {
                 foreach ($settings as $row) {
                 ?>
                     <tr>
-                        <td><?php echo $row->name; ?></td>
-                        <td>
-                            <div style="clear: both;">
-                            <?php echo word_limiter($row->value, 20); ?>
-                        </div>
-                    </td>
+                        <td><?php echo $row->name; ?></td>                    
                     <td>
                         <div class="btn-group">
                             <a href="#" data-toggle="dropdown" class="btn btn-mini dropdown-toggle">

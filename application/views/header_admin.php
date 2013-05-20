@@ -51,7 +51,21 @@
                                         <li><a href="<?php echo site_url('admin/products'); ?>">Products</a></li>
                                         <li><a href="<?php echo site_url('admin/news'); ?>">News</a></li>
                                         <li><a href="<?php echo site_url('admin/suggestions'); ?>">Suggestions</a></li>
-                                        <li><a href="<?php echo site_url('admin/galleries/albums/');    ?>" tabindex="-1">Create Album</a></li>
+                                        <li><a href="<?php echo site_url('admin/galleries/albums/');?>" tabindex="-1">Create Album</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                        SMS Banking
+                                        <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Send Message</a></li>
+                                        <li><a href="#">Inbox</a></li>
+                                        <li><a href="#">Outbox</a></li>
+                                        <li><a href="#">Template Message</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">Config Gammu</a></li>
                                     </ul>
                                 </li>
 

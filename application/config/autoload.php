@@ -112,7 +112,7 @@ $autoload['language'] = array();
   |
  */
 
-$autoload['model'] = array('tracker');
+$autoload['model'] = array();
 
 
 /* End of file autoload.php */

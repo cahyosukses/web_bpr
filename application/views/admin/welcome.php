@@ -45,7 +45,7 @@
 
             <div style="margin-top: 20px;">
                 <div class="widget-header">
-                    <h3>Quick Shortcuts</h3>
+                    <h3>Inbox (SMS Banking)</h3>
                 </div> <!-- /widget-header -->
 
                 <div class="widget-content">
@@ -56,8 +56,7 @@
                 </div> <!-- /widget-content -->
             </div>
         </div>
-
-
+        
         <div class="span6">
             <div class="widget-header">
                 <i class="icon-list-alt"></i>
