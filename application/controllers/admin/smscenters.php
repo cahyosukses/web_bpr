@@ -35,7 +35,7 @@ class Smscenters extends CI_Controller {
         );
         $this->pagination->initialize($config);
         $data['pagination'] = $this->pagination->create_links();
-        $data['get_'] = $smscenter->read_inbox($config['per_page'], $this->uri->segment(4));
+        $data['get_sentitems'] = $smscenter->read_inbox($config['per_page'], $this->uri->segment(4));
 
         $this->load->view('admin/smscenter/outbox', $data);
     }
@@ -43,6 +43,7 @@ class Smscenters extends CI_Controller {
     function send_messages() {
         $this->Smscenter->send_message();
         redirect('admin/smscenters/inbox/');
+        
     }
 
 }

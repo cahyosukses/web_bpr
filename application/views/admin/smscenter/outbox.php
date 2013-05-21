@@ -17,8 +17,8 @@
             </thead>
             <tbody>
                 <?php
-                if (!empty($inbox_row)) {
-                    foreach ($get_inbox->result() as $row) {
+                if (!empty($get_sentitems->row())) {
+                    foreach ($get_sentitems->result() as $row) {
                 ?>
                         <tr>
                             <td><?php echo $row->TextDecoded; ?></td>
