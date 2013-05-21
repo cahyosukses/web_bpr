@@ -2,7 +2,7 @@
 <?php echo $this->session->flashdata('message'); ?>
 <div class="widget stacked">
     <div class="widget-header">
-        <h3>Outbox</h3>
+        <h3>Outbox / SentItems</h3>
     </div>
     <div class="widget-content">
         <table class="table table-hover">
@@ -17,7 +17,7 @@
             </thead>
             <tbody>
                 <?php
-                if (!empty($get_sentitems->row())) {
+                if (!empty($sentitems_row)) {
                     foreach ($get_sentitems->result() as $row) {
                 ?>
                         <tr>

@@ -22,7 +22,7 @@ class Smscenters extends CI_Controller {
         );
         $this->pagination->initialize($config);
         $data['pagination'] = $this->pagination->create_links();
-        $data['get_inbox'] = $smscenter->read_inbox($config['per_page'], $this->uri->segment(4));
+        $data['get_inbox'] = $this->Smscenter->read_inbox($config['per_page'], $this->uri->segment(4));
         $this->load->view('admin/smscenter/inbox', $data);
     }
 
@@ -35,7 +35,7 @@ class Smscenters extends CI_Controller {
         );
         $this->pagination->initialize($config);
         $data['pagination'] = $this->pagination->create_links();
-        $data['get_sentitems'] = $smscenter->read_inbox($config['per_page'], $this->uri->segment(4));
+        $data['get_sentitems'] = $this->Smscenter->read_inbox($config['per_page'], $this->uri->segment(4));
 
         $this->load->view('admin/smscenter/outbox', $data);
     }
