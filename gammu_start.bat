@@ -1,0 +1,1 @@
+START C:\Gammu-1.32.0\bin\gammu-smsd.exe -s -c C:\Gammu-1.32.0\bin\smsdrc -n GammuSMSD
