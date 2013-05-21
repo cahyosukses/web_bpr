@@ -51,7 +51,7 @@
                                         <li><a href="<?php echo site_url('admin/products'); ?>">Products</a></li>
                                         <li><a href="<?php echo site_url('admin/news'); ?>">News</a></li>
                                         <li><a href="<?php echo site_url('admin/suggestions'); ?>">Suggestions</a></li>
-                                        <li><a href="<?php echo site_url('admin/galleries/albums/');?>" tabindex="-1">Create Album</a></li>
+                                        <li><a href="<?php echo site_url('admin/galleries/albums/'); ?>" tabindex="-1">Create Album</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown">
@@ -60,8 +60,8 @@
                                         <b class="caret"></b>
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#">Send Message</a></li>
-                                        <li><a href="#">Inbox</a></li>
+                                        <li><a href="#myModal" role="button" data-toggle="modal">Send Message</a></li>
+                                        <li><a href="<?php echo site_url('admin/smscenters/inbox/'); ?>">Inbox</a></li>
                                         <li><a href="#">Outbox</a></li>
                                         <li><a href="#">Template Message</a></li>
                                         <li class="divider"></li>
@@ -79,7 +79,7 @@
                                 <ul class="dropdown-menu">
                                     <li><a href="javascript:;">Profile</a></li>
                                     <li><a href="javascript:;">Message <span class="badge badge-warning">0</span></a></li>
-                                    <li><a href="<?php echo site_url('admin/users');?>">Users</a></li>
+                                    <li><a href="<?php echo site_url('admin/users'); ?>">Users</a></li>
                                     <li class="divider"></li>
                                     <li><a href="<?php echo site_url('admin/users/sign_out'); ?>">Logout</a></li>
                                 </ul>
@@ -89,5 +89,47 @@
                 </div>
             </div>
         </div>
+
+        <!-- MODAL FORM SEND MESSAGE -->
+        <!-- Button to trigger modal -->
+        <script type="text/javascript">
+            function Hitung(){
+                var curText = document.fmessage.textmessage.value.length;
+                var maxText = 160;
+                var sisa = maxText - curText;
+                var isi = document.getElementById('maxkarakter');
+                isi.innerHTML = sisa + ' karakter';
+            }
+        </script>        
+
+        <!-- Modal -->
+        <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">Compose Message</h3>
+            </div>
+            <div class="modal-body">
+                <div id="replay-form" title="replay message">
+                    <fieldset>
+                        <?php $attributes = array('name' => "fmessage");
+                                    echo form_open("admin/smscenters/send_messages/", $attributes); ?>
+                                    <label for="hp">Handphone Number</label>
+                                    <input type="text" name="phone_number" class="input-block-level">
+                                    <span id="hp_verify" class="verify"></span><br>
+                                    <label for="message">Message</label>
+                                    <textarea name="textmessage" onKeyUp="Hitung() "maxlength="160"
+                                              id="alamat" rows="5" cols="55" class="input-block-level"> </textarea>
+                                    </br><div id="maxkarakter"> 160 karakter </div></br>
+                                    <input type=submit name=ok id="tombol3" align=left value="Send Message" class="btn btn-secondary" />
+                               <?php echo form_close(); ?>
+                         </fieldset>
+                     </div>
+                 </div>
+                 <!--div class="modal-footer">
+                     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                     <button class="btn btn-primary">Save changes</button>
+                 </div-->
+             </div>
+
         <?php } ?>
         <div class="container" style="margin-top: 40px;">
