@@ -50,13 +50,47 @@
 
                 <div class="widget-content">
                     <ul class="news-items">
-                        <div style="height: 265px;"></div>
-                        <!--h2>Welcome, <?php //echo $this->session->userdata('username');  ?></h2-->
+                        <?php
+                        if (!empty($inbox_row)) {
+                            foreach ($get_inbox->result() as $row) {
+                        ?>
+                                <tr>
+                                    <td><?php echo $row->TextDecoded; ?></td>
+                                    <td><?php echo $row->SenderNumber; ?></td>
+                                    <td><?php echo $row->ReceivingDateTime; ?></td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <a href="#" data-toggle="dropdown" class="btn btn-mini dropdown-toggle">
+                                                Action
+                                                <span class="caret"></span>
+                                            </a>
+                                            <ul class="dropdown-menu pull-right">
+                                                <li><a href="<?php echo site_url('admin/smscenters/replay/' . $row->id); ?>">Replay</a></li>
+                                                <li><a onclick="return confirm('Are you sure?');" href="<?php echo site_url('admin/smscenters/albums/delete/' . $row->id); ?>"><i class="icon-trash"></i> Destroy</a></li>
+                                            </ul>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                        <?php
+                            }
+                        } else {
+                        ?>
+                            <tr>
+                                <td colspan="4">
+                                    <div class="alert alert-info">
+                                        <strong>Ups!</strong> No Message Received.
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                        </tbody>
+                        </table>
                     </ul>
                 </div> <!-- /widget-content -->
             </div>
         </div>
-        
+
         <div class="span6">
             <div class="widget-header">
                 <i class="icon-list-alt"></i>
@@ -66,49 +100,49 @@
             <div class="widget-content">
                 <ul class="news-items">
                     <?php
-                    foreach ($news as $row) {
+                        foreach ($news as $row) {
                     ?>
-                        <li>
-                            <div class="news-item-detail">
-                                <a class="news-item-title" href="<?php echo site_url('admin/news/view/' . $row->id); ?>"><?php echo $row->title; ?></a>
-                                <p class="news-item-preview"><?php echo word_limiter($row->content, 15); ?></p>
-                            </div>
-                            <div class="news-item-date">
-                                <span class="news-item-day"><?php echo date("d", strtotime($row->created_at)); ?></span>
-                                <span class="news-item-month"><?php echo date("M", strtotime($row->created_at)); ?></span>
-                            </div>
-                        </li>
+                            <li>
+                                <div class="news-item-detail">
+                                    <a class="news-item-title" href="<?php echo site_url('admin/news/view/' . $row->id); ?>"><?php echo $row->title; ?></a>
+                                    <p class="news-item-preview"><?php echo word_limiter($row->content, 15); ?></p>
+                                </div>
+                                <div class="news-item-date">
+                                    <span class="news-item-day"><?php echo date("d", strtotime($row->created_at)); ?></span>
+                                    <span class="news-item-month"><?php echo date("M", strtotime($row->created_at)); ?></span>
+                                </div>
+                            </li>
                     <?php } ?>
-                </ul>
-            </div> <!-- /widget-content -->
-
-            <div style="margin-top: 20px;">
-                <div class="widget-header">
-                    <h3>Chart</h3>
-                </div> <!-- /widget-header -->
-
-                <div class="widget-content">
-                    <ul class="news-items">
-                        <div style="height: 120px;"></div>
-                        <!--h2>Welcome, <?php //echo $this->session->userdata('username');  ?></h2-->
                     </ul>
                 </div> <!-- /widget-content -->
-            </div>
 
+                <div style="margin-top: 20px;">
+                    <div class="widget-header">
+                        <h3>Chart</h3>
+                    </div> <!-- /widget-header -->
+
+                    <div class="widget-content">
+                        <ul class="news-items">
+                            <div style="height: 120px;"></div>
+                            <!--h2>Welcome, <?php //echo $this->session->userdata('username');     ?></h2-->
+                        </ul>
+                    </div> <!-- /widget-content -->
+                </div>
+
+            </div>
         </div>
     </div>
-</div>
 <?php get_footer('admin'); ?>
 
 <script>
-setInterval(
-   function(){
-   $.get("http://webbpr.me/get_time_server/", function(Jam){//alert(bmsJsonComment);
-//            alert(Jam);
+    setInterval(
+    function(){
+        $.get("http://webbpr.me/get_time_server/", function(Jam){//alert(bmsJsonComment);
+            //            alert(Jam);
             var xJam = Jam;
             
             var x = document.getElementById('stat-value');
-                  x.innerHTML = xJam;
-      });
-   },1000);
+            x.innerHTML = xJam;
+        });
+    },1000);
 </script>

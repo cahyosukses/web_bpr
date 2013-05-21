@@ -12,6 +12,7 @@ class Welcome extends CI_Controller {
     public function index() {
         $news = new Post();
         $data['news'] = $news->get('3')->all;
+        $data['get_inbox'] = $this->db->get('inbox', 3);
         $this->load->view('admin/welcome', $data);
     }
 

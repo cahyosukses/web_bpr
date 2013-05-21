@@ -44,7 +44,7 @@
                     <tr>
                         <td colspan="4">
                             <div class="alert alert-info">
-                                <strong>Ups!</strong> Message Empty.
+                                <strong>Ups!</strong> No Message Received.
                             </div>
                         </td>
                     </tr>
