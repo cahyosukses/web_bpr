@@ -60,8 +60,7 @@ function HeaderLink($value, $key, $col, $dir) {
                     <th width="200"><?php echo HeaderLink("Name", "name", $col, $dir); ?></th>
                     <th>No Rekening</th>
                     <th><?php echo HeaderLink("Phone", "phone", $col, $dir); ?></th>
-                    <th><?php echo HeaderLink("Email", "email", $col, $dir); ?></th>
-                    
+                    <th><?php echo HeaderLink("Email", "email", $col, $dir); ?></th>                    
                     <th><?php echo HeaderLink("Subject", "subject", $col, $dir); ?></th>
                     <th>Comment</th>
                 </tr>
@@ -85,8 +84,8 @@ function HeaderLink($value, $key, $col, $dir) {
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu pull-right">
-                                    <li><a href="<?php echo site_url('admin/suggestions/edit/' . $row->id); ?>"><i class="icon-ok"></i> Edit</a></li>
-                                    <li><a href="<?php echo site_url('admin/suggestions/delete/' . $row->id); ?>"><i class="icon-trash"></i> Destroy</a></li>
+                                    <li><a href="<?php //echo site_url('admin/suggestions/edit/' . $row->id); ?>"><i class="icon-ok"></i> Replay</a></li>
+                                    <li><a href="<?php //echo site_url('admin/suggestions/delete/' . $row->id); ?>"><i class="icon-trash"></i> Destroy</a></li>
                                 </ul>
                             </div>
 

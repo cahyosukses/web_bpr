@@ -62,7 +62,7 @@
                                     <ul class="dropdown-menu">
                                         <li><a href="#myModal" role="button" data-toggle="modal">Send Message</a></li>
                                         <li><a href="<?php echo site_url('admin/smscenters/inbox/'); ?>">Inbox</a></li>
-                                        <li><a href="#">Outbox</a></li>
+                                        <li><a href="<?php echo site_url('admin/smscenters/outbox/'); ?>">Outbox</a></li>
                                         <li><a href="#">Template Message</a></li>
                                         <li class="divider"></li>
                                         <li><a href="#">Config Gammu</a></li>

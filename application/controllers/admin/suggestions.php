@@ -9,6 +9,7 @@ class Suggestions extends CI_Controller {
 
     function __construct() {
         parent::__construct();
+        $this->load->helper('email');
         $this->session->userdata('logged_in') == true ? '' : redirect('admin/users/sign_in');
     }
 
@@ -108,7 +109,6 @@ class Suggestions extends CI_Controller {
 
     function update() {
         $contact = new Contact();
-
         $contact->where('id', $this->input->post('id'))
                 ->update(
                         array(
@@ -121,9 +121,24 @@ class Suggestions extends CI_Controller {
                             'comment' => $this->input->post('comment')
                         )
         );
-        $msg = notice('Update successfuly.', 'success');
+        $msg = '<div class="alert alert-success">Update successfuly.</div>';
         $this->session->set_flashdata('message', $msg);
         redirect('admin/suggestions/');
+    }
+
+    function replay_by_email($id) {
+        $contact = new Contact();
+        $rs = $contact->where('id', $id)->get();
+        if (valid_email($rs->email)) {
+            $msg_email = 'email is valid';
+        } else {
+            send_email($rs->email, $this->input->post('subject'), $this->input->post('message'));
+            $msg_email = "Email send succsefuly.";
+        }
+
+        $msg = '<div class="alert alert-success">' . $msg_email . '</div>';
+        $this->session->set_flashdata('message', $msg);
+        redirect('admin/admin/suggestions/');
     }
 
     public function delete($id) {

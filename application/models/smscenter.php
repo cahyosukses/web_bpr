@@ -30,6 +30,11 @@ class Smscenter extends CI_Model {
         $query = $this->db->get('inbox', $limit, $uri);
         return $query;
     }
+    
+    function read_sentitems($limit, $uri) {
+        $query = $this->db->get('sentitems', $limit, $uri);
+        return $query;
+    }
 
     function run_gammu_service() {
         //Script untuk menjalankan Service Gammu
