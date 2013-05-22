@@ -38,8 +38,40 @@
             <h3>Status Services Gammu</h3>        
         </div>
         <div class="widget-content">            
-            <?php echo $services_gammu; ?>
-            <input type="button" name="btn_update" class="btn btn-info btn-large btn-block" value="Restart">            
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Service Gammu</th>
+                        <th>Status</th>
+                        <th width="103"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Gammu</td>
+                        <td></td>
+                        <td>
+                            <input type="button" value="Install" class="btn btn-mini btn-success">
+                            <input type="button" value="Uninstall" class="btn btn-mini btn-danger">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Checking Modem</td>
+                        <td></td>
+                        <td>
+                            <input type="button" value="Start" class="btn btn-mini btn-success">                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Service Gammu</td>
+                        <td></td>
+                        <td>
+                            <input type="button" value="Start" class="btn btn-mini btn-success">
+                            <input type="button" value="Stop" class="btn btn-mini btn-danger">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

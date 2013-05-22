@@ -51,8 +51,10 @@ class Smscenters extends CI_Controller {
         $gammuurc = read_file('C:\Gammu-1.32.0\bin\gammurc');
         $gammusmsdrc = read_file('C:\Gammu-1.32.0\bin\smsdrc');
         $data['services_gammu'] = $this->Smscenter->checking_gammu_service();
-        $data['gammuurc'] = array('name' => 'gammuurc', 'value' => $gammuurc, 'class' => 'input-block-level');
-        $data['gammusmsdrc'] = array('name' => 'gammusmsdrc', 'value' => $gammusmsdrc, 'class' => 'input-block-level');
+//        $data['install_gammu'] = $this->Smscenter->run_gammu_service('stop');
+
+        $data['gammuurc'] = array('name' => 'gammuurc', 'value' => $gammuurc, 'class' => 'input-block-level', 'rows' => '15');
+        $data['gammusmsdrc'] = array('name' => 'gammusmsdrc', 'value' => $gammusmsdrc, 'class' => 'input-block-level', 'rows' => '15');
 
         $this->load->view('admin/smscenter/config_gammu', $data);
     }
@@ -64,8 +66,8 @@ class Smscenters extends CI_Controller {
             } else {
                 $msg_gammu = 'File written!';
             }
-        } 
-        if($this->input->post('gammusmsdrc')) {
+        }
+        if ($this->input->post('gammusmsdrc')) {
             if (!write_file('C:\Gammu-1.32.0\bin\smsdrc', $this->input->post('gammusmsdrc'))) {
                 $msg_gammu = 'Unable to write the file smsdrc';
             } else {

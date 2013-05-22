@@ -40,19 +40,79 @@ class Smscenter extends CI_Model {
         //Script untuk menjalankan Service Gammu
         switch ($status) {
             case 'install':
-                passthru("C:\Gammu-1.32.0\bin\gammu-smsd -c smsdrc -i");
+                passthru("C:\Gammu-1.32.0\bin\gammu-smsd -c smsdrc -i > service.log");
+                $handle = fopen("service.log", "r");
+                $status = 0;
+                while (!feof($handle)) {
+                    $baristeks = fgets($handle);
+                    if (substr_count($baristeks, 'Service GammuSMSD installed sucessfully') > 0) {
+                        $status = 1;
+                    }
+                }
+                fclose($handle);
+                if ($status == 1)
+                    $return_msg = '<div class="alert alert-success"><strong>Yups!</strong> Service GammuSMSD Installed Sucessfully.</div>';
+                else if ($status == 0)
+                    $return_msg = '<div class="alert alert-error"><strong>Ups!</strong> Error Installing GammuSMSD Service.</div>';
+
+                return $return_msg;
                 break;
             case 'uninstall':
-                passthru("C:\Gammu-1.32.0\bin\gammu-smsd -c smsdrc -u");
+                passthru("C:\Gammu-1.32.0\bin\gammu-smsd -c smsdrc -u > service.log");
+                $handle = fopen("service.log", "r");
+                $status = 0;
+                while (!feof($handle)) {
+                    $baristeks = fgets($handle);
+                    if (substr_count($baristeks, 'Service GammuSMSD uninstalled sucessfully') > 0) {
+                        $status = 1;
+                    }
+                }
+                fclose($handle);
+                if ($status == 1)
+                    $return_msg = '<div class="alert alert-success"><strong>Yups!</strong> Service GammuSMSD uninstalled sucessfully.</div>';
+                else if ($status == 0)
+                    $return_msg = '<div class="alert alert-error"><strong>Ups!</strong> Error Uninstalling GammuSMSD Service.</div>';
+
+                return $return_msg;
                 break;
             case 'start':
-                passthru("C:\Gammu-1.32.0\bin\gammu-smsd -c smsdrc -s");
+                passthru("C:\Gammu-1.32.0\bin\gammu-smsd -c smsdrc -s > service.log");
+                $handle = fopen("service.log", "r");
+                $status = 0;
+                while (!feof($handle)) {
+                    $baristeks = fgets($handle);
+                    if (substr_count($baristeks, 'Service GammuSMSD started sucessfully') > 0) {
+                        $status = 1;
+                    }
+                }
+                fclose($handle);
+                if ($status == 1)
+                    $return_msg = '<div class="alert alert-success"><strong>Yups!</strong> Service GammuSMSD started sucessfully.</div>';
+                else if ($status == 0)
+                    $return_msg = '<div class="alert alert-error"><strong>Ups!</strong> Error starting GammuSMSD Service.</div>';
+
+                return $return_msg;
                 break;
             case 'stop':
-                passthru("C:\Gammu-1.32.0\bin\gammu-smsd -c smsdrc -k");
+                passthru("C:\Gammu-1.32.0\bin\gammu-smsd -c smsdrc -k > service.log");
+                $handle = fopen("service.log", "r");
+                $status = 0;
+                while (!feof($handle)) {
+                    $baristeks = fgets($handle);
+                    if (substr_count($baristeks, 'Service GammuSMSD stopped sucessfully') > 0) {
+                        $status = 1;
+                    }
+                }
+                fclose($handle);
+                if ($status == 1)
+                    $return_msg = '<div class="alert alert-success"><strong>Yups!</strong> Service GammuSMSD stopped sucessfully.</div>';
+                else if ($status == 0)
+                    $return_msg = '<div class="alert alert-error"><strong>Ups!</strong> Error stopping GammuSMSD Service.</div>';
+
+                return $return_msg;
                 break;
-            default: 
-                return 'Status not failed'; 
+            default:
+                $msg_gammu = 'Status not failed';
         }
     }
 
@@ -68,9 +128,9 @@ class Smscenter extends CI_Model {
         }
         fclose($handle);
         if ($status == 1)
-            $return_msg = '<div class="alert alert-success">Gammu service running..</div>';
+            $return_msg = '<div class="alert alert-success"><strong>Yups!</strong> Gammu Service Running.</div>';
         else if ($status == 0)
-            $return_msg = '<div class="alert alert-error"><strong>Ups!</strong> Gammu Service Stopped!</div>';
+            $return_msg = '<div class="alert alert-error"><strong>Ups!</strong> Gammu Service Stopped.</div>';
 
         return $return_msg;
     }
