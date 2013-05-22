@@ -65,7 +65,7 @@
                                         <li><a href="<?php echo site_url('admin/smscenters/outbox/'); ?>">Outbox</a></li>
                                         <li><a href="#">Template Message</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="#">Config Gammu</a></li>
+                                        <li><a href="<?php echo site_url('admin/smscenters/config/'); ?>">Config Gammu</a></li>
                                     </ul>
                                 </li>
 

@@ -50,7 +50,7 @@ class Smscenters extends CI_Controller {
     function config() {
         $gammuurc = read_file('C:\Gammu-1.32.0\bin\gammurc');
         $gammusmsdrc = read_file('C:\Gammu-1.32.0\bin\smsdrc');
-
+        $data['services_gammu'] = $this->Smscenter->checking_gammu_service();
         $data['gammuurc'] = array('name' => 'gammuurc', 'value' => $gammuurc, 'class' => 'input-block-level');
         $data['gammusmsdrc'] = array('name' => 'gammusmsdrc', 'value' => $gammusmsdrc, 'class' => 'input-block-level');
 

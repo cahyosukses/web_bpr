@@ -12,17 +12,17 @@
 
                     <div class="stat">
                         <span class="stat-value">0</span>
-							Site Visits
+                        Site Visits
                     </div> <!-- /stat -->
 
                     <div class="stat">
                         <span class="stat-value">0</span>
-							Unique Visits
+                        Unique Visits
                     </div> <!-- /stat -->
 
                     <div class="stat">
                         <span class="stat-value">0%</span>
-							New Visits
+                        New Visits
                     </div> <!-- /stat -->
 
                 </div> <!-- /stats -->
@@ -36,7 +36,7 @@
 
                     <div class="stat stat-time">
                         <span class="stat-value" id="stat-value"></span>
-							Average Time on Site
+                        Average Time on Site
                     </div> <!-- /substat -->
 
                 </div> <!-- /substats -->
@@ -49,44 +49,38 @@
                 </div> <!-- /widget-header -->
 
                 <div class="widget-content">
-                    <ul class="news-items">
-                        <?php
-                        if (!empty($inbox_row)) {
-                            foreach ($get_inbox->result() as $row) {
-                        ?>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Message</th>
+                                <th width="100">Phone Number</th>
+                                <th width="150">Received Time</th>                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            if (!empty($get_inbox)) {
+                                foreach ($get_inbox->result() as $row) {
+                                    ?>
+                                    <tr>
+                                        <td><?php echo $row->TextDecoded; ?></td>
+                                        <td><?php echo $row->SenderNumber; ?></td>
+                                        <td><?php echo $row->ReceivingDateTime; ?></td>
+                                    </tr>
+                                    <?php
+                                }
+                            } else {
+                                ?>
                                 <tr>
-                                    <td><?php echo $row->TextDecoded; ?></td>
-                                    <td><?php echo $row->SenderNumber; ?></td>
-                                    <td><?php echo $row->ReceivingDateTime; ?></td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <a href="#" data-toggle="dropdown" class="btn btn-mini dropdown-toggle">
-                                                Action
-                                                <span class="caret"></span>
-                                            </a>
-                                            <ul class="dropdown-menu pull-right">
-                                                <li><a href="<?php echo site_url('admin/smscenters/replay/' . $row->id); ?>">Replay</a></li>
-                                                <li><a onclick="return confirm('Are you sure?');" href="<?php echo site_url('admin/smscenters/albums/delete/' . $row->id); ?>"><i class="icon-trash"></i> Destroy</a></li>
-                                            </ul>
+                                    <td colspan="4">
+                                        <div class="alert alert-info">
+                                            <strong>Ups!</strong> No Message Received.
                                         </div>
-
                                     </td>
                                 </tr>
-                        <?php
-                            }
-                        } else {
-                        ?>
-                            <tr>
-                                <td colspan="4">
-                                    <div class="alert alert-info">
-                                        <strong>Ups!</strong> No Message Received.
-                                    </div>
-                                </td>
-                            </tr>
-                        <?php } ?>
+                            <?php } ?>
                         </tbody>
-                        </table>
-                    </ul>
+                    </table>
                 </div> <!-- /widget-content -->
             </div>
         </div>
@@ -100,49 +94,49 @@
             <div class="widget-content">
                 <ul class="news-items">
                     <?php
-                        foreach ($news as $row) {
-                    ?>
-                            <li>
-                                <div class="news-item-detail">
-                                    <a class="news-item-title" href="<?php echo site_url('admin/news/view/' . $row->id); ?>"><?php echo $row->title; ?></a>
-                                    <p class="news-item-preview"><?php echo word_limiter($row->content, 15); ?></p>
-                                </div>
-                                <div class="news-item-date">
-                                    <span class="news-item-day"><?php echo date("d", strtotime($row->created_at)); ?></span>
-                                    <span class="news-item-month"><?php echo date("M", strtotime($row->created_at)); ?></span>
-                                </div>
-                            </li>
+                    foreach ($news as $row) {
+                        ?>
+                        <li>
+                            <div class="news-item-detail">
+                                <a class="news-item-title" href="<?php echo site_url('admin/news/view/' . $row->id); ?>"><?php echo $row->title; ?></a>
+                                <p class="news-item-preview"><?php echo word_limiter($row->content, 15); ?></p>
+                            </div>
+                            <div class="news-item-date">
+                                <span class="news-item-day"><?php echo date("d", strtotime($row->created_at)); ?></span>
+                                <span class="news-item-month"><?php echo date("M", strtotime($row->created_at)); ?></span>
+                            </div>
+                        </li>
                     <?php } ?>
+                </ul>
+            </div> <!-- /widget-content -->
+
+            <div style="margin-top: 20px;">
+                <div class="widget-header">
+                    <h3>Chart</h3>
+                </div> <!-- /widget-header -->
+
+                <div class="widget-content">
+                    <ul class="news-items">
+                        <div style="height: 120px;"></div>
+                        <!--h2>Welcome, <?php //echo $this->session->userdata('username');      ?></h2-->
                     </ul>
                 </div> <!-- /widget-content -->
-
-                <div style="margin-top: 20px;">
-                    <div class="widget-header">
-                        <h3>Chart</h3>
-                    </div> <!-- /widget-header -->
-
-                    <div class="widget-content">
-                        <ul class="news-items">
-                            <div style="height: 120px;"></div>
-                            <!--h2>Welcome, <?php //echo $this->session->userdata('username');     ?></h2-->
-                        </ul>
-                    </div> <!-- /widget-content -->
-                </div>
-
             </div>
+
         </div>
     </div>
+</div>
 <?php get_footer('admin'); ?>
 
 <script>
     setInterval(
-    function(){
-        $.get("http://webbpr.me/get_time_server/", function(Jam){//alert(bmsJsonComment);
-            //            alert(Jam);
-            var xJam = Jam;
-            
-            var x = document.getElementById('stat-value');
-            x.innerHTML = xJam;
-        });
-    },1000);
+            function() {
+                $.get("http://webbpr.me/get_time_server/", function(Jam) {//alert(bmsJsonComment);
+                    //            alert(Jam);
+                    var xJam = Jam;
+
+                    var x = document.getElementById('stat-value');
+                    x.innerHTML = xJam;
+                });
+            }, 1000);
 </script>

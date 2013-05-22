@@ -30,15 +30,30 @@ class Smscenter extends CI_Model {
         $query = $this->db->get('inbox', $limit, $uri);
         return $query;
     }
-    
+
     function read_sentitems($limit, $uri) {
         $query = $this->db->get('sentitems', $limit, $uri);
         return $query;
     }
 
-    function run_gammu_service() {
+    function run_gammu_service($status) {
         //Script untuk menjalankan Service Gammu
-        passthru("C:\Gammu-1.32.0\bin\gammu-smsd -c smsdrc -s");
+        switch ($status) {
+            case 'install':
+                passthru("C:\Gammu-1.32.0\bin\gammu-smsd -c smsdrc -i");
+                break;
+            case 'uninstall':
+                passthru("C:\Gammu-1.32.0\bin\gammu-smsd -c smsdrc -u");
+                break;
+            case 'start':
+                passthru("C:\Gammu-1.32.0\bin\gammu-smsd -c smsdrc -s");
+                break;
+            case 'stop':
+                passthru("C:\Gammu-1.32.0\bin\gammu-smsd -c smsdrc -k");
+                break;
+            default: 
+                return 'Status not failed'; 
+        }
     }
 
     function checking_gammu_service() {
@@ -53,9 +68,9 @@ class Smscenter extends CI_Model {
         }
         fclose($handle);
         if ($status == 1)
-            $return_msg = "Gammu service running..";
+            $return_msg = '<div class="alert alert-success">Gammu service running..</div>';
         else if ($status == 0)
-            $return_msg = "Gammu service stopped";
+            $return_msg = '<div class="alert alert-error"><strong>Ups!</strong> Gammu Service Stopped!</div>';
 
         return $return_msg;
     }
