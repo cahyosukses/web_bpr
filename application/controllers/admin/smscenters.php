@@ -48,10 +48,11 @@ class Smscenters extends CI_Controller {
     }
 
     function config() {
-        $gammuurc = read_file('C:\Gammu-1.32.0\bin\gammurc');
-        $gammusmsdrc = read_file('C:\Gammu-1.32.0\bin\smsdrc');
+        $gammuurc = read_file('./Gammu-1.32.0/bin/gammurc');
+        $gammusmsdrc = read_file('./Gammu-1.32.0/bin/smsdrc');
         $data['services_gammu'] = $this->Smscenter->checking_gammu_service();
 //        $data['install_gammu'] = $this->Smscenter->run_gammu_service('stop');
+        $data['gammu_identify'] = $this->Smscenter->run_gammu_service('identify');
 
         $data['gammuurc'] = array('name' => 'gammuurc', 'value' => $gammuurc, 'class' => 'input-block-level', 'rows' => '15');
         $data['gammusmsdrc'] = array('name' => 'gammusmsdrc', 'value' => $gammusmsdrc, 'class' => 'input-block-level', 'rows' => '15');
@@ -61,14 +62,14 @@ class Smscenters extends CI_Controller {
 
     function save_gammu_config() {
         if ($this->input->post('gammuurc')) {
-            if (!write_file('C:\Gammu-1.32.0\bin\gammurc', $this->input->post('gammuurc'))) {
+            if (!write_file('./Gammu-1.32.0/bin/gammurc', $this->input->post('gammuurc'))) {
                 $msg_gammu = 'Unable to write the file gammuurc';
             } else {
                 $msg_gammu = 'File written!';
             }
         }
         if ($this->input->post('gammusmsdrc')) {
-            if (!write_file('C:\Gammu-1.32.0\bin\smsdrc', $this->input->post('gammusmsdrc'))) {
+            if (!write_file('./Gammu-1.32.0/bin/smsdrc', $this->input->post('gammusmsdrc'))) {
                 $msg_gammu = 'Unable to write the file smsdrc';
             } else {
                 $msg_gammu = 'File written!';

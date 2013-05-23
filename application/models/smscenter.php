@@ -36,11 +36,28 @@ class Smscenter extends CI_Model {
         return $query;
     }
 
-    function run_gammu_service($status) {
-        //Script untuk menjalankan Service Gammu
+    function run_gammu_service($status) {        
         switch ($status) {
+            case 'identify':
+                passthru("./Gammu-1.32.0/bin/ammu-smsd -c smsdrc -i > service.log");
+                $handle = fopen("service.log", "r");
+                $status = 0;
+                while (!feof($handle)) {
+                    $baristeks = fgets($handle);
+                    if (substr_count($baristeks, 'Service GammuSMSD installed sucessfully') > 0) {
+                        $status = 1;
+                    }
+                }
+                fclose($handle);
+                if ($status == 1)
+                    $return_msg = '<div class="alert alert-success"><strong>Yups!</strong> Service GammuSMSD Installed Sucessfully.</div>';
+                else if ($status == 0)
+                    $return_msg = '<div class="alert alert-error"><strong>Ups!</strong> Error Installing GammuSMSD Service.</div>';
+
+                return $return_msg;
+                break;
             case 'install':
-                passthru("C:\Gammu-1.32.0\bin\gammu-smsd -c smsdrc -i > service.log");
+                passthru("./Gammu-1.32.0/bin/gammu-smsd -c smsdrc -i > service.log");
                 $handle = fopen("service.log", "r");
                 $status = 0;
                 while (!feof($handle)) {
@@ -58,7 +75,7 @@ class Smscenter extends CI_Model {
                 return $return_msg;
                 break;
             case 'uninstall':
-                passthru("C:\Gammu-1.32.0\bin\gammu-smsd -c smsdrc -u > service.log");
+                passthru("./Gammu-1.32.0/bin/gammu-smsd -c smsdrc -u > service.log");
                 $handle = fopen("service.log", "r");
                 $status = 0;
                 while (!feof($handle)) {
@@ -76,7 +93,7 @@ class Smscenter extends CI_Model {
                 return $return_msg;
                 break;
             case 'start':
-                passthru("C:\Gammu-1.32.0\bin\gammu-smsd -c smsdrc -s > service.log");
+                passthru("./Gammu-1.32.0/bin/gammu-smsd -c smsdrc -s > service.log");
                 $handle = fopen("service.log", "r");
                 $status = 0;
                 while (!feof($handle)) {
@@ -94,7 +111,7 @@ class Smscenter extends CI_Model {
                 return $return_msg;
                 break;
             case 'stop':
-                passthru("C:\Gammu-1.32.0\bin\gammu-smsd -c smsdrc -k > service.log");
+                passthru("./Gammu-1.32.0/bin/gammu-smsd -c smsdrc -k > service.log");
                 $handle = fopen("service.log", "r");
                 $status = 0;
                 while (!feof($handle)) {
@@ -136,7 +153,7 @@ class Smscenter extends CI_Model {
     }
 
     function checking_debit_modem($number) {
-        exec("C:\Gammu-1.32.0\bin\gammu -c C:\Gammu-1.32.0\bin\gammurc getussd " . $number, $hasil);
+        exec("./Gammu-1.32.0/bin/gammu -c ./Gammu-1.32.0/bin/gammurc getussd " . $number, $hasil);
         for ($i = 0; $i <= count($hasil) - 1; $i++) {
             if (substr_count($hasil[$i], 'Service reply') > 0)
                 $index = $i;

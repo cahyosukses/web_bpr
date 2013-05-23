@@ -57,14 +57,14 @@
                     </tr>
                     <tr>
                         <td>Checking Modem</td>
-                        <td></td>
+                        <td><?php echo $gammu_identify;?></td>
                         <td>
                             <input type="button" value="Start" class="btn btn-mini btn-success">                            
                         </td>
                     </tr>
                     <tr>
                         <td>Service Gammu</td>
-                        <td></td>
+                        <td><?php echo $services_gammu;?></td>
                         <td>
                             <input type="button" value="Start" class="btn btn-mini btn-success">
                             <input type="button" value="Stop" class="btn btn-mini btn-danger">
