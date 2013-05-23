@@ -1,0 +1,12 @@
+[gammu]
+device = com16
+connection = at115200
+;model = 6110
+;synchronizetime = yes
+;logfile = gammulog
+;logformat = textall
+;use_locking = yes
+;gammuloc = locfile
+;startinfo = yes
+;gammucoding = utf8
+;usephonedb = yes

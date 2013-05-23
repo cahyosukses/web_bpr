@@ -1,0 +1,19 @@
+[gammu]
+device = com16
+connection = at115200
+
+# setup sms
+[smsd]
+service = mysql
+phoneid = ModemVodafone
+logfile = smsdlog
+debuglevel = 0
+commtimeout = 5
+sendtimeout = 5
+
+# setup database
+user = root
+password = rootwdp
+pc = localhost
+database = bpr
+driver = native_mysql

@@ -1,0 +1,82 @@
+These Windows services are started:
+
+   Apache2.2
+   Application Experience
+   Application Host Helper Service
+   Application Information
+   Application Management
+   Base Filtering Engine
+   CNG Key Isolation
+   COM+ Event System
+   Computer Browser
+   Cryptographic Services
+   DCOM Server Process Launcher
+   Desktop Window Manager Session Manager
+   DHCP Client
+   Diagnostic Policy Service
+   Diagnostic Service Host
+   Distributed Link Tracking Client
+   DNS Client
+   Extensible Authentication Protocol
+   Gammu SMSD Service (GammuSMSD)
+   Group Policy Client
+   IIS Admin Service
+   IKE and AuthIP IPsec Keying Modules
+   IP Helper
+   IPsec Policy Agent
+   Kaspersky Anti-Virus Service
+   KMService
+   Microsoft FTP Service
+   Multimedia Class Scheduler
+   MySQL
+   MySQL51
+   Network Connections
+   Network List Service
+   Network Location Awareness
+   Network Store Interface Service
+   Offline Files
+   Plug and Play
+   Portable Device Enumerator Service
+   Power
+   Print Spooler
+   Program Compatibility Assistant Service
+   Protexis Licensing V2
+   Remote Access Connection Manager
+   Remote Procedure Call (RPC)
+   RPC Endpoint Mapper
+   Secondary Logon
+   Secure Socket Tunneling Protocol Service
+   Security Accounts Manager
+   Security Center
+   Server
+   Shell Hardware Detection
+   SQL Server (SQLEXPRESS)
+   SQL Server Reporting Services (SQLEXPRESS)
+   Superfetch
+   System Event Notification Service
+   Task Scheduler
+   TCP/IP NetBIOS Helper
+   Telephony
+   Themes
+   TuneUp Theme Extension
+   User Profile Service
+   Windows Audio
+   Windows Audio Endpoint Builder
+   Windows Defender
+   Windows Driver Foundation - User-mode Driver Framework
+   Windows Error Reporting Service
+   Windows Event Log
+   Windows Firewall
+   Windows Font Cache Service
+   Windows Image Acquisition (WIA)
+   Windows Management Instrumentation
+   Windows Process Activation Service
+   Windows Search
+   Windows Update
+   WLAN AutoConfig
+   Workstation
+   World Wide Web Publishing Service
+   WWAN AutoConfig
+
+The command completed successfully.
+
