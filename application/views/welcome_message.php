@@ -1,4 +1,5 @@
 <?php echo get_header("public"); ?>
+
 <style type="text/css">
 
     table.generic {

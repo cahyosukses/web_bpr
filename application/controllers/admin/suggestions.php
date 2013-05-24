@@ -13,7 +13,7 @@ class Suggestions extends CI_Controller {
         $this->session->userdata('logged_in') == true ? '' : redirect('admin/users/sign_in');
     }
 
-    public function index() {
+    public function index() {        
         $contact = new Contact();
         switch ($this->input->get('c')) {
             case "1":
@@ -75,13 +75,13 @@ class Suggestions extends CI_Controller {
     function save() {
         $contact = new Contact();
 
-        $branchs->name = $this->input->post('name');
-        $branchs->no_rek = $this->input->post('no_rek');
-        $branchs->phone = $this->input->post('phone');
-        $branchs->email = $this->input->post('email');
-        $branchs->subject = $this->input->post('subject');
-        $branchs->comment = $this->input->post('comment');
-        $branchs->address = $this->input->post('address');
+        $branchs->name = strip_tags($this->input->post('name'));
+        $branchs->no_rek = strip_tags($this->input->post('no_rek'));
+        $branchs->phone = strip_tags($this->input->post('phone'));
+        $branchs->email = strip_tags($this->input->post('email'));
+        $branchs->subject = strip_tags($this->input->post('subject'));
+        $branchs->comment = strip_tags($this->input->post('comment'));
+        $branchs->address = strip_tags($this->input->post('address'));
         if ($branchs->save()) {
             $msg = notice('Create successfuly.', 'success');
             $this->session->set_flashdata('message', $msg);

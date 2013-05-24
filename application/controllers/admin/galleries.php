@@ -77,7 +77,7 @@ class Galleries extends CI_Controller {
             $this->session->set_flashdata('message', '<div class="alert alert-error"><a data-dismiss = "alert" class = "close">&times;</a>' . validation_errors() . '</div>');
             redirect('admin/galleries/add/' . $this->input->post('parent'));
         } else {
-            $gallery->title = $this->input->post('title_gallery');
+            $gallery->title = strip_tags($this->input->post('title_gallery'));
             $gallery->slug = preg_replace("![^a-z0-9]+!i", "-", slug($this->input->post('title_gallery')));
             $gallery->content = $this->input->post('content');
             $gallery->parent = $this->input->post('parent');

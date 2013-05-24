@@ -82,10 +82,10 @@ class Branches extends CI_Controller {
                 $this->session->set_flashdata('message', '<div class="alert alert-error">Record Exists, please change another name.</div>');
                 redirect('admin/branches/add');
             } else {
-                $branchs->name = $this->input->post('name');
-                $branchs->phone = $this->input->post('phone');
-                $branchs->address = $this->input->post('address');
-                $branchs->crew = $this->input->post('crew');
+                $branchs->name = strip_tags($this->input->post('name'));
+                $branchs->phone = strip_tags($this->input->post('phone'));
+                $branchs->address = strip_tags($this->input->post('address'));
+                $branchs->crew = strip_tags($this->input->post('crew'));
                 if ($branchs->save()) {
                     $msg = notice('Create successfuly.', 'success');
                     $this->session->set_flashdata('message', $msg);

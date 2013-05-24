@@ -17,7 +17,7 @@
             ?>    
                 <div style="float: left; margin-right: 5px;">
                     <a rel="activities" href="<?php echo base_url('assets/upload/galleries/' . $row->images); ?>" title="<?php echo $row->title; ?>">
-                    <?php echo get_image_public($row->images, 'galleries', 150, 150); ?>
+                    <?php echo get_image_public($row->images, 'galleries', 150, 120); ?>
                 </a>
             </div>
             <?php } ?>

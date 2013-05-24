@@ -1,7 +1,7 @@
 <?php get_header('admin') ?>
 <?php echo $this->session->flashdata('message'); ?>
 
-<div class="span6">
+<div class="span5">
     <div class="widget stacked">
         <div class="widget-header">
             <h3>Config File Gammu</h3>        
@@ -32,7 +32,7 @@
     </div>
 </div>
 
-<div class="span5">
+<div class="span6">
     <div class="widget stacked">
         <div class="widget-header">
             <h3>Status Services Gammu</h3>        

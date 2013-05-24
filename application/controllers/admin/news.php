@@ -81,7 +81,7 @@ class News extends CI_Controller {
                 $this->session->set_flashdata('message', '<div class="alert alert-error">Record Exists, please change another name.</div>');
                 redirect('admin/products/add');
             } else {
-                $news->title = $this->input->post('title_news');
+                $news->title = strip_tags($this->input->post('title_news'));
                 $news->slug = preg_replace("![^a-z0-9]+!i", "-", $this->input->post('title_news'));
                 $news->content = $this->input->post('content');
                 $news->created_at = date('c');
