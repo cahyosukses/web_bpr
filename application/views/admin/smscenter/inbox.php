@@ -3,6 +3,9 @@
 <div class="widget stacked">
     <div class="widget-header">
         <h3>Inbox</h3>        
+        <span class="pull-right" style="margin-right: 5px;">
+            Queue messages in outbox : <span id="antrian">0</span>
+        </span>
     </div>
     <div class="widget-content">
         <table class="table table-hover">
@@ -17,30 +20,30 @@
             <tbody>
                 <?php
                 //if (!empty($inbox_row)) {
-                    foreach ($get_inbox->result() as $row) {
-                ?>
-                        <tr>
-                            <td><?php echo $row->TextDecoded; ?></td>
-                            <td><?php echo $row->SenderNumber; ?></td>
-                            <td><?php echo $row->ReceivingDateTime; ?></td>
-                            <td>
-                                <div class="btn-group">
-                                    <a href="#" data-toggle="dropdown" class="btn btn-mini dropdown-toggle">
-                                        Action
-                                        <span class="caret"></span>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="<?php echo site_url('admin/smscenters/replay/' . $row->SenderNumber); ?>">Replay</a></li>
-                                        <li><a onclick="return confirm('Are you sure?');" href="<?php echo site_url('admin/smscenters/albums/delete/' . $row->SenderNumber); ?>">Destroy</a></li>
-                                    </ul>
-                                </div>
+                foreach ($get_inbox->result() as $row) {
+                    ?>
+                    <tr>
+                        <td><?php echo $row->TextDecoded; ?></td>
+                        <td><?php echo $row->SenderNumber; ?></td>
+                        <td><?php echo $row->ReceivingDateTime; ?></td>
+                        <td>
+                            <div class="btn-group">
+                                <a href="#" data-toggle="dropdown" class="btn btn-mini dropdown-toggle">
+                                    Action
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a href="<?php echo site_url('admin/smscenters/replay/' . $row->ID); ?>">Replay</a></li>
+                                    <li><a onclick="return confirm('Are you sure?');" href="<?php echo site_url('admin/smscenters/albums/delete/' . $row->SenderNumber); ?>">Destroy</a></li>
+                                </ul>
+                            </div>
 
-                            </td>
-                        </tr>
-                <?php
+                        </td>
+                    </tr>
+                    <?php
                     //}
-                //} else {
-                ?>
+                    //} else {
+                    ?>
                     <!--tr>
                         <td colspan="4">
                             <div class="alert alert-info">
@@ -59,4 +62,18 @@
 
     </div>
 </div>
+
+
+<script>
+setInterval(
+        function() {
+            $.get("http://webbpr.me/get_queue_messages/", function(message) {//alert(bmsJsonComment);
+                //            alert(Jam);
+                var xMessage = message;
+
+                var x = document.getElementById('antrian');
+                x.innerHTML = xMessage;
+            });
+        }, 5000);
+</script>
 <?php get_footer('admin') ?>

@@ -138,5 +138,5 @@
                     var x = document.getElementById('stat-value');
                     x.innerHTML = xJam;
                 });
-            }, 1000);
+            }, 1000);            
 </script>

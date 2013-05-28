@@ -34,6 +34,10 @@
                     <!-- header -->
                     <header id="header">
                         <h1 id="logo" style="height:60px; width: 300px; margin-top: -10px;"><a href="#">-</a></h1>
+                        <div style="text-align: center; float: left; margin-top: -17px; margin-left: 120px; background: #ccc;">
+                            Content Masih Dalam Pengembangan <br>Untuk Saran dan Kritik Silahkan Tinggalkan Pesan<br>
+                            di Menu "HUBUNGI BPR"
+                        </div>
                         <!-- search -->
                         <div class="search">
                             <form method="post">

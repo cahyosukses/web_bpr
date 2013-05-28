@@ -21,6 +21,11 @@ class Smscenter extends CI_Model {
         $this->db->insert('outbox', $data);
     }
 
+    function get_count_outbox() {
+        $rs = $this->db->count_all('outbox');
+        return $rs;
+    }
+
     function _delete($id) {
         $this->db->where('id', $id);
         $this->db->delete($this->table);
@@ -36,7 +41,7 @@ class Smscenter extends CI_Model {
         return $query;
     }
 
-    function run_gammu_service($status) {        
+    function run_gammu_service($status) {
         switch ($status) {
             case 'identify':
                 passthru("./Gammu-1.32.0/bin/ammu-smsd -c smsdrc -i > service.log");

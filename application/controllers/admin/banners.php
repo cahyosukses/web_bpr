@@ -11,7 +11,7 @@ class Banners extends CI_Controller {
     function __construct() {
         parent::__construct();        
         $this->session->userdata('logged_in') == true ? '' : redirect('admin/users/sign_in');
-        $this->tracking->get_tracker_user($this->session->userdata('username'));
+//        $this->tracking->get_tracker_user($this->session->userdata('username'));
     }
 
     public function index() {

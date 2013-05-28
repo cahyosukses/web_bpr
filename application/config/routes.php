@@ -52,12 +52,13 @@ $route['products/detail/(:any)'] = "products/detail/$1";
 $route['abouts'] = "abouts/index";
 $route['contacts'] = "contacts/index";
 $route['activities'] = "activities/index";
-$route['admin'] = "admin/";
+
 
 $route['promos/(:any)'] = "welcome/promos/$1";
 $route['simulator'] = "products/simulasi_kredit";
 $route['ads/(:any)'] = "welcome/ads/$1";
 $route['get_time_server'] = "welcome/get_time_server/";
+$route['get_queue_messages'] = "admin/smscenters/get_queue_messages/";
 
 //ADMIN PAGE
 $route['admin/galleries/albums/add'] = "admin/galleries/add_album";
@@ -72,7 +73,7 @@ $route['technical-support'] = "welcome/technical_support";
 
 
 //PEOPLE
-//$route['(:any)'] = "peoples/show/$1";
+//$route['^(:any)'] = "peoples/show/$1";
 
 $route['404_override'] = '';
 

@@ -49,25 +49,25 @@
                 <tbody>
                     <tr>
                         <td>Gammu</td>
-                        <td></td>
+                        <td id="msg_services_install"></td>
                         <td>
-                            <input type="button" value="Install" class="btn btn-mini btn-success">
-                            <input type="button" value="Uninstall" class="btn btn-mini btn-danger">
+                            <input type="button" value="Install" class="btn btn-mini btn-success" onclick="javascript: install_service();">
+                            <input type="button" value="Uninstall" class="btn btn-mini btn-danger" onclick="javascript: uninstall_service();">
                         </td>
                     </tr>
                     <tr>
                         <td>Checking Modem</td>
-                        <td><?php echo $gammu_identify;?></td>
+                        <td><?php echo $gammu_identify; ?></td>
                         <td>
                             <input type="button" value="Start" class="btn btn-mini btn-success">                            
                         </td>
                     </tr>
                     <tr>
                         <td>Service Gammu</td>
-                        <td><?php echo $services_gammu;?></td>
+                        <td id="msg_services"><?php echo $services_gammu; ?></td>
                         <td>
-                            <input type="button" value="Start" class="btn btn-mini btn-success">
-                            <input type="button" value="Stop" class="btn btn-mini btn-danger">
+                            <input type="button" value="Start" class="btn btn-mini btn-success" onclick="javascript: start_service();">
+                            <input type="button" value="Stop" class="btn btn-mini btn-danger" onclick="javascript: stop_service();">
                         </td>
                     </tr>
                 </tbody>
@@ -75,5 +75,36 @@
         </div>
     </div>
 </div>
+<script>
+                                function stop_service() {
+                                    $.get("http://webbpr.me/admin/smscenters/service_gammu/stop", function(message) {
+                                        var xMessage = message;
+                                        var x = document.getElementById('msg_services');
+                                        x.innerHTML = xMessage;
+                                    });
 
+                                }
+                                function start_service() {
+                                    $.get("http://webbpr.me/admin/smscenters/service_gammu/start", function(message) {
+                                        var xMessage = message;
+                                        var x = document.getElementById('msg_services');
+                                        x.innerHTML = xMessage;
+                                    });
+
+                                }
+                                function install_service() {
+                                    $.get("http://webbpr.me/admin/smscenters/install_service_gammu/install", function(message) {
+                                        var xMessage = message;
+                                        var x = document.getElementById('msg_services_install');
+                                        x.innerHTML = xMessage;
+                                    });
+                                }
+                                function uninstall_service() {
+                                    $.get("http://webbpr.me/admin/smscenters/install_service_gammu/uninstall", function(message) {
+                                        var xMessage = message;
+                                        var x = document.getElementById('msg_services_install');
+                                        x.innerHTML = xMessage;
+                                    });
+                                }
+</script>
 <?php get_footer('admin') ?>

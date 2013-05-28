@@ -81,6 +81,25 @@ class Smscenters extends CI_Controller {
         redirect('admin/smscenters/config/');
     }
 
+    function replay($id) {
+
+        $this->load->view('admin/smscenter/replay');
+    }
+
+    function get_queue_messages() {
+        echo $this->Smscenter->get_count_outbox();
+    }
+
+    function service_gammu($status) {
+        $result = $this->Smscenter->run_gammu_service($status);
+        echo $result;
+    }
+
+    function install_service_gammu($status) {
+        $result = $this->Smscenter->run_gammu_service($status);
+        echo $result;
+    }
+
 }
 
 ?>
