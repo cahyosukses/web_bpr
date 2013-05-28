@@ -68,6 +68,10 @@ class Welcome extends CI_Controller {
 
         $data['name'] = $rs->name;
         $data['about_me'] = $rs->about_me;
+        $data['address'] = $rs->address;
+        $data['city'] = $rs->city;
+        $data['phone'] = $rs->phone;
+        $data['email'] = $rs->email;
         $data['profile_pic'] = img($image_properties_pic);
         $data['background'] = img($image_properties_bg);
         $this->load->view('peoples', $data);
