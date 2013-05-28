@@ -104,22 +104,22 @@ class Peoples extends CI_Controller {
     }
 
     function edit($id) {
-        $news = new Post();
-        $data['form_action'] = site_url("admin/news/update");
-        $rs = $news->where('id', $id)->get();
+        $people = new People();
+        $data['form_action'] = site_url("admin/peoples/update");
+        $rs = $people->where('id', $id)->get();
         $data['id'] = $rs->id;
-        $data['image_edit'] = $rs->images;
-        $data['title_news'] = array('name' => 'title_news', 'value' => $rs->title, 'class' => 'span7');
-        $data['image'] = $rs->images;
-        $data['content'] = array('name' => 'content', 'value' => $rs->content, 'class' => 'ckeditor');
+        $data['image_edit'] = $rs->photo_bg;
+        $data['name'] = array('name' => 'name', 'value' => $rs->name, 'class' => 'span7');
+        $data['image'] = $rs->photo_bg;
+        $data['about_me'] = array('name' => 'about_me', 'value' => $rs->about_me, 'class' => 'ckeditor');
 
-        $this->load->view('admin/news/frm_news', $data);
+        $this->load->view('admin/peoples/frm_people', $data);
     }
 
     function update() {
-        $news = new Post();
+        $people = new People();
         // upload photo
-        $config['upload_path'] = 'assets/upload/news';
+        $config['upload_path'] = 'assets/upload/peoples';
         $config['allowed_types'] = 'gif|jpg|png|bmp|jpeg';
         $this->load->library("upload", $config);
         if ($this->upload->do_upload("image")) {
@@ -128,35 +128,34 @@ class Peoples extends CI_Controller {
             //print_r($this->upload->display_errors());
         }
 
-        $news->where('id', $this->input->post('id'))
+        $people->where('id', $this->input->post('id'))
                 ->update(
                         array(
-                            'title' => $this->input->post('title_news'),
-                            'slug' => preg_replace("![^a-z0-9]+!i", "-", $this->input->post('title_news')),
-                            'content' => $this->input->post('content'),
-                            'images' => $data["file_name"] == '' ? $this->input->post('image_edit') : $data["file_name"],
-                            'updated_at' => date('c')
+                            'name' => $this->input->post('name'),
+                            'slug' => preg_replace("![^a-z0-9]+!i", "-", slug($this->input->post('name'))),
+                            'about_me' => $this->input->post('about_me'),
+                            'photo_bg' => $data["file_name"] == '' ? $this->input->post('image_edit') : $data["file_name"]
                         )
         );
         $msg = '<div class="alert alert-success">Update successfuly.</div>';
         $this->session->set_flashdata('message', $msg);
-        redirect('admin/news/');
+        redirect('admin/peoples/');
     }
 
     public function view($id){
-        $news = new Post();
+        $people = new People();
         $rs = $news->where('id', $id)->get();
-        $data['title_news'] = $rs->title;
-        $data['images_news'] = $rs->images;
-        $data['content_news'] = $rs->content;
-        $this->load->view('admin/news/views', $data);
+        $data['name'] = $rs->name;
+        $data['photo'] = $rs->photo_bg;
+        $data['about_me'] = $rs->content;
+        $this->load->view('admin/peoples/views', $data);
     }
 
     public function delete($id) {
-        $news = new Post();
-        $news->_delete($id);
+        $people = new People();
+        $people->_delete($id);
 
-        redirect('admin/news');
+        redirect('admin/peoples');
     }
 
 }

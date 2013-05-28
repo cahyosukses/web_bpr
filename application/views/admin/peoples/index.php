@@ -84,6 +84,8 @@ function HeaderLink($value, $key, $col, $dir) {
                                 <ul class="dropdown-menu pull-right">
                                     <li><a href="<?php echo site_url('admin/peoples/edit/' . $row->id); ?>"><i class="icon-ok"></i> Edit</a></li>
                                     <li><a href="<?php echo site_url('admin/peoples/delete/' . $row->id); ?>"><i class="icon-trash"></i> Destroy</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="<?php echo site_url('~/' . $row->slug); ?>" target="_blank"><i class="icon-ok"></i> View</a></li>
                                 </ul>
                             </div>
 

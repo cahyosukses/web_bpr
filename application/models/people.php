@@ -17,6 +17,11 @@ class People extends DataMapper {
             return false;
     }
 
+    function _delete($id) {
+        $this->db->where('id', $id);
+        $this->db->delete($this->table);
+    }
+
 }
 
 ?>
