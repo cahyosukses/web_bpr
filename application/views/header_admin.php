@@ -31,6 +31,7 @@
                             <ul class="nav">
                                 <!--li  class="active"-->
                                 <li><a href="<?php echo site_url('admin/welcome'); ?>">Home</a></li>
+                                <li><a href="<?php echo site_url('admin/peoples'); ?>">Peoples</a></li>
                                 <li class="dropdown">
                                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                         Settings

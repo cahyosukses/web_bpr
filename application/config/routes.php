@@ -74,6 +74,7 @@ $route['technical-support'] = "welcome/technical_support";
 
 //PEOPLE
 //$route['^(:any)'] = "peoples/show/$1";
+$route['~/(:any)'] = "welcome/people/$1";
 
 $route['404_override'] = '';
 

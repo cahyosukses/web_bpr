@@ -5,10 +5,16 @@ if (!defined('BASEPATH'))
 
 class Welcome extends CI_Controller {
 
+    function __construct() {
+        parent::__construct();
+        $this->load->helper('html');
+    }
+
     public function index() {
         $setting = new Setting();
         $post = new Post();
         $banners = new Banner();
+
         $data['news'] = $post->get('3')->all;
         $data['banners'] = $banners->get('5')->all;
 
@@ -43,6 +49,28 @@ class Welcome extends CI_Controller {
         $data['width'] = '350';
         $data['height'] = '250';
         $this->load->view('detail_public', $data);
+    }
+
+    public function people($name) {
+        $people = new People();
+        $rs = $people->where('slug', $name)->get();
+
+        $image_properties_pic = array(
+            'src' => 'assets/upload/peoples/' . $rs->profile_pic,
+            'alt' => $rs->name,
+            'id' => 'full-screen-background-image'
+        );
+        $image_properties_bg = array(
+            'src' => 'assets/upload/peoples/' . $rs->photo_bg,
+            'alt' => $rs->name,
+            'id' => 'full-screen-background-image'
+        );
+
+        $data['name'] = $rs->name;
+        $data['about_me'] = $rs->about_me;
+        $data['profile_pic'] = img($image_properties_pic);
+        $data['background'] = img($image_properties_bg);
+        $this->load->view('peoples', $data);
     }
 
     public function get_time_server() {
