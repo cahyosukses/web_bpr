@@ -26,9 +26,9 @@ class Smscenter extends CI_Model {
         return $rs;
     }
 
-    function _delete($id) {
+    function _delete($id, $table) {
         $this->db->where('id', $id);
-        $this->db->delete($this->table);
+        $this->db->delete($table);
     }
 
     function read_inbox($limit, $uri) {

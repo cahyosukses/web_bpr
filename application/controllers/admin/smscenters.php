@@ -82,8 +82,17 @@ class Smscenters extends CI_Controller {
     }
 
     function replay($id) {
+        $rs = $this->db->where('ID', $id);
+        $data['sender_number'] = array('name' => 'sender_number', 'class' => 'input-block-level', 'value' => $rs->SenderNumber);
+        $data['sender_msg'] = array('name' => 'sender_msg', 'class' => 'input-block-level', 'rows' => 3, 'value' => $rs->TextDecoded);
+        $data['re_msg'] = array('name' => 're_msg', 'class' => 'input-block-level', 'rows' => 3);
+        $this->load->view('admin/smscenter/replay', $data);
+    }
 
-        $this->load->view('admin/smscenter/replay');
+    function delete($id) {
+        $smscenter = new Smscenter();
+        $smscenter->_delete($id, 'inbox');
+        redirect('admin/smscenters/inbox');
     }
 
     function get_queue_messages() {
