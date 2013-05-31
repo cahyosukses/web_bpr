@@ -59,6 +59,7 @@ $route['simulator'] = "products/simulasi_kredit";
 $route['ads/(:any)'] = "welcome/ads/$1";
 $route['get_time_server'] = "welcome/get_time_server/";
 $route['get_queue_messages'] = "admin/smscenters/get_queue_messages/";
+$route['get_queue_inbox'] = "admin/smscenters/get_queue_inbox/";
 
 //ADMIN PAGE
 $route['admin/galleries/albums/add'] = "admin/galleries/add_album";

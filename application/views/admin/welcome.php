@@ -45,10 +45,13 @@
 
             <div style="margin-top: 20px;">
                 <div class="widget-header">
-                    <h3>Inbox (SMS Banking)</h3>
+                    <h3>Inbox (SMS Banking)</h3> 
+                    <span id="loading" style="display: none;">
+                        <?php echo img('./assets/images/loader.gif'); ?>
+                    </span>
                 </div> <!-- /widget-header -->
 
-                <div class="widget-content">
+                <div class="widget-content" id="inbox_gammu">
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -58,26 +61,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
-                            if (!empty($get_inbox)) {
-                                foreach ($get_inbox->result() as $row) {
+                            <?php   foreach ($get_inbox as $row) {
                                     ?>
                                     <tr>
                                         <td><?php echo $row->TextDecoded; ?></td>
                                         <td><?php echo $row->SenderNumber; ?></td>
                                         <td><?php echo $row->ReceivingDateTime; ?></td>
-                                    </tr>
-                                    <?php
-                                }
-                            } else {
-                                ?>
-                                <tr>
-                                    <td colspan="4">
-                                        <div class="alert alert-info">
-                                            <strong>Ups!</strong> No Message Received.
-                                        </div>
-                                    </td>
-                                </tr>
+                                    </tr>  
                             <?php } ?>
                         </tbody>
                     </table>
@@ -118,7 +108,7 @@
                 <div class="widget-content">
                     <ul class="news-items">
                         <div style="height: 120px;"></div>
-                        <!--h2>Welcome, <?php //echo $this->session->userdata('username');      ?></h2-->
+                        <!--h2>Welcome, <?php //echo $this->session->userdata('username');       ?></h2-->
                     </ul>
                 </div> <!-- /widget-content -->
             </div>
@@ -131,12 +121,16 @@
 <script>
     setInterval(
             function() {
-                $.get("http://webbpr.me/get_time_server/", function(Jam) {//alert(bmsJsonComment);
-                    //            alert(Jam);
-                    var xJam = Jam;
-
-                    var x = document.getElementById('stat-value');
-                    x.innerHTML = xJam;
+                $.get("http://webbpr.me/get_time_server/", function(Jam) {
+                    $('#stat-value').html(Jam);
                 });
-            }, 1000);            
+            }, 1000);
+    setInterval(
+            function() {            
+                $('#loading').show();
+                $.get("http://webbpr.me/get_queue_inbox/", function(html) {                                
+                    $('#inbox_gammu').html(html);
+                    $('#loading').hide();
+                });
+            }, 6000);
 </script>

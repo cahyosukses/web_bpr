@@ -11,8 +11,10 @@ class Welcome extends CI_Controller {
 
     public function index() {
         $news = new Post();
+        $inbox = new MInbox();
         $data['news'] = $news->get('3')->all;
-        $data['get_inbox'] = $this->db->get('inbox', 3);
+//        $data['get_inbox'] = $this->db->get('inbox', 3);
+        $data['get_inbox'] = $inbox->order_by('ID DESC')->get('5')->all;
         $this->load->view('admin/welcome', $data);
     }
 

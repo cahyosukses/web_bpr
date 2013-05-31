@@ -25,7 +25,7 @@
                         <td><?php echo $row->TextDecoded; ?></td>
                         <td><?php echo $row->DestinationNumber; ?></td>
                         <td><?php echo date('d M Y h.i.s', strtotime($row->SendingDateTime)); ?></td>
-                        <td align="center"><?php echo $row->DeliveryDateTime != null ? date('d M Y h.i.s', strtotime($row->DeliveryDateTime)) : '<img src="' . base_url('assets/images/load_delivery_msg.gif') . '">'; ?></td>
+                        <td align="center"><?php echo $row->DeliveryDateTime != null ? date('d M Y h.i.s', strtotime($row->DeliveryDateTime)) : '<img src="' . base_url('assets/images/loader.gif') . '">'; ?></td>
 
                         <td>
                             <div class="btn-group">

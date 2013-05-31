@@ -82,7 +82,9 @@ class Smscenters extends CI_Controller {
     }
 
     function replay($id) {
-        $rs = $this->db->where('ID', $id);
+        $inbox = new MInbox();
+        $rs = $inbox->where('ID', $id)->get();
+
         $data['sender_number'] = array('name' => 'sender_number', 'class' => 'input-block-level', 'value' => $rs->SenderNumber);
         $data['sender_msg'] = array('name' => 'sender_msg', 'class' => 'input-block-level', 'rows' => 3, 'value' => $rs->TextDecoded);
         $data['re_msg'] = array('name' => 're_msg', 'class' => 'input-block-level', 'rows' => 3);
@@ -96,7 +98,15 @@ class Smscenters extends CI_Controller {
     }
 
     function get_queue_messages() {
+        sleep(1);
         echo $this->Smscenter->get_count_outbox();
+    }
+
+    function get_queue_inbox() {
+        sleep(1);
+        $inbox = new MInbox();                
+        $data['get_inbox'] = $inbox->order_by('ID DESC')->get('5')->all;
+        $this->load->view('admin/smscenter/js_inbox', $data);
     }
 
     function service_gammu($status) {

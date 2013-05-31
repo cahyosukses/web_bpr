@@ -14,7 +14,9 @@
         <link href="<?php echo base_url(); ?>assets/css/font-awesome.min.css" rel="stylesheet">
         <link href="<?php echo base_url(); ?>assets/css/dashboard.css" rel="stylesheet" type="text/css">
         <link href="<?php echo base_url(); ?>assets/css/signin.css" rel="stylesheet" type="text/css">
-
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
           <script src="../assets/js/html5shiv.js"></script>
@@ -22,7 +24,7 @@
     </head>
     <body>
         <?php if ($this->session->userdata('logged_in') == true) {
-        ?>
+            ?>
             <div class="navbar navbar-inverse navbar-fixed-top">
                 <div class="navbar-inner">
                     <div class="container">
@@ -74,63 +76,65 @@
                             <ul class="nav pull-right">
                                 <li class="dropdown">
                                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                    <?php echo $this->session->userdata('full_name'); ?>
-                                    <b class="caret"></b>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="javascript:;">Profile</a></li>
-                                    <li><a href="javascript:;">Message <span class="badge badge-warning">0</span></a></li>
-                                    <li><a href="<?php echo site_url('admin/users'); ?>">Users</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="<?php echo site_url('admin/users/sign_out'); ?>">Logout</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div><!--/.nav-collapse -->
+                                        <?php echo $this->session->userdata('full_name'); ?>
+                                        <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="javascript:;">Profile</a></li>
+                                        <li><a href="javascript:;">Message <span class="badge badge-warning">0</span></a></li>
+                                        <li><a href="<?php echo site_url('admin/users'); ?>">Users</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="<?php echo site_url('admin/users/sign_out'); ?>">Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div><!--/.nav-collapse -->
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- MODAL FORM SEND MESSAGE -->
-        <!-- Button to trigger modal -->
-        <script type="text/javascript">
-            function Hitung(){
-                var curText = document.fmessage.textmessage.value.length;
-                var maxText = 160;
-                var sisa = maxText - curText;
-                var isi = document.getElementById('maxkarakter');
-                isi.innerHTML = sisa + ' karakter';
-            }
-        </script>        
+            <!-- MODAL FORM SEND MESSAGE -->
+            <!-- Button to trigger modal -->
+            <script type="text/javascript">
+                function Hitung() {
+                    var curText = document.fmessage.textmessage.value.length;
+                    var maxText = 160;
+                    var sisa = maxText - curText;
+                    var isi = document.getElementById('maxkarakter');
+                    isi.innerHTML = sisa + ' karakter';
+                }
+            </script>        
 
-        <!-- Modal -->
-        <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3 id="myModalLabel">Compose Message</h3>
+            <!-- Modal -->
+            <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="myModalLabel">Compose Message</h3>
+                </div>
+                <div class="modal-body">
+                    <div id="replay-form" title="replay message">
+                        <fieldset>
+                            <?php
+                            $attributes = array('name' => "fmessage");
+                            echo form_open("admin/smscenters/send_messages/", $attributes);
+                            ?>
+                            <label for="hp">Handphone Number</label>
+                            <input type="text" name="phone_number" class="input-block-level">
+                            <span id="hp_verify" class="verify"></span><br>
+                            <label for="message">Message</label>
+                            <textarea name="textmessage" onKeyUp="Hitung()"maxlength="160"
+                                      id="alamat" rows="5" cols="55" class="input-block-level"> </textarea>
+                            </br><div id="maxkarakter"> 160 karakter </div></br>
+                            <input type=submit name=ok id="tombol3" align=left value="Send Message" class="btn btn-secondary" />
+    <?php echo form_close(); ?>
+                        </fieldset>
+                    </div>
+                </div>
+                <!--div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                    <button class="btn btn-primary">Save changes</button>
+                </div-->
             </div>
-            <div class="modal-body">
-                <div id="replay-form" title="replay message">
-                    <fieldset>
-                        <?php $attributes = array('name' => "fmessage");
-                                    echo form_open("admin/smscenters/send_messages/", $attributes); ?>
-                                    <label for="hp">Handphone Number</label>
-                                    <input type="text" name="phone_number" class="input-block-level">
-                                    <span id="hp_verify" class="verify"></span><br>
-                                    <label for="message">Message</label>
-                                    <textarea name="textmessage" onKeyUp="Hitung() "maxlength="160"
-                                              id="alamat" rows="5" cols="55" class="input-block-level"> </textarea>
-                                    </br><div id="maxkarakter"> 160 karakter </div></br>
-                                    <input type=submit name=ok id="tombol3" align=left value="Send Message" class="btn btn-secondary" />
-                               <?php echo form_close(); ?>
-                         </fieldset>
-                     </div>
-                 </div>
-                 <!--div class="modal-footer">
-                     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                     <button class="btn btn-primary">Save changes</button>
-                 </div-->
-             </div>
 
-        <?php } ?>
+<?php } ?>
         <div class="container" style="margin-top: 40px;">
