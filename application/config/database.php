@@ -65,5 +65,22 @@ $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
 
+$db['ussi']['hostname'] = 'localhost';
+$db['ussi']['username'] = 'root';
+$db['ussi']['password'] = 'rootwdp';
+$db['ussi']['database'] = 'soreang';
+$db['ussi']['dbdriver'] = 'mysql';
+$db['ussi']['dbprefix'] = '';
+$db['ussi']['pconnect'] = TRUE;
+$db['ussi']['db_debug'] = TRUE;
+$db['ussi']['cache_on'] = FALSE;
+$db['ussi']['cachedir'] = '';
+$db['ussi']['char_set'] = 'utf8';
+$db['ussi']['dbcollat'] = 'utf8_general_ci';
+$db['ussi']['swap_pre'] = '';
+$db['ussi']['autoinit'] = TRUE;
+$db['ussi']['stricton'] = FALSE;
+
+
 /* End of file database.php */
 /* Location: ./application/config/database.php */

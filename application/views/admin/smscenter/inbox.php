@@ -4,7 +4,7 @@
 <div class="widget stacked">
     <div class="widget-header">               
         <form class="input-append" style="margin-top: 5px; margin-left: 5px;" method="get">
-            <input type="text" id="datepicker1" class="input-small" placeholder="Date 1" name="date_1">
+            <input type="text" id="datepicker1" class="input-small" placeholder="Date 1" name="date_1">&nbsp;
             <input type="text" id="datepicker2" class="input-small" placeholder="Date 2" name="date_2">
             <button type="submit" class="btn" name="search">Search</button>
         </form>
@@ -79,7 +79,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h3 id="myModalLabel">Replay Message</h3>
     </div>
-    <div class="modal-body">Loading...</div>
+    <div class="modal-body"><?php echo img('./assets/images/loader.gif'); ?> Loading...</div>
 </div>
 </div>
 

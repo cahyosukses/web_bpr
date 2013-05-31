@@ -9,13 +9,11 @@ class Smscenters extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-        $this->load->helper('file');
         $this->load->model('Smscenter');
-
         $this->session->userdata('logged_in') == true ? '' : redirect('admin/users/sign_in');
     }
 
-    function inbox() {
+    function inbox() {       
         $config = array(
             'base_url' => site_url() . 'admin/smscenters/inbox/',
             'total_rows' => $this->db->count_all('inbox'),
@@ -117,7 +115,7 @@ class Smscenters extends CI_Controller {
     function install_service_gammu($status) {
         $result = $this->Smscenter->run_gammu_service($status);
         echo $result;
-    }
+    }    
 
 }
 
