@@ -1,0 +1,56 @@
+@font-face
+{
+    font-family: backlash;
+    src: url('./fonts/backlash.ttf');
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.header_name{
+    color: white; 
+    font-family: backlash; 
+    font-size: 50px;
+}
+
+#full-screen-background-image {
+    z-index: -999;
+    min-height: 100%;
+    min-width: 1024px;
+    width: 100%;
+    height: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+#page-wrap { 
+    position: relative; 
+    z-index: 2; 
+    width: 500px; 
+    margin: 20px; 
+    padding: 20px; 
+    background: black; 
+    -moz-box-shadow: 0 0 20px black; 
+    -webkit-box-shadow: 0 0 20px black; 
+    box-shadow: 0 0 20px black; 
+}
+p { 
+    font: 15px/2 Georgia, Serif; 
+    margin: 0 0 30px 0; 
+    text-indent: 40px; 
+    color: white;
+}
+.transparent{ 
+    opacity:.60;
+    -moz-opacity:.60; 
+    filter:alpha(opacity=60); 
+}
+.profile{
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #333333;                
+}
