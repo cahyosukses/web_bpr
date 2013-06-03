@@ -59,7 +59,7 @@
                         <td>Checking Modem</td>
                         <td><?php echo $gammu_identify; ?></td>
                         <td>
-                            <input type="button" value="Start" class="btn btn-mini btn-success">                            
+                            <input type="button" value="Start" class="btn btn-mini btn-success"  onclick="javascript: cek_status_modem();">
                         </td>
                     </tr>
                     <tr>
@@ -93,14 +93,21 @@
 
                                 }
                                 function install_service() {
-                                    $.get("http://webbpr.me/admin/smscenters/install_service_gammu/install", function(message) {
+                                    $.get("http://webbpr.me/admin/smscenters/service_gammu/install", function(message) {
                                         var xMessage = message;
                                         var x = document.getElementById('msg_services_install');
                                         x.innerHTML = xMessage;
                                     });
                                 }
                                 function uninstall_service() {
-                                    $.get("http://webbpr.me/admin/smscenters/install_service_gammu/uninstall", function(message) {
+                                    $.get("http://webbpr.me/admin/smscenters/service_gammu/uninstall", function(message) {
+                                        var xMessage = message;
+                                        var x = document.getElementById('msg_services_install');
+                                        x.innerHTML = xMessage;
+                                    });
+                                }
+                                function cek_status_modem() {
+                                    $.get("http://webbpr.me/admin/smscenters/service_gammu/identify", function(message) {
                                         var xMessage = message;
                                         var x = document.getElementById('msg_services_install');
                                         x.innerHTML = xMessage;
