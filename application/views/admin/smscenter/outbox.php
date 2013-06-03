@@ -19,7 +19,7 @@
             <tbody>
                 <?php
                 //if (!empty($sentitems_row)) {
-                foreach ($get_sentitems->result() as $row) {
+                foreach ($get_sentitems as $row) {
                     ?>
                     <tr>
                         <td><?php echo $row->TextDecoded; ?></td>

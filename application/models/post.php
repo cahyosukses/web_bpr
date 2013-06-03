@@ -1,7 +1,7 @@
 <?php
 
 class Post extends DataMapper {
-
+    public $db_params = 'gammu';
     public $table = "news";
     public $validation = array(
         'title' => array(

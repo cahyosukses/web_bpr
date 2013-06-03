@@ -5,10 +5,12 @@ if (!defined('BASEPATH'))
 
 class Settings extends CI_Controller {
 
-    private $limit = 10;
+    private $limit = 100;
 
     function __construct() {
         parent::__construct();
+        $this->load->model("Setting");
+        $this->load->database('gammu', TRUE);
         $this->session->userdata('logged_in') == true ? '' : redirect('admin/users/sign_in');
     }
 

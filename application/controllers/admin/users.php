@@ -9,6 +9,7 @@ class Users extends CI_Controller {
 
     function __construct() {
         parent::__construct();
+//        $this->load->database('gammu', TRUE);
         //$this->session->userdata('logged_in') == false ? '' : redirect('admin/welcome');
     }
 
@@ -104,7 +105,6 @@ class Users extends CI_Controller {
 
         $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
-
 
         if ($this->form_validation->run() == FALSE) {
             $this->session->set_flashdata('message', '<div class="alert alert-error">' . validation_errors() . '</div>');

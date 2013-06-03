@@ -1,7 +1,7 @@
 <?php
 
 class People extends DataMapper {
-
+    public $db_params = 'gammu';
     public $table = "peoples";
 
     function __construct() {

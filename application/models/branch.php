@@ -2,6 +2,7 @@
 
 class Branch extends DataMapper {
 
+    public $db_params = 'gammu';
     public $table = "branches";
     public $validation = array(
         'name' => array(

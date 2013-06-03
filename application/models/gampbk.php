@@ -1,8 +1,8 @@
 <?php
 
-class MOutbox extends DataMapper {
-
-    public $table = "outbox";   
+class Gampbk extends DataMapper {
+    public $db_params = 'gammu';
+    public $table = "pbk";
 
     function __construct() {
         parent::__construct();

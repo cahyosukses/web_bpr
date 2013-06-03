@@ -22,19 +22,25 @@
                     <th>Message</th>
                     <th width="150">Received Time</th>
                     <th width="150">Status Replay</th>
+                    <th width="100"></th>
                     <th width="10"></th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                //if (!empty($inbox_row)) {
-                foreach ($get_inbox->result() as $row) {
+                $inbox = new Gaminbox();
+                foreach ($get_inbox as $row) {
                     ?>
                     <tr>                        
                         <td><?php echo $row->SenderNumber; ?></td>
                         <td><?php echo $row->TextDecoded; ?></td>
                         <td><?php echo $row->ReceivingDateTime; ?></td>
                         <td><?php echo $row->Processed; ?></td>
+                        <td>
+                            <?php
+                            $row->Processed == 'false' ? $inbox->auto_replay_message($row->TextDecoded, $row->SenderNumber, $row->ID) : '';
+                            ?>
+                        </td>
                         <td>
                             <div class="btn-group">
                                 <a href="#" data-toggle="dropdown" class="btn btn-mini dropdown-toggle">
@@ -85,26 +91,26 @@
 
 
 
- 
+
 <script>
 //                                    $(function() {
                                         $("#datepicker1, #datepicker2").datepicker({
-                                            dateFormat: 'yy-mm-dd', 
+                                            dateFormat: 'yy-mm-dd',
                                             changeMonth: true,
                                             changeYear: true,
                                             showOtherMonths: true,
                                             selectOtherMonths: true
                                         });
 //                                    });
-                                    setInterval(
-                                            function() {
-                                                $('#loading').show();
-                                                $.get("http://webbpr.me/get_queue_messages/", function(message) {
-                                                    var xMessage = message;
-                                                    var x = document.getElementById('antrian');
-                                                    x.innerHTML = xMessage;
-                                                    $('#loading').hide();
-                                                });
-                                            }, 5000);
+                                        setInterval(
+                                                function() {
+                                                    $('#loading').show();
+                                                    $.get("http://webbpr.me/get_queue_messages/", function(message) {
+                                                        var xMessage = message;
+                                                        var x = document.getElementById('antrian');
+                                                        x.innerHTML = xMessage;
+                                                        $('#loading').hide();
+                                                    });
+                                                }, 5000);
 </script>
 <?php get_footer('admin') ?>

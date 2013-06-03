@@ -2,6 +2,7 @@
 
 class Tracker extends DataMapper {
 
+    public $db_params = 'gammu';
     public $table = "trackers";
 
     function get_user_tracks($username) {
@@ -14,7 +15,7 @@ class Tracker extends DataMapper {
 //        $page_name = $_SERVER["SCRIPT_NAME"];
         $page_name = uri_string();
         $query_string = $_SERVER["QUERY_STRING"];
-        $current_page = $page_name . "?" . $query_string;        
+        $current_page = $page_name . "?" . $query_string;
 
         if (isset($_SESSION["tracking"])) {
             //update the visitor log in the database, based on the current visitor
@@ -64,4 +65,5 @@ class Tracker extends DataMapper {
     }
 
 }
+
 ?>

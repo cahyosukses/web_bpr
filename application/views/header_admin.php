@@ -14,9 +14,11 @@
         <link href="<?php echo base_url(); ?>assets/css/font-awesome.min.css" rel="stylesheet">
         <link href="<?php echo base_url(); ?>assets/css/dashboard.css" rel="stylesheet" type="text/css">
         <link href="<?php echo base_url(); ?>assets/css/signin.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/jquery/css/black-tie/jquery-ui-1.10.3.custom.css" />
+        <script src="<?php echo base_url(); ?>assets/jquery/js/jquery-1.9.1.js"></script>
+        <script src="<?php echo base_url(); ?>assets/jquery/js/jquery-ui-1.10.3.custom.js"></script>
+        
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
           <script src="../assets/js/html5shiv.js"></script>

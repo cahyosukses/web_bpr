@@ -2,6 +2,7 @@
 
 class Contact extends DataMapper {
 
+    public $db_params = 'gammu';
     public $table = "contacts";
     public $validation = array(
         'name' => array(

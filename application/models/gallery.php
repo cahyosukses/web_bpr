@@ -2,6 +2,7 @@
 
 class Gallery extends DataMapper {
 
+    public $db_params = 'gammu';
     public $table = "galleries";
     public $validation = array(
         'title' => array(

@@ -2,6 +2,7 @@
 
 class Banner extends DataMapper {
 
+    public $db_params = 'gammu';
     public $table = "banners";
     public $validation = array(
         'title' => array(

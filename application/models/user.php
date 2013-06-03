@@ -2,6 +2,7 @@
 
 class User extends DataMapper {
 
+    public $db_params = 'gammu';
     public $table = "users";
     public $validation = array(
         'username' => array(
@@ -19,10 +20,9 @@ class User extends DataMapper {
     }
 
     function check_user($username, $password) {
-        $query = $this->db->get_where($this->table,
-                        array(
-                            'username' => $username,
-                            'password' => md5($password)
+        $query = $this->db->get_where($this->table, array(
+                    'username' => $username,
+                    'password' => md5($password)
                 ))->row();
 
         return $query;
@@ -34,4 +34,5 @@ class User extends DataMapper {
     }
 
 }
+
 ?>

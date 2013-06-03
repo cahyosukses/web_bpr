@@ -2,6 +2,7 @@
 
 class Hit extends DataMapper {
 
+    public $db_params = 'gammu';
     public $table = "hits";
 
     function __construct() {

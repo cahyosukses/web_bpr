@@ -2,6 +2,7 @@
 
 class Category extends DataMapper {
 
+    public $db_params = 'gammu';
     public $table = "categories";
     public $validation = array(
         'name' => array(

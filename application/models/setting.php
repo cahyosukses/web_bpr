@@ -2,13 +2,8 @@
 
 class Setting extends DataMapper {
 
+    public $db_params = 'gammu';
     public $table = "settings";
-    public $validation = array(
-        'name' => array(
-            'label' => 'Config Name',
-            'rules' => array('required')
-        )
-    );
 
     function __construct() {
         parent::__construct();
