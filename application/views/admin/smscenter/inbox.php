@@ -48,7 +48,7 @@
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu pull-right">
-                                    <li><a data-toggle="modal" href="<?php echo site_url('admin/smscenters/replay/' . $row->ID); ?>" data-target="#myModalReplay">Replay</a></li>                                    
+                                    <li><a data-toggle="modal" class="button_replay" data-href="<?php echo site_url('admin/smscenters/replay/' . $row->ID); ?>">Replay</a></li>
                                     <li><a onclick="return confirm('Are you sure?');" href="<?php echo site_url('admin/smscenters/delete/' . $row->ID); ?>">Destroy</a></li>
                                 </ul>
                             </div>
@@ -85,7 +85,12 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h3 id="myModalLabel">Replay Message</h3>
     </div>
-    <div class="modal-body"><?php echo img('./assets/images/loader.gif'); ?> Loading...</div>
+    <div class="modal-body">
+        <div id="loading_modal" style="padding: 5px; text-align: center;">
+            <?php echo img('./assets/images/loader.gif'); ?>&nbsp;&nbsp;Loading...
+        </div>
+        <div id="modal_form_replay"></div>
+    </div>
 </div>
 </div>
 
@@ -93,24 +98,54 @@
 
 
 <script>
-//                                    $(function() {
-                                        $("#datepicker1, #datepicker2").datepicker({
-                                            dateFormat: 'yy-mm-dd',
-                                            changeMonth: true,
-                                            changeYear: true,
-                                            showOtherMonths: true,
-                                            selectOtherMonths: true
+                                    $('#btn_submit').click(function() {                                        
+                                        $.ajax({
+                                            url: "test.php",
+                                            type: "post",
+                                            data: values,
+                                            success: function() {
+                                                alert("success");
+                                                $("#result").html('submitted successfully');
+                                            },
+                                            error: function() {
+                                                alert("failure");
+                                                $("#result").html('there is error while submit');
+                                            }
                                         });
+                                    });
+
+                                    $(".button_replay").click(function() {
+                                        $('#myModalReplay').modal('show');
+                                        var href = $(this).attr('data-href');
+                                        $.get(href, function(result) {
+                                            $('#loading_modal').hide();
+                                            $('#modal_form_replay').html(result);
+                                        });
+                                    });
+
+                                    $(".close").click(function() {
+                                        $('#loading_modal').show();
+                                        $('#modal_form_replay').html(' ');
+                                    });
+
+//                                    $(function() {
+                                    $("#datepicker1, #datepicker2").datepicker({
+                                        dateFormat: 'yy-mm-dd',
+                                        changeMonth: true,
+                                        changeYear: true,
+                                        showOtherMonths: true,
+                                        selectOtherMonths: true
+                                    });
 //                                    });
-                                        setInterval(
-                                                function() {
-                                                    $('#loading').show();
-                                                    $.get("http://webbpr.me/get_queue_messages/", function(message) {
-                                                        var xMessage = message;
-                                                        var x = document.getElementById('antrian');
-                                                        x.innerHTML = xMessage;
-                                                        $('#loading').hide();
-                                                    });
-                                                }, 5000);
+                                    setInterval(
+                                            function() {
+                                                $('#loading').show();
+                                                $.get("http://webbpr.me/get_queue_messages/", function(message) {
+                                                    var xMessage = message;
+                                                    var x = document.getElementById('antrian');
+                                                    x.innerHTML = xMessage;
+                                                    $('#loading').hide();
+                                                });
+                                            }, 5000);
 </script>
 <?php get_footer('admin') ?>

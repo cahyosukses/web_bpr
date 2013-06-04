@@ -51,14 +51,21 @@ class Smscenters extends CI_Controller {
     }
 
     function send_messages() {
-        redirect('admin/smscenters/inbox/');
+        $outbox = new Gamoutbox();
+        $outbox->DestinationNumber = $this->input->get('sender_number');
+        $outbox->TextDecoded = $this->input->get('re_msg');
+        $outbox->DeliveryReport = '0';
+        if ($outbox->save()) {
+            echo true;
+        } else {
+            echo false;
+        }
     }
 
     function config() {
         $gammuurc = read_file('.\Gammu-1.32.0\bin\gammurc');
         $gammusmsdrc = read_file('.\Gammu-1.32.0\bin\smsdrc');
         $data['services_gammu'] = $this->gammu->checking_gammu_service();
-//        $data['install_gammu'] = $this->Smscenter->run_gammu_service('stop');
         $data['gammu_identify'] = $this->gammu->run_gammu_service('identify');
 
         $data['gammuurc'] = array('name' => 'gammuurc', 'value' => $gammuurc, 'class' => 'input-block-level', 'rows' => '15');
@@ -77,12 +84,12 @@ class Smscenters extends CI_Controller {
     }
 
     function replay($id) {
-        $query = $this->DB1->query('SELECT * FROM inbox WHERE ID = ' . $id);
-        $row = $query->row();
+        $inbox = new Gaminbox();
+        $rs = $inbox->where('ID', $id)->get();
 
-        $data['sender_number'] = array('name' => 'sender_number', 'class' => 'input-block-level', 'value' => $row->SenderNumber);
-        $data['sender_msg'] = array('name' => 'sender_msg', 'class' => 'input-block-level', 'rows' => 3, 'value' => $row->TextDecoded);
-        $data['re_msg'] = array('name' => 're_msg', 'class' => 'input-block-level', 'rows' => 3);
+        $data['sender_number'] = array('name' => 'sender_number', 'readonly' => 'readonly', 'class' => 'input-block-level', 'value' => $rs->SenderNumber);
+        $data['sender_msg'] = array('name' => 'sender_msg', 'readonly' => 'readonly', 'class' => 'input-block-level', 'rows' => 3, 'value' => $rs->TextDecoded);
+        $data['re_msg'] = array('name' => 're_msg', 'class' => 'input-block-level', 'rows' => 3, 'id' => 're_msg');
         $this->load->view('admin/smscenter/replay', $data);
     }
 

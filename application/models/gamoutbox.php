@@ -14,7 +14,7 @@ class Gamoutbox extends DataMapper {
         $this->db->delete($this->table);
     }
 
-    function send_message($number, $balance) {
+    function outo_send_message($number, $balance) {
         $date = date('d/m/y');
         $text_msg = "Saldo Tabungan Pada Tanggal " . $date . " Sebesar Rp. " . $balance;
         $data = array(
