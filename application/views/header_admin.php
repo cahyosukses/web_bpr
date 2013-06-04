@@ -15,9 +15,11 @@
         <link href="<?php echo base_url(); ?>assets/css/dashboard.css" rel="stylesheet" type="text/css">
         <link href="<?php echo base_url(); ?>assets/css/signin.css" rel="stylesheet" type="text/css">
         
+        
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/jquery/css/black-tie/jquery-ui-1.10.3.custom.css" />
         <script src="<?php echo base_url(); ?>assets/jquery/js/jquery-1.9.1.js"></script>
         <script src="<?php echo base_url(); ?>assets/jquery/js/jquery-ui-1.10.3.custom.js"></script>
+        
         
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>

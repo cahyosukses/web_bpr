@@ -5,7 +5,7 @@ if (!defined('BASEPATH'))
 
 class Smscenters extends CI_Controller {
 
-    private $limit = 20;
+    private $limit = 100;
     private $DB1;
     private $ussi;
 
@@ -66,15 +66,15 @@ class Smscenters extends CI_Controller {
     }
 
     function send_messages() {
-        $outbox = new Gamoutbox();
-        $outbox->DestinationNumber = $this->input->get('sender_number');
-        $outbox->TextDecoded = $this->input->get('re_msg');
-        $outbox->DeliveryReport = '0';
-        if ($outbox->save()) {
-            echo true;
-        } else {
-            echo false;
-        }
+//        $outbox = new Gamoutbox();
+//        $outbox->DestinationNumber = $this->input->get('sender_number');
+//        $outbox->TextDecoded = $this->input->get('re_msg');
+//        $outbox->DeliveryReport = '0';
+//        if ($outbox->save()) {
+//            echo true;
+//        } else {
+//            echo false;
+//        }
     }
 
     function config() {

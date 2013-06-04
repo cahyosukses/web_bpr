@@ -54,7 +54,7 @@ class Gaminbox extends DataMapper {
                 //cek pin
                 $no_rek = $parts[1];
                 $balance = number_format($ussi_tab->get_balance_record($no_rek), 2, ",", ".");
-                $outbox->send_message($sender_number, $balance);
+                $outbox->outo_send_message($sender_number, $balance);
                 $this->where('ID', $ID)
                         ->update(
                                 array(
