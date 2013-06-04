@@ -61,13 +61,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php   foreach ($get_inbox as $row) {
-                                    ?>
-                                    <tr>
-                                        <td><?php echo $row->TextDecoded; ?></td>
-                                        <td><?php echo $row->SenderNumber; ?></td>
-                                        <td><?php echo $row->ReceivingDateTime; ?></td>
-                                    </tr>  
+                            <?php foreach ($get_inbox as $row) {
+                                ?>
+                                <tr>
+                                    <td><?php echo $row->TextDecoded; ?></td>
+                                    <td><?php echo $row->SenderNumber; ?></td>
+                                    <td><?php echo $row->ReceivingDateTime; ?></td>
+                                </tr>  
                             <?php } ?>
                         </tbody>
                     </table>
@@ -107,8 +107,11 @@
 
                 <div class="widget-content">
                     <ul class="news-items">
-                        <div style="height: 120px;"></div>
-                        <!--h2>Welcome, <?php //echo $this->session->userdata('username');       ?></h2-->
+                        <!--<div style="height: 120px;"></div>-->
+                        
+                        <div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+                        
+                        <!--h2>Welcome, <?php //echo $this->session->userdata('username');        ?></h2-->
                     </ul>
                 </div> <!-- /widget-content -->
             </div>
@@ -118,7 +121,76 @@
 </div>
 <?php get_footer('admin'); ?>
 
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+
+
 <script>
+
+
+    $(function() {
+        $('#container').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Monthly Average Requests'
+            },
+            subtitle: {
+                text: 'SMS BANKING - PD BPR KAB BANDUNG'
+            },
+            xAxis: {
+                categories: [
+                    'Jan',
+                    'Feb',
+                    'Mar',
+                    'Apr',
+                    'May',
+                    'Jun',
+                    'Jul',
+                    'Aug',
+                    'Sep',
+                    'Oct',
+                    'Nov',
+                    'Dec'
+                ]
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Messages'
+                }
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [{
+                    name: 'Inbox',
+                    data: [60, 190, 10, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+
+                }, {
+                    name: 'Outbox',
+                    data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
+
+                }]
+        });
+    });
+
+
+
+
     setInterval(
             function() {
                 $.get("http://webbpr.me/replay_message_with_processed_false/", function(rs) {
@@ -132,9 +204,9 @@
 //                });
 //            }, 1000);
     setInterval(
-            function() {            
+            function() {
                 $('#loading').show();
-                $.get("http://webbpr.me/get_queue_inbox/", function(html) {                                
+                $.get("http://webbpr.me/get_queue_inbox/", function(html) {
                     $('#inbox_gammu').html(html);
                     $('#loading').hide();
                 });
