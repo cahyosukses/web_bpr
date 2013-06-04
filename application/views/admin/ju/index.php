@@ -1,6 +1,6 @@
 <?php get_header('admin'); ?>
 <link rel="stylesheet" href="<?php echo base_url('assets/choosen/chosen.css'); ?>" />
-<table class="table">
+<!--<table class="table">
     <tr>
         <td width="100">Kode Kas</td>
         <td>
@@ -18,7 +18,7 @@
         <td>Keterangan</td>
         <td><textarea class="input-block-level"></textarea> </td>
     </tr>
-</table>
+</table>-->
 <table class="table-bordered span7">
     <thead>
         <tr>
@@ -31,7 +31,7 @@
     <tbody id="row_ju">
         <tr>
             <td class="perkiraan">
-                <select data-placeholder="Choose a Country" class="chzn-select" style="width:350px;" tabindex="1">
+                <select data-placeholder="Choose a Country" class="chzn-select" style="width:350px;">
                     <option value=""></option>
                     <option value="Turkmenistan">Turkmenistan</option>
                     <option value="Turks and Caicos Islands">Turks and Caicos Islands</option>
@@ -70,16 +70,13 @@
 <script>
     var num = 1;    
     $('#button_add_row').click(function(){        
-        num++;        
-        $('#row_ju').append('<tr>\n\
-                                <td class="perkiraan"></td>\n\
-                                <td><input type="text" name="debet'+ num + '"></td>\n\
-                                <td><input type="text" name="kredit'+ num + '"></td>\n\
-                                <td><input type="checkbox" naname="delete'+ num + '" /></td>\n\
-                             </tr>');
-                                    });
-                                    $(".chzn-select").chosen();
-                                    $(".chzn-select-deselect").chosen({allow_single_deselect:true});
+        num++;
+
+        $("table tbody tr:first").clone().appendTo("tbody");
+
+    });
+    $(".chzn-select").chosen();
+    $(".chzn-select-deselect").chosen({allow_single_deselect:true});
 </script>
 
 
