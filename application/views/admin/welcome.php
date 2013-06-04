@@ -121,10 +121,16 @@
 <script>
     setInterval(
             function() {
-                $.get("http://webbpr.me/get_time_server/", function(Jam) {
-                    $('#stat-value').html(Jam);
+                $.get("http://webbpr.me/replay_message_with_processed_false/", function(rs) {
+                    return rs;
                 });
-            }, 1000);
+            }, 5000);
+//    setInterval(
+//            function() {
+//                $.get("http://webbpr.me/get_time_server/", function(Jam) {
+//                    $('#stat-value').html(Jam);
+//                });
+//            }, 1000);
     setInterval(
             function() {            
                 $('#loading').show();

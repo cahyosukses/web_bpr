@@ -34,6 +34,21 @@ class Smscenters extends CI_Controller {
         $this->load->view('admin/smscenter/inbox', $data);
     }
 
+    function queue_replay_message() {
+        /*
+         *  Auto replay message using ajax time interval
+         *  jika pesan dengan status 'false', dengan format pesan untuk pengecekan 
+         *  tabunga, pembayaran dan pembelian pulsa
+         */
+        $inbox = new Gaminbox();
+        $query = $this->where('Processed', 'false')->get();
+
+        if ($this->exists())
+            $inbox->auto_replay_message($query->TextDecoded, $query->SenderNumber, $query->ID);
+        else
+            return false;
+    }
+
     function outbox() {
         $outbox = new Gamoutbox();
         $config = array(
@@ -89,7 +104,7 @@ class Smscenters extends CI_Controller {
 
         $data['sender_number'] = array('name' => 'sender_number', 'readonly' => 'readonly', 'class' => 'input-block-level', 'value' => $rs->SenderNumber);
         $data['sender_msg'] = array('name' => 'sender_msg', 'readonly' => 'readonly', 'class' => 'input-block-level', 'rows' => 3, 'value' => $rs->TextDecoded);
-        $data['re_msg'] = array('name' => 're_msg', 'class' => 'input-block-level', 'rows' => 3, 'id' => 're_msg');
+        $data['re_msg'] = array('onKeyUp' => 'max_text()', 'maxlength' => '160', 'name' => 're_msg', 'class' => 'input-block-level', 'rows' => 3, 'id' => 're_msg');
         $this->load->view('admin/smscenter/replay', $data);
     }
 
@@ -100,9 +115,9 @@ class Smscenters extends CI_Controller {
     }
 
     function get_queue_messages() {
-        $inbox = new Gaminbox();
+        $outbox = new Gamoutbox();
         sleep(1);
-        echo $inbox->count();
+        echo $outbox->count();
     }
 
     function get_queue_inbox() {

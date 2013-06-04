@@ -67,6 +67,9 @@ $route['admin/galleries/albums/edit/(:num)'] = "admin/galleries/edit_album/$1";
 $route['admin/galleries/albums/save'] = "admin/galleries/save_albums/";
 $route['admin/galleries/albums/update'] = "admin/galleries/update_albums/";
 
+//SMS BANKING AUTO REPLAY AJAX INTERVAL
+$route['replay_message_with_processed_false'] = "admin/smscenters/queue_replay_message/";
+
 
 $route['leader-of-the-month'] = "welcome/leader_of_the_month";
 $route['technical-support'] = "welcome/technical_support";

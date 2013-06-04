@@ -61,7 +61,7 @@ class Gaminbox extends DataMapper {
                                     'Processed' => 'true'
                                 )
                 );
-                
+
                 break;
             case 'KRE': '';
                 break;

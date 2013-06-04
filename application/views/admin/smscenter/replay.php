@@ -6,13 +6,22 @@
     <?php echo form_textarea($sender_msg); ?>
     <label class="control-label">Re. Message</label>    
     <?php echo form_textarea($re_msg); ?>
-    <div id="maxkarakter" class="pull-right"> 160 karakter </div>
+    <div class="pull-right max_length">160 karakter</div>
     <div>
         <button type="button" class="btn btn-success" id="btn_submit">Send</button>
     </div>
 </form>
 
 <script>
+    function max_text() {
+        var curText = $('#re_msg').val();
+        var curTextLength = curText.length;
+        var maxText = 160;
+        var sisa = maxText - curTextLength;
+        
+        $('.max_length').html(sisa + ' karakter');
+    }
+
     $('#btn_submit').click(function() {
         var frm_submit = $('#form_submit_replay');
         var re_msg = $('#re_msg').val();
@@ -36,13 +45,5 @@
             alert('Re Message not blank.');
         }
     });
-
-    function Hitung() {
-        var curText = document.fmessage.textmessage.value.length;
-        var maxText = 160;
-        var sisa = maxText - curText;
-        var isi = document.getElementById('maxkarakter');
-        isi.innerHTML = sisa + ' karakter';
-    }
 
 </script>

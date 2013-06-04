@@ -98,7 +98,7 @@
             <!-- MODAL FORM SEND MESSAGE -->
             <!-- Button to trigger modal -->
             <script type="text/javascript">
-                function Hitung() {
+                function Hitung() {                    
                     var curText = document.fmessage.textmessage.value.length;
                     var maxText = 160;
                     var sisa = maxText - curText;

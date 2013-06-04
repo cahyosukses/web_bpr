@@ -98,7 +98,8 @@
 
 
 <script>
-                                    $('#btn_submit').click(function() {                                        
+
+                                    $('#btn_submit').click(function() {
                                         $.ajax({
                                             url: "test.php",
                                             type: "post",
