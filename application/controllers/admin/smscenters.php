@@ -18,7 +18,7 @@ class Smscenters extends CI_Controller {
     function inbox() {
         $inbox = new Gaminbox();
         $ussi_tab = new Ussitabungan();
-
+        
         $uri_segment = 3;
         $offset = $this->uri->segment($uri_segment);
 

@@ -17,12 +17,9 @@ class Gaminbox extends DataMapper {
     function auto_replay_message($sms, $sender_number, $ID) {
         $ussi_tab = new Ussitabungan();
         $outbox = new Gamoutbox();
-
+        $phonebook = new Gampbk();
         /*
-         * FORMAT SMS BANKING / PIN : 8 DIGIT
-         * REG#<NAMA>#<NOREKENING>#<PIN1>#<PIN2>
-         * TAB#<NOREKENING>#<PIN>
-         * KRE#<NOREKENING>#<PIN>
+         * FORMAT SMS BANKING / PIN : 8 DIGIT         
          * TRS#<NOREKENING>#<NOREKENING TUJUAN>#<PIN>
          * 
          * PEMBELIAN PULSA
@@ -33,37 +30,73 @@ class Gaminbox extends DataMapper {
          * BYR#TLK#<NOREKENING>#<NOPELANGGAN>#<PIN>
          * BYR#PDAM#<NOREKENING>#<NOPELANGGAN>#<PIN>
          */
+        
+        // pecah pesan masuk dengan symbol #
         $parts = explode('#', $sms);
         switch ($parts[0]) {
             case 'REG':
+                // REG#<NAMA>#<NOREKENING>#<PIN1>               
+
                 $nama = $parts[1];
                 $no_rek = $parts[2];
-                $pin1 = $parts[3];
-                $pin2 = $parts[4];
+                $pin = $parts[3];
 
-                //cek pin1 harus sama dengan pin2
-                if ($pin1 == $pin2) {
-                    //cek no rekening tabungan
-                    if ($ussi_tab->exists_record('SALDO_AKHIR', $no_rek)) {
-                        echo "REGISTER BERHASIL";
+                if ($nama != '' && $no_rek != '' && $pin != '') {
+                    $phonebook->GroupID = "1";
+                    $phonebook->Name = $parts[1];
+                    $phonebook->no_rek_tabungan = $parts[2];
+                    $phonebook->PIN = md5($parts[3]);
+                    $phonebook->Number = $sender_number;
+
+                    if ($phonebook->save()) {
+                        //kirim konfirmasi/balas pesan
+                        $msg = "Pelanggan YTH, Terimakasih anda sudah melakukan registrasi 
+                            atas Nama : " . $nama . " PIN : " . $pin;
+                        $outbox->send_message_konfirmasi($sender_number, $msg);
+
+                        //update pesan jika sudah terkirim
+                        $this->where('ID', $ID)
+                                ->update(
+                                        array(
+                                            'Processed' => 'true'
+                                        )
+                        );
+                    } else {
+                        //kirim konfirmasi jika gagal/format salah
+                        $msg = "Maaf, format yang anda masukan salah. Silahkan di ulangi lagi dengan 
+                            format KETIK : REG#NAMA#NOREKENING#PIN . Terimakasih BPR KAB BANDUNG";
+                        $outbox->send_message_konfirmasi($sender_number, $msg);
                     }
+                } else {
+                    //kirim konfirmasi jika gagal/format salah
+                    $msg = "Maaf, format yang anda masukan salah. Silahkan di ulangi lagi dengan 
+                            format KETIK : REG#NAMA#NOREKENING#PIN . Terimakasih BPR KAB BANDUNG";
+                    $outbox->send_message_konfirmasi($sender_number, $msg);
                 }
 
                 break;
             case 'TAB':
-                //cek pin
+                // TAB#<NOREKENING>#<PIN>
                 $no_rek = $parts[1];
-                $balance = number_format($ussi_tab->get_balance_record($no_rek), 2, ",", ".");
-                $outbox->outo_send_message($sender_number, $balance);
-                $this->where('ID', $ID)
-                        ->update(
-                                array(
-                                    'Processed' => 'true'
-                                )
-                );
+                $pin = $parts[2];
+                
+                // PERIKSA NOMOR, REKENING, PIN
+                if ($phonebook->check_status_pin($sender_number, $no_rek, $pin)) {
+                    $balance = number_format($ussi_tab->get_balance_record($no_rek), 2, ",", ".");
+                    $outbox->outo_send_message($sender_number, $balance);
+                    $this->where('ID', $ID)
+                            ->update(
+                                    array(
+                                        'Processed' => 'true'
+                                    )
+                    );
+                } else {
+                    //kirim konfirmasi jika gagal/format salah
+                    $msg = "Maaf, format atau PIN yang anda masukan salah. Silahkan di ulangi lagi dengan 
+                            format KETIK : REG#NOREKENING#PIN . Terimakasih BPR KAB BANDUNG";
+                    $outbox->send_message_konfirmasi($sender_number, $msg);
+                }
 
-                break;
-            case 'KRE': '';
                 break;
             case 'TRS': '';
                 break;

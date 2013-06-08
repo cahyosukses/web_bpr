@@ -12,7 +12,7 @@ class Ju extends CI_Controller {
     }
 
     function index() {        
-        $this->load->view("admin/ju/index");
+        $this->load->view("admin/ju/add_row");
     }
 
     function get_all_for_options() {

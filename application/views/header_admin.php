@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/jquery/css/black-tie/jquery-ui-1.10.3.custom.css" />
         <script src="<?php echo base_url(); ?>assets/jquery/js/jquery-1.9.1.js"></script>
         <script src="<?php echo base_url(); ?>assets/jquery/js/jquery-ui-1.10.3.custom.js"></script>
-        
+        <!--<script  type="text/javascript" src="http://www.codemashups.com/source/jquery/jquery-autocomplete-p1/js/jq-ac-script.js"></script>-->
         
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
