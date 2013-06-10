@@ -1,0 +1,74 @@
+Sat 2013/06/08 19:51:54 gammu-smsd[4476]: Warning: No PIN code in E:\www\vhosts\localhost\gammu\smsdrc1 file
+Sat 2013/06/08 19:51:54 gammu-smsd[4476]: Error connecting to database!
+Sat 2013/06/08 19:51:54 gammu-smsd[4476]: Error code: 1049, Error: Unknown database 'sms'
+Sat 2013/06/08 19:51:54 gammu-smsd[4476]: Initialisation failed, stopping Gammu smsd: Unknown error. (UNKNOWN[27])
+Sat 2013/06/08 19:51:54 gammu-smsd[4476]: Failed to start SMSD, Error 0: The operation completed successfully.
+
+
+Sat 2013/06/08 19:53:14 gammu-smsd[1932]: Warning: No PIN code in E:\www\vhosts\localhost\gammu\smsdrc1 file
+Sat 2013/06/08 19:53:14 gammu-smsd[1932]: Error connecting to database!
+Sat 2013/06/08 19:53:14 gammu-smsd[1932]: Error code: 1049, Error: Unknown database 'sms'
+Sat 2013/06/08 19:53:14 gammu-smsd[1932]: Initialisation failed, stopping Gammu smsd: Unknown error. (UNKNOWN[27])
+Sat 2013/06/08 19:55:05 gammu-smsd[5128]: Warning: No PIN code in E:\www\vhosts\localhost\gammu\smsdrc1 file
+Sat 2013/06/08 19:55:05 gammu-smsd[5128]: Error connecting to database!
+Sat 2013/06/08 19:55:05 gammu-smsd[5128]: Error code: 1049, Error: Unknown database 'sms'
+Sat 2013/06/08 19:55:05 gammu-smsd[5128]: Initialisation failed, stopping Gammu smsd: Unknown error. (UNKNOWN[27])
+Sat 2013/06/08 19:55:05 gammu-smsd[5128]: Failed to start SMSD, Error 0: The operation completed successfully.
+
+
+Sat 2013/06/08 19:56:01 gammu-smsd[5656]: Warning: No PIN code in E:\www\vhosts\localhost\gammu\smsdrc1 file
+Sat 2013/06/08 19:56:01 gammu-smsd[5656]: Error connecting to database!
+Sat 2013/06/08 19:56:01 gammu-smsd[5656]: Error code: 1049, Error: Unknown database 'sms'
+Sat 2013/06/08 19:56:01 gammu-smsd[5656]: Initialisation failed, stopping Gammu smsd: Unknown error. (UNKNOWN[27])
+Sat 2013/06/08 19:56:01 gammu-smsd[5656]: Failed to start SMSD, Error 0: The operation completed successfully.
+
+
+Sat 2013/06/08 20:03:39 gammu-smsd[7548]: Warning: No PIN code in E:\www\vhosts\localhost\gammu\smsdrc1 file
+Sat 2013/06/08 20:03:40 gammu-smsd[7548]: Error connecting to database!
+Sat 2013/06/08 20:03:40 gammu-smsd[7548]: Error code: 1049, Error: Unknown database 'sms'
+Sat 2013/06/08 20:03:40 gammu-smsd[7548]: Initialisation failed, stopping Gammu smsd: Unknown error. (UNKNOWN[27])
+Sat 2013/06/08 20:03:40 gammu-smsd[7548]: Failed to start SMSD, Error 0: The operation completed successfully.
+
+
+Sat 2013/06/08 20:05:53 gammu-smsd[6224]: Warning: No PIN code in E:\www\vhosts\localhost\gammu\smsdrc1 file
+Sat 2013/06/08 20:05:53 gammu-smsd[6224]: Error connecting to database!
+Sat 2013/06/08 20:05:53 gammu-smsd[6224]: Error code: 1049, Error: Unknown database 'sms'
+Sat 2013/06/08 20:05:53 gammu-smsd[6224]: Initialisation failed, stopping Gammu smsd: Unknown error. (UNKNOWN[27])
+Sat 2013/06/08 20:06:19 gammu-smsd[1944]: Warning: No PIN code in E:\www\vhosts\localhost\gammu\smsdrc1 file
+Sat 2013/06/08 20:06:19 gammu-smsd[1944]: Error connecting to database!
+Sat 2013/06/08 20:06:19 gammu-smsd[1944]: Error code: 1049, Error: Unknown database 'sms'
+Sat 2013/06/08 20:06:19 gammu-smsd[1944]: Initialisation failed, stopping Gammu smsd: Unknown error. (UNKNOWN[27])
+Sat 2013/06/08 20:06:48 gammu-smsd[5940]: Warning: No PIN code in E:\www\vhosts\localhost\gammu\smsdrc1 file
+Sat 2013/06/08 20:06:49 gammu-smsd[5940]: Error connecting to database!
+Sat 2013/06/08 20:06:49 gammu-smsd[5940]: Error code: 1049, Error: Unknown database 'sms'
+Sat 2013/06/08 20:06:49 gammu-smsd[5940]: Initialisation failed, stopping Gammu smsd: Unknown error. (UNKNOWN[27])
+Sat 2013/06/08 20:11:29 gammu-smsd[7132]: Warning: No PIN code in E:\www\vhosts\localhost\gammu\smsdrc1 file
+Sat 2013/06/08 20:11:29 gammu-smsd[7132]: Error connecting to database!
+Sat 2013/06/08 20:11:29 gammu-smsd[7132]: Error code: 1049, Error: Unknown database 'sms'
+Sat 2013/06/08 20:11:29 gammu-smsd[7132]: Initialisation failed, stopping Gammu smsd: Unknown error. (UNKNOWN[27])
+Sat 2013/06/08 20:13:58 gammu-smsd[7616]: Warning: No PIN code in E:\www\vhosts\localhost\gammu\smsdrc1 file
+Sat 2013/06/08 20:13:58 gammu-smsd[7616]: Connected to Database: gammu on localhost
+Sat 2013/06/08 20:13:58 gammu-smsd[7616]: Created Windows RW shared memory at 00A00000
+Sat 2013/06/08 20:13:58 gammu-smsd[7616]: Starting phone communication...
+Sat 2013/06/08 20:14:03 gammu-smsd[7616]: Communication established
+Sat 2013/06/08 20:14:04 gammu-smsd[7616]: Read 1 messages
+Sat 2013/06/08 20:33:50 gammu-smsd[7776]: Warning: No PIN code in E:\www\vhosts\web_bpr\gammu\smsdrc1 file
+Sat 2013/06/08 20:33:50 gammu-smsd[7776]: Connected to Database: bpr on localhost
+Sat 2013/06/08 20:33:50 gammu-smsd[7776]: Created Windows RW shared memory at 006A0000
+Sat 2013/06/08 20:33:50 gammu-smsd[7776]: Starting phone communication...
+Sat 2013/06/08 20:33:55 gammu-smsd[7776]: Communication established
+Sat 2013/06/08 20:35:03 gammu-smsd[7776]: Read 1 messages
+Sat 2013/06/08 20:51:12 gammu-smsd[7776]: Read 1 messages
+Sat 2013/06/08 21:00:57 gammu-smsd[7776]: Read 1 messages
+Sat 2013/06/08 21:32:01 gammu-smsd[7776]: Read 1 messages
+Sat 2013/06/08 21:35:41 gammu-smsd[7776]: Read 1 messages
+Sat 2013/06/08 21:37:51 gammu-smsd[7776]: Read 1 messages
+Sat 2013/06/08 21:42:34 gammu-smsd[7776]: Read 1 messages
+Sat 2013/06/08 21:45:14 gammu-smsd[7776]: Read 1 messages
+Mon 2013/06/10 07:17:47 gammu-smsd[1996]: Warning: No PIN code in E:\www\vhosts\web_bpr\gammu\smsdrc1 file
+Mon 2013/06/10 07:17:51 gammu-smsd[1996]: Error connecting to database!
+Mon 2013/06/10 07:17:51 gammu-smsd[1996]: Error code: 2003, Error: Can't connect to MySQL server on 'localhost' (10061)
+Mon 2013/06/10 07:17:51 gammu-smsd[1996]: Initialisation failed, stopping Gammu smsd: Unknown error. (UNKNOWN[27])
+Mon 2013/06/10 07:17:51 gammu-smsd[1996]: Failed to start SMSD, Error 0: The operation completed successfully.
+
+

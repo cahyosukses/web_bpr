@@ -16,24 +16,28 @@ class Gamoutbox extends DataMapper {
 
     function outo_send_message($number, $balance) {
         $date = date('d/m/y');
-        $text_msg = "Debitur YTH, Saldo Tabungan Pada Tanggal " . $date . " Sebesar Rp. " . $balance;
-        $data = array(
-            'DestinationNumber' => $number,
-            'TextDecoded' => $text_msg,
-            'DeliveryReport' => 'no'
-        );
-
-        $this->db->insert($this->table, $data);
+        $text_msg = "Debitur YTH, Saldo Tabungan Pertanggal " . $date . " Sebesar Rp. " . $balance . " Terimakasih BPR KAB BANDUNG (do-not-replay)";
+        $this->DestinationNumber = $number;
+        $this->SenderID = 'Wavecom';
+        $this->DeliveryReport = 'no';
+        $this->TextDecoded = $text_msg;
+        $this->CreatorID = 'Gammu 1.28.90';
+        if ($this->save())
+            return true;
+        else
+            return false;
     }
-    
-    function send_message_konfirmasi($number, $txt_msg) {
-        $data = array(
-            'DestinationNumber' => $number,
-            'TextDecoded' => $txt_msg,
-            'DeliveryReport' => 'no'
-        );
 
-        $this->db->insert($this->table, $data);
+    function send_message_confirmation($number, $text_msg) {
+        $this->DestinationNumber = $number;
+        $this->SenderID = 'Wavecom';
+        $this->DeliveryReport = 'no';
+        $this->TextDecoded = $text_msg;
+        $this->CreatorID = 'Gammu 1.28.90';
+        if ($this->save())
+            return true;
+        else
+            return false;
     }
 
 //    function send_long_message($nohp, $pesan, $modem) {
@@ -73,7 +77,6 @@ class Gamoutbox extends DataMapper {
 //
 //        return 'SMS sedang dikirim...';
 //    }
-
 }
 
 ?>

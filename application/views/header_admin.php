@@ -70,6 +70,7 @@
                                         <li><a href="#myModal" role="button" data-toggle="modal">Send Message</a></li>
                                         <li><a href="<?php echo site_url('admin/smscenters/inbox/'); ?>">Inbox</a></li>
                                         <li><a href="<?php echo site_url('admin/smscenters/outbox/'); ?>">Outbox</a></li>
+                                        <li><a href="<?php echo site_url('admin/smscenters/sentitems/'); ?>">Sentitems</a></li>
                                         <li><a href="#">Template Message</a></li>
                                         <li class="divider"></li>
                                         <li><a href="<?php echo site_url('admin/smscenters/config/'); ?>">Config Gammu</a></li>

@@ -18,7 +18,7 @@ class Smscenters extends CI_Controller {
     function inbox() {
         $inbox = new Gaminbox();
         $ussi_tab = new Ussitabungan();
-        
+
         $uri_segment = 3;
         $offset = $this->uri->segment($uri_segment);
 
@@ -65,16 +65,26 @@ class Smscenters extends CI_Controller {
         $this->load->view('admin/smscenter/outbox', $data);
     }
 
+    function sentitems() {
+        $sentitems = new Gamsentitem();
+        $uri_segment = 3;
+        $offset = $this->uri->segment($uri_segment);
+
+        $config = array(
+            'base_url' => site_url() . 'admin/smscenters/sentitems/',
+            'total_rows' => $sentitems->count(),
+            'per_page' => 5,
+            'uri_segment' => 3
+        );
+        $this->pagination->initialize($config);
+        $data['pagination'] = $this->pagination->create_links();
+        $data['get_sentitems'] = $sentitems->get($this->limit, $this->uri->segment(4))->all;
+        $this->load->view('admin/smscenter/sentitems', $data);
+    }
+
     function send_messages() {
-//        $outbox = new Gamoutbox();
-//        $outbox->DestinationNumber = $this->input->get('sender_number');
-//        $outbox->TextDecoded = $this->input->get('re_msg');
-//        $outbox->DeliveryReport = '0';
-//        if ($outbox->save()) {
-//            echo true;
-//        } else {
-//            echo false;
-//        }
+        $outbox = new Gamoutbox();
+        $outbox->send_message_confirmation($this->input->post('number'), $this->input->post('message'));
     }
 
     function config() {
@@ -86,7 +96,7 @@ class Smscenters extends CI_Controller {
         $data['gammuurc'] = array('name' => 'gammuurc', 'value' => $gammuurc, 'class' => 'input-block-level', 'rows' => '15');
         $data['gammusmsdrc'] = array('name' => 'gammusmsdrc', 'value' => $gammusmsdrc, 'class' => 'input-block-level', 'rows' => '15');
 
-        $this->load->view('admin/smscenter/setup_gammu', $data);
+        $this->load->view('admin/smscenter/config_file_gammu', $data);
     }
 
     function save_gammu_config() {

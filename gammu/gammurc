@@ -1,0 +1,5 @@
+[gammu]
+
+port = com33:
+connection = at115200
+

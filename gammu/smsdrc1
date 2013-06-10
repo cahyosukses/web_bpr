@@ -1,0 +1,30 @@
+[gammu]
+# isikan no port di bawah ini
+port = com33:
+# isikan jenis connection di bawah ini
+connection = at115200
+
+[smsd]
+service = mysql
+logfile = E:/www/vhosts/web_bpr/gammu/logsmsdrc1
+debuglevel = 0
+phoneid = Wavecom
+commtimeout = 30
+sendtimeout = 600
+send = yes
+receive = yes
+checksecurity = 0
+#PIN = 1234
+
+# -----------------------------
+# Konfigurasi koneksi ke MySQL
+# -----------------------------
+pc = localhost
+
+# isikan user untuk akses ke MySQL
+user = root
+# isikan password user untuk akses ke MySQL
+password = rootwdp
+# isikan nama database untuk Gammu
+database = bpr
+driver = native_mysql
